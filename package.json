@@ -1,0 +1,56 @@
+{
+  "name": "redrun",
+  "version": "1.0.0",
+  "description": "expand scripts from package.json to improve execution speed",
+  "main": "lib/redrun.js",
+  "scripts": {
+    "lint": "npm-run-all --parallel lint:*",
+    "lint:jshint": "jshint bin lib",
+    "lint:eslint-bin": "eslint --rule 'no-console:0' bin",
+    "lint:eslint-lib": "eslint lib",
+    "lint:jscs": "jscs --esnext bin lib",
+    "redlint": "bin/redrun.js lint:*",
+    "simplelint": "npm run lint:jshint && npm run lint:eslint-bin && npm run lint:eslint-lib && npm run lint:jscs",
+    "test": "tape test/**/*.js",
+    "coverage": "nyc npm test",
+     "one": "npm run two",
+     "two": "npm run three",
+     "three": "echo 'hello'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/coderaiser/redrun.git"
+  },
+  "bin": {
+    "redrun": "bin/redrun.js"
+  },
+  "keywords": [
+    "redrun",
+    "npm run",
+    "scripts",
+    "package",
+    "npm-scripts",
+    "tool",
+    "cli",
+    "commond",
+    "task"
+  ],
+  "author": "coderaiser <mnemonic.enemy@gmail.com> (http://coderaiser.github.io/)",
+  "bugs": {
+    "url": "https://github.com/coderaiser/redrun/issues"
+  },
+  "homepage": "https://github.com/coderaiser/redrun",
+  "license": "MIT",
+  "dependencies": {
+    "spawnify": "^2.3.0",
+    "try-catch": "^1.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^2.7.0",
+    "jscs": "^3.0.1",
+    "jshint": "^2.9.1",
+    "npm-run-all": "^1.7.0",
+    "nyc": "^6.4.0",
+    "tape": "^4.5.1"
+  }
+}
