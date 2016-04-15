@@ -9,6 +9,7 @@ Expand `script` from `package.json` to improve execution speed.
     "three": "echo 'hello'"
 }
 ```
+
 Usually this expressions would be executed one-by-one this way:
 
 ```sh
@@ -102,6 +103,8 @@ sys 0m13.997s
 ```
 
 ### npm run && npm run
+
+```sh
 ser@cloudcmd:~/redrun$ time npm run simplelint
 
 > redrun@1.0.0 simplelint /home/coderaiser/redrun
@@ -143,6 +146,7 @@ real    0m16.918s
 user    0m7.708s
 sys 0m8.868s
 ```
+
 As you see `redrun` more fast and more laconic then regular solutions.
 
 ## License
