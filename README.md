@@ -4,7 +4,7 @@ Expand `script` from `package.json` to improve execution speed.
 
 ```json
 {
-    "one": "npm run one",
+    "one": "npm run two",
     "two": "npm run three",
     "three": "echo 'hello'"
 }
