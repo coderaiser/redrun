@@ -113,7 +113,7 @@ coderaiser@cloudcmd:~/redrun$ time npm run lint
 
 real    0m25.737s
 user    0m11.372s
-sys 0m13.997s
+sys     0m13.997s
 ```
 
 ### npm run && npm run
@@ -143,7 +143,7 @@ ser@cloudcmd:~/redrun$ time npm run simplelint
 
 real    0m24.283s
 user    0m11.032s
-sys 0m12.695sah
+sys     0m12.695sah
 ```
 
 ### redrun
@@ -158,7 +158,7 @@ redrun: jshint bin lib && eslint --rule 'no-console:0' bin && eslint lib && jscs
 
 real    0m16.918s
 user    0m7.708s
-sys 0m8.868s
+sys     0m8.868s
 ```
 
 As you see `redrun` more fast and more laconic then regular solutions.
