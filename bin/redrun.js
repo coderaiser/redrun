@@ -11,6 +11,7 @@ let argv        = process.argv;
 let args        = require('minimist')(argv.slice(2), {
     alias: {
         p: 'parallel',
+        s: 'series',
         h: 'help',
         v: 'version'
     },
@@ -29,16 +30,20 @@ let args        = require('minimist')(argv.slice(2), {
     }
 });
 
-if (args.version)
+if (args.version) {
     version();
-else if (args.help || !args._.length)
+} else if (args.help || !args._.length) {
     help();
-else if (args.parallel)
-    args._.forEach((name) => {
-        exec(redrun(name, getInfo(cwd)));
-    });
-else
-    exec(series(args._, getInfo(cwd)))
+} else {
+    if (args.parallel)
+        array(args.parallel).forEach((name) => {
+            exec(redrun(name, getInfo(cwd)));
+        });
+   
+   let seriesScripts = [...args._, ...array(args.series)];
+   if (args.series)
+        exec(series(seriesScripts, getInfo(cwd)));
+}
 
 function series(names, scripts) {
     let all = names.map((name) => {
@@ -49,6 +54,11 @@ function series(names, scripts) {
 }
 
 function exec(cmd) {
+    if (!cmd) {
+        console.error('script not found!');
+        process.exit(1);
+    }
+    
     let child = spawnify(cmd);
     
     console.log(`redrun: ${cmd}`);
@@ -92,4 +102,11 @@ function help() {
         var line = '  ' + name + ' ' + bin[name];
         console.log(line);
     });
+}
+
+function array(value) {
+    if (!Array.isArray(value))
+        return [value];
+    
+    return value;
 }
