@@ -2,6 +2,18 @@
 
 Expand `script` from `package.json` to improve execution speed.
 
+# Usage
+
+```
+Usage: redrun [script1 script2 ... scriptN]
+Options:
+  -p, --parallel  run scripts in parallel
+  -h, --help      display this help and exit
+  -v, --version   output version information and exit
+```
+
+# How it works
+
 ```json
 {
     "one": "npm run two",

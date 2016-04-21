@@ -43,6 +43,7 @@
   "homepage": "https://github.com/coderaiser/redrun",
   "license": "MIT",
   "dependencies": {
+    "minimist": "^1.2.0",
     "spawnify": "^2.3.0",
     "try-catch": "^1.0.0"
   },
