@@ -10,8 +10,18 @@ let cwd         = process.cwd();
 let argv        = process.argv;
 let args        = require('minimist')(argv.slice(2), {
     alias: {
+        string: [
+            'parallel',
+            'series'
+        ],
+        boolean: [
+            'loud',
+            'help',
+            'version'
+        ],
         p: 'parallel',
         s: 'series',
+        l: 'loud',
         h: 'help',
         v: 'version'
     },
@@ -29,7 +39,7 @@ let args        = require('minimist')(argv.slice(2), {
         }
     }
 });
-
+console.log(args);
 if (args.version) {
     version();
 } else if (args.help || !args._.length && !args.parallel && !args.series) {
@@ -50,6 +60,14 @@ if (args.version) {
         cmd += series(seriesScripts, getInfo(cwd));
    }
    
+    if (!cmd) {
+        console.error('script not found!');
+        process.exit(1);
+    }
+    
+    if (args.loud)
+        console.log(`redrun: ${cmd}`);
+    
    exec(cmd);
 }
 
@@ -70,14 +88,7 @@ function parallel(names, scripts) {
 }
 
 function exec(cmd) {
-    if (!cmd) {
-        console.error('script not found!');
-        process.exit(1);
-    }
-    
     let child = spawnify(cmd);
-    
-    console.log(`redrun: ${cmd}`);
     
     child.on('data', (data) => {
         process.stdout.write(data);

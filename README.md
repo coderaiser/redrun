@@ -8,6 +8,8 @@ Expand `script` from `package.json` to improve execution speed.
 Usage: redrun [script1 script2 ... scriptN]
 Options:
   -p, --parallel  run scripts in parallel
+  -s, --series    run scripts in series
+  -l, --loud      print resulting command before execute
   -h, --help      display this help and exit
   -v, --version   output version information and exit
 ```
