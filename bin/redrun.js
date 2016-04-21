@@ -32,17 +32,25 @@ let args        = require('minimist')(argv.slice(2), {
 
 if (args.version) {
     version();
-} else if (args.help || !args._.length) {
+} else if (args.help || !args._.length && !args.parallel && !args.series) {
     help();
 } else {
+    let cmd = '';
+    
     if (args.parallel)
-        array(args.parallel).forEach((name) => {
-            exec(redrun(name, getInfo(cwd)));
-        });
+        cmd = parallel(array(args.parallel), getInfo(cwd));
    
    let seriesScripts = [...args._, ...array(args.series)];
-   if (seriesScripts)
-        exec(series(seriesScripts, getInfo(cwd)));
+   
+   if (seriesScripts.length) {
+        if (cmd) {
+            cmd += ' && ';
+        }
+        
+        cmd += series(seriesScripts, getInfo(cwd));
+   }
+   
+   exec(cmd);
 }
 
 function series(names, scripts) {
@@ -51,6 +59,14 @@ function series(names, scripts) {
     });
     
     return all.join(' && ');
+}
+
+function parallel(names, scripts) {
+    let all = names.map((name) => {
+        return redrun(name, {parallel: true}, scripts);
+    });
+    
+    return all.join(' & ');
 }
 
 function exec(cmd) {

@@ -10,6 +10,7 @@
     "lint:eslint-lib": "eslint lib",
     "lint:jscs": "jscs --esnext bin lib",
     "redlint": "bin/redrun.js lint:*",
+    "redlint-parallel": "bin/redrun.js -p lint:*",
     "simplelint": "npm run lint:jshint && npm run lint:eslint-bin && npm run lint:eslint-lib && npm run lint:jscs",
     "test": "tape test/**/*.js",
     "coverage": "nyc npm test",

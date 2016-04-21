@@ -55,3 +55,17 @@ test('get-body: pre + post + args: regexp', (t) => {
     t.end();
 });
 
+test('get-body: args: parallel', (t) => {
+    let cmd = 'jshint --version';
+    
+    let body = getBody('lint:*', {parallel: true}, {
+        'lint:jshint': 'jshint lib/*.js',
+        'lint:jscs': 'jscs lib/*.js',
+        'lint:eslint': 'eslint lib/*.js'
+    });
+    
+    t.equal(body, 'jshint lib/*.js & jscs lib/*.js & eslint lib/*.js', 'should body be equal to script content + args');
+    
+    t.end();
+});
+
