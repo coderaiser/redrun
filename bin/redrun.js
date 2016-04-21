@@ -46,6 +46,7 @@ if (args.version) {
 }
 
 function series(names, scripts) {
+    console.log(names);
     let all = names.map((name) => {
         return redrun(name, scripts);
     });
@@ -105,6 +106,9 @@ function help() {
 }
 
 function array(value) {
+    if (!value)
+        return [];
+    
     if (!Array.isArray(value))
         return [value];
     
