@@ -41,7 +41,7 @@ if (args.version) {
         });
    
    let seriesScripts = [...args._, ...array(args.series)];
-   if (args.series)
+   if (seriesScripts)
         exec(series(seriesScripts, getInfo(cwd)));
 }
 
