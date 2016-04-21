@@ -2,6 +2,8 @@
 
 Expand `script` from `package.json` to improve execution speed.
 
+![Redrun](https://github.com/coderaiser/redrun/raw/master/redrun.png "Redrun");
+
 # Usage
 
 ```
