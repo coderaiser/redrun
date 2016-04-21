@@ -1,0 +1,9 @@
+2016.04.21, v1.1.0
+
+fix:
+- (travis) codestyle -> lint
+
+feature:
+- (package) add multi args support
+- (package) add coveralls
+
