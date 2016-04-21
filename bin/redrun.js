@@ -46,7 +46,6 @@ if (args.version) {
 }
 
 function series(names, scripts) {
-    console.log(names);
     let all = names.map((name) => {
         return redrun(name, scripts);
     });
