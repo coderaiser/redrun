@@ -39,7 +39,7 @@ let args        = require('minimist')(argv.slice(2), {
         }
     }
 });
-console.log(args);
+
 if (args.version) {
     version();
 } else if (args.help || !args._.length && !args.parallel && !args.series) {
@@ -68,7 +68,7 @@ if (args.version) {
     if (args.loud)
         console.log(`redrun: ${cmd}`);
     
-   exec(cmd);
+   execute(cmd);
 }
 
 function series(names, scripts) {
@@ -87,7 +87,7 @@ function parallel(names, scripts) {
     return all.join(' & ');
 }
 
-function exec(cmd) {
+function execute(cmd) {
     let child = spawnify(cmd);
     
     child.on('data', (data) => {
@@ -95,7 +95,7 @@ function exec(cmd) {
     });
     
     child.on('error', (error) => {
-        process.stderr.write(error);
+        console.error(error.message);
     });
 }
 
