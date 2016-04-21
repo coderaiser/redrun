@@ -9,7 +9,7 @@ Usage: redrun [script1 script2 ... scriptN]
 Options:
   -p, --parallel  run scripts in parallel
   -s, --series    run scripts in series
-  -l, --loud      print resulting command before execute
+  -l, --loud      print resulting command before execution
   -h, --help      display this help and exit
   -v, --version   output version information and exit
 ```
@@ -50,7 +50,7 @@ We use `npm run` for comfort of build tools of yesterday (like `gulp` and `grunt
 What `redrun` does is expand all this commands into one (which is much faster):
 
 ```
-coderaiser@cloudcmd:~/redrun$ redrun one
+coderaiser@cloudcmd:~/redrun$ redrun one --loud
 redrun: echo 'hello'
 hello
 ```
@@ -152,7 +152,7 @@ sys     0m12.695sah
 coderaiser@cloudcmd:~/redrun$ time npm run redlint
 
 > redrun@1.0.0 redlint /home/coderaiser/redrun
-> bin/redrun.js lint:*
+> bin/redrun.js lint:* --loud
 
 redrun: jshint bin lib && eslint --rule 'no-console:0' bin && eslint lib && jscs --esnext bin lib
 
