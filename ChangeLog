@@ -1,3 +1,14 @@
+2016.04.22, v1.2.0
+
+fix:
+- (redrun) process.stderr -> console.error
+
+feature:
+- (redrun) add logo
+- (redurn) add -l, --loud
+- (redrun) add parallel, series
+
+
 2016.04.21, v1.1.4
 
 feature:
