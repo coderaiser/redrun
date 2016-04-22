@@ -56,6 +56,20 @@ test('parse arguments', (t) => {
     t.end();
 });
 
+test('parse reserved names: npm test', (t) => {
+    let cmd     = 'tape test/*.js';
+    let result  = redrun('one', {
+        scripts: {
+            one: 'npm run two',
+            two: 'npm test',
+            test: cmd
+        }
+    });
+    
+    t.equal(result, cmd, 'should parse script test');
+    t.end();
+});
+
 test('parse a few levels deep', (t) => {
     let cmd     = 'echo "hello world"';
     let result  = redrun('one', {
