@@ -120,7 +120,7 @@ function version() {
 
 function help() {
     var bin         = require('../help'),
-        usage       = 'Usage: ' + getInfo('..').name + ' [script1 script2 ... scriptN]';
+        usage       = 'Usage: ' + getInfo('..').name + ' [...tasks] [options]';
         
     console.log(usage);
     console.log('Options:');

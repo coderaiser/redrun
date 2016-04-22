@@ -7,7 +7,7 @@ Expand `script` from `package.json` to improve execution speed.
 # Usage
 
 ```
-Usage: redrun [script1 script2 ... scriptN]
+Usage: redrun [...tasks] [options]
 Options:
   -p, --parallel  run scripts in parallel
   -s, --series    run scripts in series
