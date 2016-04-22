@@ -4,7 +4,8 @@
   "description": "expand scripts from package.json to improve execution speed",
   "main": "lib/redrun.js",
   "scripts": {
-    "lint": "npm-run-all --parallel lint:*",
+    "lint": "bin/redrun.js --parallel lint:*",
+    "slowlint": "npm-run-all --parallel lint:*",
     "lint:jshint": "jshint bin lib",
     "lint:eslint-bin": "eslint --rule 'no-console:0' bin",
     "lint:eslint-lib": "eslint lib",
