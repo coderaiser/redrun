@@ -5,7 +5,7 @@
 let path        = require('path');
 let spawnify    = require('spawnify');
 let tryCatch    = require('try-catch');
-let redrun      = require('..');
+let cliParse    = require('../lib/cli-parse');
 let cwd         = process.cwd();
 let argv        = process.argv;
 let args        = require('minimist')(argv.slice(2), {
@@ -46,9 +46,10 @@ if (args.version) {
     help();
 } else {
     let cmd = '';
+    let parallelScripts = array(args.parallel);
     
-    if (args.parallel)
-        cmd = parallel(array(args.parallel), getInfo(cwd));
+    if (parallelScripts.length)
+        cmd = parallel(parallelScripts, getInfo(cwd));
    
    let seriesScripts = [...args._, ...array(args.series)];
    
@@ -61,7 +62,8 @@ if (args.version) {
    }
    
     if (!cmd) {
-        console.error('script not found!');
+        let all = [...seriesScripts, ...array(args.parallel)].join(' ');
+        console.error(`script not found: ${all}`);
         process.exit(1);
     }
     
@@ -72,19 +74,11 @@ if (args.version) {
 }
 
 function series(names, scripts) {
-    let all = names.map((name) => {
-        return redrun(name, scripts);
-    });
-    
-    return all.join(' && ');
+    return cliParse(names, scripts);
 }
 
 function parallel(names, scripts) {
-    let all = names.map((name) => {
-        return redrun(name, {parallel: true}, scripts);
-    });
-    
-    return all.join(' & ');
+    return cliParse(names, {parallel: true}, scripts);
 }
 
 function execute(cmd) {

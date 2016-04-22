@@ -13,6 +13,8 @@
     "redlint-parallel": "bin/redrun.js -p lint:*",
     "simplelint": "npm run lint:jshint && npm run lint:eslint-bin && npm run lint:eslint-lib && npm run lint:jscs",
     "test": "tape test/**/*.js",
+    "watch:test": "nodemon -w test -w lib --exec npm test",
+    "watch:coverage": "nodemon -w test -w lib --exec nyc npm test",
     "coverage": "nyc npm test",
     "report": "nyc report --reporter=text-lcov | coveralls",
     "one": "npm run two",
@@ -53,6 +55,7 @@
     "eslint": "^2.7.0",
     "jscs": "^3.0.1",
     "jshint": "^2.9.1",
+    "nodemon": "^1.9.1",
     "npm-run-all": "^1.7.0",
     "nyc": "^6.4.0",
     "tape": "^4.5.1"
