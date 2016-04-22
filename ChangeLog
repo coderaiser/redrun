@@ -1,3 +1,11 @@
+2016.04.22, v1.3.0
+
+feature:
+- (redrun) add support of reserved script names (like "npm test")
+- (package) add watch:test/coverage
+- (cli-parse) add
+
+
 2016.04.22, v1.2.1
 
 feature:
