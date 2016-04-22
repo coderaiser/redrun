@@ -51,7 +51,7 @@ if (args.version) {
     if (parallelScripts.length)
         cmd = parallel(parallelScripts, getInfo(cwd));
    
-   let seriesScripts = [...args._, ...array(args.series)];
+   let seriesScripts = args._.concat(array(args.series));
    
    if (seriesScripts.length) {
         if (cmd) {
@@ -62,7 +62,7 @@ if (args.version) {
    }
    
     if (!cmd) {
-        let all = [...seriesScripts, ...array(args.parallel)].join(' ');
+        let all = seriesScripts.concat(array(args.parallel)).join(' ');
         console.error(`script not found: ${all}`);
         process.exit(1);
     }
