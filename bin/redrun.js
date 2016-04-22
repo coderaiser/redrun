@@ -68,7 +68,7 @@ if (args.version) {
     }
     
     if (args.loud)
-        console.log(`redrun: ${cmd}`);
+        console.log(cmd);
     
    execute(cmd);
 }
