@@ -53,7 +53,7 @@ What `redrun` does is expand all this commands into one (which is much faster):
 
 ```
 coderaiser@cloudcmd:~/redrun$ redrun one --loud
-redrun: echo 'hello'
+echo 'hello'
 hello
 ```
 
@@ -156,7 +156,7 @@ coderaiser@cloudcmd:~/redrun$ time npm run redlint
 > redrun@1.0.0 redlint /home/coderaiser/redrun
 > bin/redrun.js lint:* --loud
 
-redrun: jshint bin lib && eslint --rule 'no-console:0' bin && eslint lib && jscs --esnext bin lib
+jshint bin lib && eslint --rule 'no-console:0' bin && eslint lib && jscs --esnext bin lib
 
 real    0m16.918s
 user    0m7.708s
