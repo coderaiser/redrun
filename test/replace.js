@@ -11,6 +11,22 @@ test('replace: one npm run ', (t) => {
     t.end();
 });
 
+test('replace: npm tst', (t) => {
+    let result = replace('npm tst', (a) => a);
+
+    t.equal(result, 'test', 'should determine reserved: tst');
+    
+    t.end();
+});
+
+test('replace: npm t', (t) => {
+    let result = replace('npm t', (a) => a);
+    
+    t.equal(result, 'test', 'should determine reserved: t');
+    
+    t.end();
+});
+
 test('replace: a few npm runs', (t) => {
     let cmd = replace('npm run one && npm run two', (str) => {
         return str;
