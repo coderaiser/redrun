@@ -49,7 +49,7 @@ if (args.version) {
     let parallelScripts = array(args.parallel);
     
     if (parallelScripts.length)
-        cmd = parallel(parallelScripts, getInfo(cwd));
+        cmd = parallel(parallelScripts, getInfo(cwd).scripts);
    
    let seriesScripts = args._.concat(array(args.series));
    
@@ -58,7 +58,7 @@ if (args.version) {
             cmd += ' && ';
         }
         
-        cmd += series(seriesScripts, getInfo(cwd));
+        cmd += series(seriesScripts, getInfo(cwd).scripts);
    }
    
     if (!cmd) {

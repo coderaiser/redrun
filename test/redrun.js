@@ -6,9 +6,7 @@ let redrun = require('..');
 test('simplest parse', (t) => {
     let cmd     = 'echo "hello world"';
     let result  = redrun('two', {
-        scripts: {
-            two: cmd
-        }
+        two: cmd
     });
     
     t.equal(result, cmd, 'should return cmd');
@@ -19,10 +17,8 @@ test('infinite loop', (t) => {
     let cmd     = 'echo "hello world"';
     let fn = () => {
         redrun('one', {
-            scripts: {
-                one: 'npm run two',
-                two: 'npm run one'
-            }
+            one: 'npm run two',
+            two: 'npm run one'
         });
     };
     
@@ -33,10 +29,8 @@ test('infinite loop', (t) => {
 test('parse one level deep', (t) => {
     let cmd     = 'echo "hello world"';
     let result  = redrun('one', {
-        scripts: {
-            one: 'npm run two',
-            two: cmd
-        }
+        one: 'npm run two',
+        two: cmd
     });
     
     t.equal(result, cmd, 'should parse command one leve deep');
@@ -46,10 +40,8 @@ test('parse one level deep', (t) => {
 test('parse arguments', (t) => {
     let cmd     = 'git --version';
     let result  = redrun('one', {
-        scripts: {
-            one: 'npm run two -- --version',
-            two: 'git'
-        }
+        one: 'npm run two -- --version',
+        two: 'git'
     });
     
     t.equal(result, cmd, 'should parse command one leve deep');
@@ -59,11 +51,9 @@ test('parse arguments', (t) => {
 test('parse reserved names: npm test', (t) => {
     let cmd     = 'tape test/*.js';
     let result  = redrun('one', {
-        scripts: {
-            one: 'npm run two',
-            two: 'npm test',
-            test: cmd
-        }
+        one: 'npm run two',
+        two: 'npm test',
+        test: cmd
     });
     
     t.equal(result, cmd, 'should parse script test');
@@ -73,14 +63,12 @@ test('parse reserved names: npm test', (t) => {
 test('parse a few levels deep', (t) => {
     let cmd     = 'echo "hello world"';
     let result  = redrun('one', {
-        scripts: {
-            one: 'npm run two',
-            two: 'npm run three',
-            three: 'npm run four',
-            four: 'npm run five',
-            five: 'npm run six',
-            six: cmd
-        }
+        one: 'npm run two',
+        two: 'npm run three',
+        three: 'npm run four',
+        four: 'npm run five',
+        five: 'npm run six',
+        six: cmd
     });
     
     t.equal(result, cmd, 'should parse command a few levels deep');
