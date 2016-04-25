@@ -1,9 +1,9 @@
 'use strict';
 
 let test = require('tape');
-let cliParse = require('../lib/cli-parse');
+let cliParse = require('../lib/group-parse');
 
-test('cli-parse: serial', (t) => {
+test('group-parse: serial', (t) => {
     let result = cliParse(['one', 'two', 'three'], {
         one: 'ls',
         two: 'pwd',
@@ -15,7 +15,7 @@ test('cli-parse: serial', (t) => {
     t.end();
 });
 
-test('cli-parse: parallel', (t) => {
+test('group-parse: parallel', (t) => {
     let result = cliParse(['one', 'two', 'three'], {parallel: true}, {
         one: 'ls',
         two: 'pwd',

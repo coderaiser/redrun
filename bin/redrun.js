@@ -5,7 +5,7 @@
 let path        = require('path');
 let spawnify    = require('spawnify');
 let tryCatch    = require('try-catch');
-let cliParse    = require('../lib/cli-parse');
+let groupParse  = require('../lib/group-parse');
 let cwd         = process.cwd();
 let argv        = process.argv;
 let args        = require('minimist')(argv.slice(2), {
@@ -74,11 +74,11 @@ if (args.version) {
 }
 
 function series(names, scripts) {
-    return cliParse(names, scripts);
+    return groupParse(names, scripts);
 }
 
 function parallel(names, scripts) {
-    return cliParse(names, {parallel: true}, scripts);
+    return groupParse(names, {parallel: true}, scripts);
 }
 
 function execute(cmd) {
