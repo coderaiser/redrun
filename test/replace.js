@@ -13,7 +13,7 @@ test('replace: one npm run ', (t) => {
 
 test('replace: npm tst', (t) => {
     let result = replace('npm tst', (a) => a);
-
+    
     t.equal(result, 'test', 'should determine reserved: tst');
     
     t.end();
