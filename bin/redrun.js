@@ -51,15 +51,15 @@ if (args.version) {
     if (parallelScripts.length)
         cmd = parallel(parallelScripts, getInfo(cwd).scripts);
    
-   let seriesScripts = args._.concat(array(args.series));
+    let seriesScripts = args._.concat(array(args.series));
    
-   if (seriesScripts.length) {
+    if (seriesScripts.length) {
         if (cmd) {
             cmd += ' && ';
         }
         
         cmd += series(seriesScripts, getInfo(cwd).scripts);
-   }
+    }
    
     if (!cmd) {
         let all = seriesScripts.concat(array(args.parallel)).join(' ');
