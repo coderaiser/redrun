@@ -50,6 +50,7 @@
   "license": "MIT",
   "engine": ">=4",
   "dependencies": {
+    "debug": "^2.2.0",
     "minimist": "^1.2.0",
     "spawnify": "^2.3.0",
     "try-catch": "^1.0.0"
