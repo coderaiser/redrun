@@ -15,6 +15,7 @@
     "simplelint": "npm run lint:jshint && npm run lint:eslint-bin && npm run lint:eslint-lib && npm run lint:jscs",
     "test": "tape test/**/*.js",
     "watch:test": "nodemon -w test -w lib --exec npm test",
+    "watch:tape": "nodemon -w test -w lib --exec tape",
     "watch:coverage:base": "npm run watcher -- nyc npm test",
     "watch:coverage": "bin/redrun.js watch:coverage:base",
     "watcher": "nodemon -w test -w lib --exec",
@@ -51,9 +52,9 @@
   "engine": ">=4",
   "dependencies": {
     "debug": "^2.2.0",
-    "minimist": "^1.2.0",
     "spawnify": "^2.3.0",
-    "try-catch": "^1.0.0"
+    "try-catch": "^1.0.0",
+    "yargs": "^4.6.0"
   },
   "devDependencies": {
     "coveralls": "^2.11.9",
