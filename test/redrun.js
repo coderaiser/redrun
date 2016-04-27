@@ -23,6 +23,18 @@ test('simplest parse: name with "."', (t) => {
     t.end();
 });
 
+test('simplest parse: name with "-"', (t) => {
+    let cmd     = 'babel lib/*.js';
+    let result  = redrun('build', {
+        "build:js": "echo 'hello'",
+        "build:js-native-full": "babel lib/*.js",
+        "build": "redrun build:js-native-full",
+    });
+    
+    t.equal(result, cmd, 'should return cmd');
+    t.end();
+});
+
 test('infinite loop', (t) => {
     let cmd     = 'echo "hello world"';
     let fn = () => {
