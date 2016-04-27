@@ -19,6 +19,7 @@ if (arg.name !== 'run') {
 }
 
 function execute(cmd) {
+    require('../lib/env')();
     let spawnify = require('spawnify');
     
     let child = spawnify(cmd);
