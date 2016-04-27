@@ -13,6 +13,16 @@ test('simplest parse', (t) => {
     t.end();
 });
 
+test('simplest parse: name with "."', (t) => {
+    let cmd     = 'bin/redrun.js lint*';
+    let result  = redrun('two', {
+        two: cmd
+    });
+    
+    t.equal(result, cmd, 'should return cmd');
+    t.end();
+});
+
 test('infinite loop', (t) => {
     let cmd     = 'echo "hello world"';
     let fn = () => {
