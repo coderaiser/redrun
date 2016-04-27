@@ -63,12 +63,24 @@ test('parse reserved names: npm test', (t) => {
 test('parse redrun args', (t) => {
     let result  = redrun('one', {
         one: 'npm run two',
-        two: 'redrun -p test lint',
+        two: 'redrun --parallel test lint',
         test: 'tape test/*.js',
         lint: 'jshint lib test'
     });
     
     t.equal(result, 'tape test/*.js & jshint lib test', 'should parse script test');
+    t.end();
+});
+
+test('parse redrun args: "*"', (t) => {
+    let result  = redrun('one', {
+        one: 'npm run two',
+        two: 'redrun --parallel lint*',
+        'lint:jscs': 'jscs test/*.js',
+        'lint:jshint': 'jshint lib test'
+    });
+    
+    t.equal(result, 'jscs test/*.js & jshint lib test', 'should parse script test');
     t.end();
 });
 
