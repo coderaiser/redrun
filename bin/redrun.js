@@ -9,10 +9,14 @@ let cwd         = process.cwd();
 let argv        = process.argv;
 let arg         = cliParse(argv.slice(2),  getInfo(cwd).scripts);
 
-if (arg.loud || arg.name !== 'run')
+if (arg.name !== 'run') {
     console.log(arg.output);
-else if (arg.name === 'run')
-   execute(arg.cmd);
+} else if (arg.name === 'run') {
+    if (arg.loud)
+        console.log(arg.cmd);
+    
+    execute(arg.cmd);
+}
 
 function execute(cmd) {
     let spawnify = require('spawnify');
