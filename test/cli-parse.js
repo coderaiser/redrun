@@ -160,6 +160,7 @@ test('cli-parse: script not found', (t) => {
     
     t.end();
 });
+
 test('args: no scripts', (t) => {
     let fn = () => cliParse([]);
     t.throws(fn, /scripts should be object!/, 'should throw when no scripts');
