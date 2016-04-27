@@ -60,6 +60,31 @@ test('parse reserved names: npm test', (t) => {
     t.end();
 });
 
+test('parse redrun args', (t) => {
+    let result  = redrun('one', {
+        one: 'npm run two',
+        two: 'redrun -p test lint',
+        test: 'tape test/*.js',
+        lint: 'jshint lib test'
+    });
+    
+    t.equal(result, 'tape test/*.js & jshint lib test', 'should parse script test');
+    t.end();
+});
+
+test('parse a few redrun scripts', (t) => {
+    let result  = redrun('one', {
+        one: 'redrun -p two three',
+        two: 'redrun four five',
+        three: 'echo \'hello\'',
+        four: 'jshint lib',
+        five: 'jscs test'
+    });
+    
+    t.equal(result, 'jshint lib && jscs test & echo \'hello\'', 'should parse script test');
+    t.end();
+});
+
 test('parse a few levels deep', (t) => {
     let cmd     = 'echo "hello world"';
     let result  = redrun('one', {

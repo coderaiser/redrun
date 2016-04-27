@@ -4,15 +4,20 @@ let test = require('tape');
 let replace = require('../lib/replace');
 
 test('replace: one npm run ', (t) => {
-    replace('npm run one', (str) => {
-        t.equal(str, 'one', 'should get script name');
+    let result = replace('npm run one', (type, str) => {
+        t.equal(type, 'npm', 'type should be npm');
+        return str;
     });
     
+    t.equal(result, 'one', 'should get script name');
     t.end();
 });
 
 test('replace: npm tst', (t) => {
-    let result = replace('npm tst', (a) => a);
+    let result = replace('npm tst', (type, str) => {
+        t.equal(type, 'npm', 'type should be npm');
+        return str;
+    });
     
     t.equal(result, 'test', 'should determine reserved: tst');
     
@@ -20,7 +25,10 @@ test('replace: npm tst', (t) => {
 });
 
 test('replace: npm t', (t) => {
-    let result = replace('npm t', (a) => a);
+    let result = replace('npm t', (type, str) => {
+        t.equal(type, 'npm', 'type should be npm');
+        return str;
+    });
     
     t.equal(result, 'test', 'should determine reserved: t');
     
@@ -28,7 +36,8 @@ test('replace: npm t', (t) => {
 });
 
 test('replace: a few npm runs', (t) => {
-    let cmd = replace('npm run one && npm run two', (str) => {
+    let cmd = replace('npm run one && npm run two', (type, str) => {
+        t.equal(type, 'npm', 'type should be npm');
         return str;
     });
     
@@ -38,7 +47,8 @@ test('replace: a few npm runs', (t) => {
 });
 
 test('replace: arguments', (t) => {
-    let cmd = replace('npm run one -- --help && npm run two -- --version', (str) => {
+    let cmd = replace('npm run one -- --help && npm run two -- --version', (type, str) => {
+        t.equal(type, 'npm', 'type should be npm');
         return str;
     });
     

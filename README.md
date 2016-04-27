@@ -71,13 +71,22 @@ Redrun could be used via command line, scripts section of `package.json` or prog
 let redrun = require('redrun');
 
 redrun('one', {
-    one: 'npm run one',
+    one: 'npm run two',
     two: 'npm run three',
     three: 'echo \'hello\''
 });
-
 // returns
 "echo 'hello'"
+
+redrun('one', {
+    one: 'redrun -p two three',
+    two: 'redrun four five',
+    three: 'echo \'hello\'',
+    four: 'jshint lib',
+    five: 'jscs test'
+});
+// returns
+"jshint lib && jscs test & echo 'hello'"
 ```
 
 ## Speed comparison

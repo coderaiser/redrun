@@ -5,6 +5,7 @@
   "main": "lib/redrun.js",
   "scripts": {
     "lint": "bin/redrun.js --parallel lint:*",
+    "-": "echo 'hello'",
     "slowlint": "npm-run-all --parallel lint:*",
     "lint:jshint": "jshint bin lib",
     "lint:eslint-bin": "eslint --rule 'no-console:0' bin",
@@ -14,7 +15,7 @@
     "redlint-parallel": "bin/redrun.js -p lint:*",
     "simplelint": "npm run lint:jshint && npm run lint:eslint-bin && npm run lint:eslint-lib && npm run lint:jscs",
     "test": "tape test/**/*.js",
-    "watch:test": "nodemon -w test -w lib --exec npm test",
+    "watch:test": "npm run watcher -- npm test",
     "watch:tape": "nodemon -w test -w lib --exec tape",
     "watch:coverage:base": "npm run watcher -- nyc npm test",
     "watch:coverage": "bin/redrun.js watch:coverage:base",
@@ -51,6 +52,7 @@
   "license": "MIT",
   "engine": ">=4",
   "dependencies": {
+    "currify": "^1.0.0",
     "debug": "^2.2.0",
     "spawnify": "^2.3.0",
     "try-catch": "^1.0.0",
