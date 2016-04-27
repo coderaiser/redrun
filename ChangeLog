@@ -1,3 +1,12 @@
+2016.04.27, v1.7.1
+
+fix:
+- (redrun) cli-parse: no args: no script found -> help
+
+feature:
+- (travis) add node v6
+
+
 2016.04.26, v1.7.0
 
 feature:
