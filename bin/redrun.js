@@ -22,6 +22,7 @@ function execute(cmd) {
     const spawnify = require('spawnify');
     
     const child = spawnify(cmd, {
+        stdio: 'inherit',
         env: Object.assign(process.env, getEnv)
     });
     
