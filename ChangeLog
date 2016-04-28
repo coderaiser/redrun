@@ -1,3 +1,9 @@
+2016.04.28, v1.10.0
+
+feature:
+- (redrun) add $npm_package_config support
+
+
 2016.04.27, v1.9.1
 
 fix:
