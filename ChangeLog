@@ -1,3 +1,12 @@
+2016.04.28, v1.10.1
+
+fix:
+- (redrun) env: child process has no parent env
+
+feature:
+- (redrun) preserve colors
+
+
 2016.04.28, v1.10.0
 
 feature:
