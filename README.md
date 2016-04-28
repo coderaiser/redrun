@@ -96,7 +96,7 @@ The less spend time is better:
 - `npm run && npm run`: 0m24.283s
 - `redrun`: 0m16.918s
 
-Here is logs:
+Here are logs:
 
 ### npm-run-all:
 ```sh
