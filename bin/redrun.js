@@ -23,7 +23,7 @@ function execute(cmd) {
     
     const child = spawnify(cmd, {
         stdio: 'inherit',
-        env: Object.assign(process.env, getEnv)
+        env: getEnv()
     });
     
     child.on('data', (data) => {
@@ -41,11 +41,12 @@ function getEnv() {
     
     const config = getInfo(cwd).config;
     const assign = Object.assign;
-    const PATH = process.env.PATH;
-    const CWD = process.cwd();
     
-    const envVars = assign(env.config(config), {
-        PATH: env.path(PATH, path.delimiter, CWD, path.sep)
+    const CWD = process.cwd();
+    const PATH = env.path(process.env.PATH, path.delimiter, CWD, path.sep);
+    
+    const envVars = assign(process.env, env.config(config), {
+        PATH: PATH
     });
     
     return envVars;
