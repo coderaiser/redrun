@@ -22,7 +22,7 @@ function execute(cmd) {
     const spawnify = require('spawnify');
     
     const child = spawnify(cmd, {
-        env: getEnv()
+        env: Object.assign(process.env, getEnv)
     });
     
     child.on('data', (data) => {
