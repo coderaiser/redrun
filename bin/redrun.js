@@ -19,10 +19,11 @@ if (arg.name !== 'run') {
 }
 
 function execute(cmd) {
-    require('../lib/env')();
-    let spawnify = require('spawnify');
+    const spawnify = require('spawnify');
     
-    let child = spawnify(cmd);
+    const child = spawnify(cmd, {
+        env: getEnv()
+    });
     
     child.on('data', (data) => {
         process.stdout.write(data);
@@ -31,6 +32,22 @@ function execute(cmd) {
     child.on('error', (error) => {
         process.stdout.write(error.message);
     });
+}
+
+function getEnv() {
+    const env = require('../lib/env');
+    const path = require('path');
+    
+    const config = getInfo(cwd).config;
+    const assign = Object.assign;
+    const PATH = process.env.PATH;
+    const CWD = process.cwd();
+    
+    const envVars = assign(env.config(config), {
+        PATH: env.path(PATH, path.delimiter, CWD, path.sep)
+    });
+    
+    return envVars;
 }
 
 function getInfo(dir) {
