@@ -23,3 +23,18 @@ test('env: $npm_package_config', (t) => {
     t.end();
 });
 
+test('env: $npm_package_config', (t) => {
+    let result = {
+        npm_package_config_compile_client: 'hello'
+    };
+    
+    let config = env.config({
+        compile: {
+            client: 'hello'
+        }
+    });
+    
+    t.deepEqual(config, result, 'should build npm config');
+    t.end();
+});
+

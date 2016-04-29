@@ -18,6 +18,7 @@
     "watch:test": "npm run watcher -- npm test",
     "watch:tape": "nodemon -w test -w lib --exec tape",
     "watch:coverage:base": "npm run watcher -- nyc npm test",
+    "watch:coverage:tape": "npm run watcher -- nyc tape",
     "watch:coverage": "bin/redrun.js watch:coverage:base",
     "watcher": "nodemon -w test -w lib --exec",
     "coverage": "nyc npm test",
@@ -54,6 +55,8 @@
   "dependencies": {
     "currify": "^1.0.0",
     "debug": "^2.2.0",
+    "jessy": "^1.1.1",
+    "npcp": "0.1.0-2",
     "spawnify": "^2.3.0",
     "try-catch": "^1.0.0",
     "yargs": "^4.6.0"
