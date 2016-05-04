@@ -17,14 +17,24 @@ test('keys: args: divider not string', (t) => {
     t.end();
 });
 
-test('env: $npm_package_config', (t) => {
-    let expect = ['compile_client', 'run_server'];
+test('keys: get paths', (t) => {
+    let expect = [
+        'config_plugins',
+        'config_compile_client',
+        'config_compile_client_min',
+        'config_compile_vendor',
+        'config_compile_vendor_min'
+    ];
+    
     let result = keys('_', {
-        compile: {
-            client: 'hello'
-        },
-        run: {
-            server: 'ok'
+        config: {
+            plugins: 'some',
+            compile: {
+                client: 'hello',
+                client_min: 'world',
+                vendor: '31337',
+                vendor_min: '1337'
+            }
         }
     });
     
