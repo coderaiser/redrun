@@ -35,6 +35,18 @@ test('simplest parse: name with "-"', (t) => {
     t.end();
 });
 
+test('simplest parse: &&', (t) => {
+    let cmd     = 'nodemon --exec bin/iocmd.js && pwd';
+    let result  = redrun('run', {
+        run: 'redrun watch:iocmd && pwd',
+        watcher: 'nodemon --exec',
+        'watch:iocmd': 'npm run watcher -- bin/iocmd.js'
+    });
+    
+    t.equal(result, cmd, 'should return cmd');
+    t.end();
+});
+
 test('infinite loop', (t) => {
     let cmd     = 'echo "hello world"';
     let fn = () => {
