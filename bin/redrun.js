@@ -4,7 +4,11 @@
 
 let path        = require('path');
 let tryCatch    = require('try-catch');
+let squad       = require('squad');
 let cliParse    = require('../lib/cli-parse');
+
+let tryOrExit   = squad(exitIfError, tryCatch);
+
 let cwd         = process.cwd();
 let argv        = process.argv;
 let arg         = cliParse(argv.slice(2),  getInfo(cwd).scripts);
@@ -20,17 +24,13 @@ if (arg.name !== 'run') {
 
 function execute(cmd) {
     const execSync = require('child_process').execSync;
-    const error = tryCatch(() => {
+    
+    tryOrExit(() => {
         execSync(cmd, {
             stdio: 'inherit',
             env: getEnv()
         });
     });
-    
-    if (error) {
-        console.error(error.message);
-        process.exit(1);
-    }
 }
 
 function getEnv() {
@@ -50,17 +50,20 @@ function getEnv() {
     return envVars;
 }
 
-function getInfo(dir) {
-    let info;
-    let infoPath = path.join(dir, 'package.json');
-    let error = tryCatch(() => {
-        info = require(infoPath);
-    });
-    
+function exitIfError(error) {
     if (error) {
         console.error(error.message);
         process.exit(1);
     }
+}
+
+function getInfo(dir) {
+    let info;
+    let infoPath = path.join(dir, 'package.json');
+    
+    tryOrExit(() => {
+        info = require(infoPath);
+    });
     
     return info;
 }
