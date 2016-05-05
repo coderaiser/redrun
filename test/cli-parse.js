@@ -161,13 +161,13 @@ test('cli-parse: script not found', (t) => {
     t.end();
 });
 
-test('args: no scripts', (t) => {
+test('cli-parse: args: no scripts', (t) => {
     let fn = () => cliParse([]);
     t.throws(fn, /scripts should be object!/, 'should throw when no scripts');
     t.end();
 });
 
-test('args: no', (t) => {
+test('cli-parse: args: no', (t) => {
     t.throws(cliParse, /argv should be an array!/, 'should throw when no args');
     t.end();
 });
