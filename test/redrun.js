@@ -60,6 +60,16 @@ test('infinite loop', (t) => {
     t.end();
 });
 
+test('similar name', (t) => {
+    let cmd     = 'redrun.js two';
+    let result  = redrun('one', {
+        one: 'redrun.js two'
+    });
+    
+    t.equal(result, cmd, 'should not try to parse similar name');
+    t.end();
+});
+
 test('parse one level deep', (t) => {
     let cmd     = 'echo "hello world"';
     let result  = redrun('one', {
