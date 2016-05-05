@@ -1,3 +1,15 @@
+2016.05.05, v2.1.0
+
+fix:
+- (cli-parse) script-not-found: message
+- (redrun) throw on similar name
+
+feature:
+- (redrun) add script arguments support
+- (redrun) add tryOrExit
+- (redrun) preserve colors: spawnify -> child_process.execSync
+
+
 2016.05.04, v2.0.0
 
 feature:
