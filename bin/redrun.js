@@ -19,20 +19,18 @@ if (arg.name !== 'run') {
 }
 
 function execute(cmd) {
-    const spawnify = require('spawnify');
-    
-    const child = spawnify(cmd, {
-        stdio: 'inherit',
-        env: getEnv()
+    const execSync = require('child_process').execSync;
+    const error = tryCatch(() => {
+        execSync(cmd, {
+            stdio: 'inherit',
+            env: getEnv()
+        });
     });
     
-    child.on('data', (data) => {
-        process.stdout.write(data);
-    });
-    
-    child.on('error', (error) => {
-        process.stdout.write(error.message);
-    });
+    if (error) {
+        console.error(error.message);
+        process.exit(1);
+    }
 }
 
 function getEnv() {
