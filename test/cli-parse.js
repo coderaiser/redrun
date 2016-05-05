@@ -164,12 +164,16 @@ test('cli-parse: unknown long argument', (t) => {
 
 test('cli-parse: script not found', (t) => {
     let scriptNotFound = cliParse.scriptNotFound;
-    let result = cliParse(['hello'], {
+    let result = cliParse(['hello', '-l'], {
     });
     
     let expected = {
         name: 'script-not-found',
-        output: scriptNotFound(['hello'])
+        output: scriptNotFound({
+            _: ['hello'],
+            p: [],
+            s: []
+        })
     }
     
     t.deepEqual(result, expected, 'should return object with name, output and cmd');
