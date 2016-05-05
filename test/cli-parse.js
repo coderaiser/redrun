@@ -56,6 +56,22 @@ test('cli-parse: series and parallel', (t) => {
     t.end();
 });
 
+test('cli-parse: arguments', (t) => {
+    let result = cliParse(['o*', '--', '--parallel', 'three', 'four'], {
+        one: 'ls'
+    });
+    
+    let expected = {
+        name: 'run',
+        cmd: 'ls --parallel three four',
+        loud: false
+    }
+    
+    t.deepEqual(result, expected, 'should build cmd object that contains arguments');
+    
+    t.end();
+});
+
 test('cli-parse: --version', (t) => {
     let version = cliParse.version();
     let result = cliParse(['--version'], {
