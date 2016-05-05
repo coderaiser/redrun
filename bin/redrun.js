@@ -11,7 +11,7 @@ let arg         = cliParse(argv.slice(2),  getInfo(cwd).scripts);
 
 if (arg.name !== 'run') {
     console.log(arg.output);
-} else if (arg.name === 'run') {
+} else {
     if (arg.loud)
         console.log(arg.cmd);
     
