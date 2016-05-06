@@ -1,3 +1,13 @@
+2016.05.06, v3.0.0
+
+fix:
+- (redrun) parse redrun args with ENV set
+
+feature:
+- (redrun) add --calm, --series-calm, --parallel-calm
+- (cli-parse) help: add args
+
+
 2016.05.05, v2.1.0
 
 fix:
