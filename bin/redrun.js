@@ -6,7 +6,7 @@ let path        = require('path');
 let tryCatch    = require('try-catch');
 let squad       = require('squad');
 let cliParse    = require('../lib/cli-parse');
-
+let ErrorCode   = 1;
 let tryOrExit   = squad(exitIfError, tryCatch);
 
 let cwd         = process.cwd();
@@ -18,6 +18,9 @@ if (arg.name !== 'run') {
 } else {
     if (arg.loud)
         console.log(arg.cmd);
+    
+    if (arg.calm)
+        ErrorCode = 0;
     
     execute(arg.cmd);
 }
@@ -53,7 +56,7 @@ function getEnv() {
 function exitIfError(error) {
     if (error) {
         console.error(error.message);
-        process.exit(1);
+        process.exit(ErrorCode);
     }
 }
 

@@ -9,11 +9,14 @@ Expand `script` from `package.json` to improve execution speed.
 ```
 Usage: redrun [...tasks] [options]
 Options:
-  -p, --parallel  run scripts in parallel
-  -s, --series    run scripts in series
-  -l, --loud      print resulting command before execution
-  -h, --help      display this help and exit
-  -v, --version   output version information and exit
+  -p, --parallel        run scripts in parallel
+  -s, --series          run scripts in series
+  -l, --loud            print resulting command before execution
+  -c, --calm            return zero exit code when command completed with error
+  -P, --parallel-calm   run scripts in parallel and return zero exit code",
+  -S, --series-calm     run scripts in series and return zero exit code",
+  -h, --help            display this help and exit
+  -v, --version         output version information and exit
 ```
 
 # How it works

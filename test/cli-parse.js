@@ -1,5 +1,6 @@
 'use strict';
 
+let os = require('os');
 let test = require('tape');
 let cliParse = require('../lib/cli-parse');
 
@@ -12,7 +13,8 @@ test('cli-parse: series', (t) => {
     let expected = {
         name: 'run',
         cmd: 'ls && pwd',
-        loud: false
+        loud: false,
+        calm: false
     }
     
     t.deepEqual(result, expected, 'should build cmd object');
@@ -29,7 +31,8 @@ test('cli-parse: parallel', (t) => {
     let expected = {
         name: 'run',
         cmd: 'ls & pwd',
-        loud: true
+        loud: true,
+        calm: false
     }
     
     t.deepEqual(result, expected, 'should build cmd object');
@@ -48,10 +51,83 @@ test('cli-parse: series and parallel', (t) => {
     let expected = {
         name: 'run',
         cmd: 'whoami & ps aux && ls && pwd',
-        loud: false
+        loud: false,
+        calm: false
     }
     
     t.deepEqual(result, expected, 'should build cmd object');
+    
+    t.end();
+});
+
+test('cli-parse: series calm: linux', (t) => {
+    let platform = os.platform;
+    
+    os.platform = () => 'linux';
+    
+    let result = cliParse(['--series-calm', 'one', 'two'], {
+        one: 'ls',
+        two: 'pwd'
+    });
+    
+    let expected = {
+        name: 'run',
+        cmd: 'ls || true && pwd || true',
+        loud: false,
+        calm: false
+    }
+    
+    t.deepEqual(result, expected, 'should build cmd object with "true"');
+    
+    os.platfrom = platform;
+    
+    t.end();
+});
+
+test('cli-parse: parallel calm: windows', (t) => {
+    let platform = os.platform;
+    
+    os.platform = () => 'win32';
+    
+    let result = cliParse(['--parallel-calm', 'one', 'two'], {
+        one: 'ls',
+        two: 'pwd'
+    });
+    
+    let expected = {
+        name: 'run',
+        cmd: 'ls || (exit 0) & pwd || (exit 0)',
+        loud: false,
+        calm: false
+    }
+    
+    t.deepEqual(result, expected, 'should build cmd object with "exit 0"');
+    
+    os.platfrom = platform;
+    
+    t.end();
+});
+
+test('cli-parse: --calm: linux', (t) => {
+    let platform = os.platform;
+    
+    os.platform = () => 'linux';
+    
+    let result = cliParse(['--calm', 'one', 'two'], {
+        one: 'ls',
+        two: 'pwd'
+    });
+    
+    let expected = {
+        name: 'run',
+        cmd: 'ls || true && pwd || true',
+        loud: false,
+        calm: true
+    }
+    
+    t.deepEqual(result, expected, 'should build cmd object with "exit 0"');
+    
+    os.platfrom = platform;
     
     t.end();
 });
@@ -64,7 +140,8 @@ test('cli-parse: arguments', (t) => {
     let expected = {
         name: 'run',
         cmd: 'ls --parallel three four',
-        loud: false
+        loud: false,
+        calm: false
     }
     
     t.deepEqual(result, expected, 'should build cmd object that contains arguments');
