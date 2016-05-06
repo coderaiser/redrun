@@ -129,8 +129,7 @@ test('parse redrun args: "*"', (t) => {
 });
 
 test('parse redrun args with ENV set', (t) => {
-    let result  = redrun('one', {
-        one: 'npm run good',
+    let result  = redrun('good', {
         good: 'NODE_ENV=development DEBUG=iocmd* redrun -p t*',
         t1: 'tape test/*.js',
         t2: 'jshint lib test'
