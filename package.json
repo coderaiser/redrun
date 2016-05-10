@@ -35,14 +35,21 @@
   },
   "keywords": [
     "redrun",
-    "npm run",
     "scripts",
     "package",
+    "npm",
+    "npm run",
     "npm-scripts",
     "tool",
     "cli",
     "commond",
-    "task"
+    "task",
+    "parallel",
+    "serial",
+    "run",
+    "tool",
+    "commandline",
+    "command"
   ],
   "author": "coderaiser <mnemonic.enemy@gmail.com> (http://coderaiser.github.io/)",
   "bugs": {
