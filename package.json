@@ -5,7 +5,6 @@
   "main": "lib/redrun.js",
   "scripts": {
     "lint": "bin/redrun.js lint:*",
-    "-": "echo 'hello'",
     "slowlint": "npm-run-all --parallel lint:*",
     "lint:jshint": "jshint bin lib",
     "lint:eslint-bin": "eslint --rule 'no-console:0' bin",
