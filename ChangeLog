@@ -1,3 +1,14 @@
+2016.05.16, v3.0.1
+
+fix:
+- (redrun) -v, -h when no package.json in curren directory
+
+feature:
+- (package) npm-run-all v2.0.0
+- (package) keywords: add
+- (package) scripts: rm "-"
+
+
 2016.05.06, v3.0.0
 
 fix:
