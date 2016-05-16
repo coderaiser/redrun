@@ -10,8 +10,14 @@ let ErrorCode   = 1;
 let tryOrExit   = squad(exitIfError, tryCatch);
 
 let cwd         = process.cwd();
-let argv        = process.argv;
-let arg         = cliParse(argv.slice(2),  getInfo(cwd).scripts);
+let argv        = process.argv.slice(2);
+let first       = argv[0];
+let arg;
+
+if (!first|| /^(-v|--version|-h|--help)$/.test(first))
+    arg = cliParse(argv, {});
+else
+    arg = cliParse(argv,  getInfo(cwd).scripts);
 
 if (arg.name !== 'run') {
     console.log(arg.output);
