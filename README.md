@@ -7,16 +7,16 @@ Expand `script` from `package.json` to improve execution speed.
 # Usage
 
 ```
-Usage: redrun [...tasks] [options]
+Usage: redrun [...tasks] [options] [-- ...args]
 Options:
-  -p, --parallel        run scripts in parallel
-  -s, --series          run scripts in series
-  -l, --loud            print resulting command before execution
-  -c, --calm            return zero exit code when command completed with error
-  -P, --parallel-calm   run scripts in parallel and return zero exit code",
-  -S, --series-calm     run scripts in series and return zero exit code",
-  -h, --help            display this help and exit
-  -v, --version         output version information and exit
+  -p, --parallel          run scripts in parallel
+  -s, --series            run scripts in series
+  -q, --quiet             do not output result command before execution
+  -c, --calm              return zero exit code when command completed with error
+  -P, --parallel-calm     run scripts in parallel and return zero exit code
+  -S, --series-calm       run scripts in series and return zero exit code
+  -h, --help              display this help and exit
+  -v, --version           output version information and exit
 ```
 
 # How it works
@@ -55,8 +55,8 @@ We use `npm run` for comfort of build tools of yesterday (like `gulp` and `grunt
 What `redrun` does is expand all this commands into one (which is much faster):
 
 ```
-coderaiser@cloudcmd:~/redrun$ redrun one --loud
-echo 'hello'
+coderaiser@cloudcmd:~/redrun$ redrun one
+> echo 'hello'
 hello
 ```
 
@@ -166,9 +166,9 @@ sys     0m12.695sah
 coderaiser@cloudcmd:~/redrun$ time npm run redlint
 
 > redrun@1.0.0 redlint /home/coderaiser/redrun
-> bin/redrun.js lint:* --loud
+> bin/redrun.js lint:*
 
-jshint bin lib && eslint --rule 'no-console:0' bin && eslint lib && jscs --esnext bin lib
+> jshint bin lib && eslint --rule 'no-console:0' bin && eslint lib && jscs --esnext bin lib
 
 real    0m16.918s
 user    0m7.708s

@@ -14,6 +14,7 @@ test('cli-parse: series', (t) => {
         name: 'run',
         cmd: 'ls && pwd',
         loud: false,
+        quiet: false,
         calm: false
     }
     
@@ -32,6 +33,26 @@ test('cli-parse: parallel', (t) => {
         name: 'run',
         cmd: 'ls & pwd',
         loud: true,
+        quiet: false,
+        calm: false
+    }
+    
+    t.deepEqual(result, expected, 'should build cmd object');
+    
+    t.end();
+});
+
+test('cli-parse: parallel --quiet', (t) => {
+    let result = cliParse(['--parallel', 'one', 'two', '--quiet'], {
+        one: 'ls',
+        two: 'pwd'
+    });
+    
+    let expected = {
+        name: 'run',
+        cmd: 'ls & pwd',
+        loud: false,
+        quiet: true,
         calm: false
     }
     
@@ -52,6 +73,7 @@ test('cli-parse: series and parallel', (t) => {
         name: 'run',
         cmd: 'whoami & ps aux && ls && pwd',
         loud: false,
+        quiet: false,
         calm: false
     }
     
@@ -74,6 +96,7 @@ test('cli-parse: series calm: linux', (t) => {
         name: 'run',
         cmd: 'ls || true && pwd || true',
         loud: false,
+        quiet: false,
         calm: false
     }
     
@@ -98,6 +121,7 @@ test('cli-parse: parallel calm: windows', (t) => {
         name: 'run',
         cmd: 'ls || (exit 0) & pwd || (exit 0)',
         loud: false,
+        quiet: false,
         calm: false
     }
     
@@ -122,6 +146,7 @@ test('cli-parse: --calm: linux', (t) => {
         name: 'run',
         cmd: 'ls || true && pwd || true',
         loud: false,
+        quiet: false,
         calm: true
     }
     
@@ -141,6 +166,7 @@ test('cli-parse: arguments', (t) => {
         name: 'run',
         cmd: 'ls --parallel three four',
         loud: false,
+        quiet: false,
         calm: false
     }
     
@@ -241,7 +267,7 @@ test('cli-parse: unknown long argument', (t) => {
 
 test('cli-parse: script not found', (t) => {
     let scriptNotFound = cliParse.scriptNotFound;
-    let result = cliParse(['hello', '-l'], {
+    let result = cliParse(['hello'], {
     });
     
     let expected = {

@@ -22,15 +22,20 @@ else
 if (arg.name !== 'run') {
     console.log(arg.output);
 } else {
-    if (arg.loud)
-        console.log(arg.cmd);
+    if (!arg.quiet)
+        console.log(`> ${arg.cmd}`);
     
     if (arg.calm)
         ErrorCode = 0;
-    
+     
+    deprecate(arg);
     execute(arg.cmd);
 }
 
+function deprecate(arg) {
+    if (arg.loud)
+        console.error('loud is DEPRECATED. redrun shows command output by default. Use `-q, --quiet` to disable utput of result command');
+}
 function execute(cmd) {
     const execSync = require('child_process').execSync;
     
