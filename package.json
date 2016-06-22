@@ -14,6 +14,7 @@
     "redlint-parallel": "bin/redrun.js -p lint:*",
     "simplelint": "npm run lint:jshint && npm run lint:eslint-bin && npm run lint:eslint-lib && npm run lint:jscs",
     "test": "tape test/**/*.js",
+    "test:min": "npm test | tap-min",
     "watch:test": "npm run watcher -- npm test",
     "watch:tape": "nodemon -w test -w lib --exec tape",
     "watch:coverage:base": "npm run watcher -- nyc npm test",
@@ -74,6 +75,7 @@
     "nodemon": "^1.9.1",
     "npm-run-all": "^2.0.0",
     "nyc": "^6.4.0",
+    "tap-min": "^1.1.0",
     "tape": "^4.5.1"
   }
 }
