@@ -1,7 +1,7 @@
 {
     "-p, --parallel         ": "run scripts in parallel",
     "-s, --series           ": "run scripts in series",
-    "-l, --loud             ": "output result command before execution",
+    "-q, --quiet            ": "do not output result command before execution",
     "-c, --calm             ": "return zero exit code when command completed with error",
     "-P, --parallel-calm    ": "run scripts in parallel and return zero exit code",
     "-S, --series-calm      ": "run scripts in series and return zero exit code",
