@@ -1,3 +1,10 @@
+2016.06.22, v4.0.0
+
+feature:
+- (package) add tap-min
+- (redrun) add -q, --quiet
+
+
 2016.05.16, v3.0.1
 
 fix:
