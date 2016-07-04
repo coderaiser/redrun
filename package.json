@@ -69,7 +69,7 @@
   },
   "devDependencies": {
     "coveralls": "^2.11.9",
-    "eslint": "^2.7.0",
+    "eslint": "^3.0.0",
     "jscs": "^3.0.1",
     "jshint": "^2.9.1",
     "nodemon": "^1.9.1",
