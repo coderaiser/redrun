@@ -13,7 +13,6 @@ test('cli-parse: series', (t) => {
     let expected = {
         name: 'run',
         cmd: 'ls && pwd',
-        loud: false,
         quiet: false,
         calm: false
     }
@@ -24,7 +23,7 @@ test('cli-parse: series', (t) => {
 });
 
 test('cli-parse: parallel', (t) => {
-    let result = cliParse(['--parallel', 'one', 'two', '--loud'], {
+    let result = cliParse(['--parallel', 'one', 'two'], {
         one: 'ls',
         two: 'pwd'
     });
@@ -32,7 +31,6 @@ test('cli-parse: parallel', (t) => {
     let expected = {
         name: 'run',
         cmd: 'ls & pwd',
-        loud: true,
         quiet: false,
         calm: false
     }
@@ -51,7 +49,6 @@ test('cli-parse: parallel --quiet', (t) => {
     let expected = {
         name: 'run',
         cmd: 'ls & pwd',
-        loud: false,
         quiet: true,
         calm: false
     }
@@ -72,7 +69,6 @@ test('cli-parse: series and parallel', (t) => {
     let expected = {
         name: 'run',
         cmd: 'whoami & ps aux && ls && pwd',
-        loud: false,
         quiet: false,
         calm: false
     }
@@ -95,7 +91,6 @@ test('cli-parse: series calm: linux', (t) => {
     let expected = {
         name: 'run',
         cmd: 'ls || true && pwd || true',
-        loud: false,
         quiet: false,
         calm: false
     }
@@ -120,7 +115,6 @@ test('cli-parse: parallel calm: windows', (t) => {
     let expected = {
         name: 'run',
         cmd: 'ls || (exit 0) & pwd || (exit 0)',
-        loud: false,
         quiet: false,
         calm: false
     }
@@ -145,7 +139,6 @@ test('cli-parse: --calm: linux', (t) => {
     let expected = {
         name: 'run',
         cmd: 'ls || true && pwd || true',
-        loud: false,
         quiet: false,
         calm: true
     }
@@ -165,7 +158,6 @@ test('cli-parse: arguments', (t) => {
     let expected = {
         name: 'run',
         cmd: 'ls --parallel three four',
-        loud: false,
         quiet: false,
         calm: false
     }
