@@ -7,7 +7,7 @@ let tryCatch    = require('try-catch');
 let squad       = require('squad');
 const readjson  = require('readjson');
 
-const mapsome   = require('/home/coderaiser/mapsome');
+const mapsome   = require('mapsome');
 
 let cliParse    = require('../lib/cli-parse');
 let ErrorCode   = 1;
