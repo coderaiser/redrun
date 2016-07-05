@@ -1,3 +1,13 @@
+2016.07.05, v4.1.0
+
+feature:
+- (redrun) rm deprecation message
+- (redrun) add ability to run scripts with redrun from any directory
+- (package) eslint v3.0.0
+- (package) add tap-min
+- (redrun) add -q, --quiet
+
+
 2016.06.22, v4.0.0
 
 feature:
