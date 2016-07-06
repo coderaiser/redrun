@@ -3,6 +3,11 @@
   "version": "4.1.1",
   "description": "expand scripts from package.json to improve execution speed",
   "main": "lib/redrun.js",
+  "babel": {
+    "presets": [
+      "es2015"
+    ]
+  },
   "scripts": {
     "lint": "bin/redrun.js lint:*",
     "slowlint": "npm-run-all --parallel lint:*",
@@ -25,14 +30,22 @@
     "report": "nyc report --reporter=text-lcov | coveralls",
     "one": "npm run two",
     "two": "npm run three",
-    "three": "echo 'hello'"
+    "three": "echo 'hello'",
+    "6to5:lib": "babel lib -d legacy/lib",
+    "6to5:bin": "babel bin -d legacy/bin",
+    "wisdom": "npm run build",
+    "build": "redrun 6to5:* legacy:*",
+    "legacy:index": "echo \"module.exports = require('./lib/redrun');\" > legacy/index.js",
+    "legacy:package": "echo \"module.exports = require('../package');\" > legacy/package.js",
+    "legacy:help": "echo \"module.exports = require('../help');\" > legacy/help.js"
   },
   "repository": {
     "type": "git",
     "url": "git://github.com/coderaiser/redrun.git"
   },
   "bin": {
-    "redrun": "bin/redrun.js"
+    "redrun": "bin/redrun.js",
+    "redrun-legacy": "legacy/bin/redrun.js"
   },
   "keywords": [
     "redrun",
@@ -71,6 +84,8 @@
     "yargs": "^4.6.0"
   },
   "devDependencies": {
+    "babel-cli": "^6.10.1",
+    "babel-preset-es2015": "^6.9.0",
     "coveralls": "^2.11.9",
     "eslint": "^3.0.0",
     "jscs": "^3.0.1",

@@ -91,6 +91,13 @@ redrun('one', {
 // returns
 "jshint lib && jscs test & echo 'hello'"
 ```
+## Environments
+
+In old `node.js` environments that supports `es5` only, `mapsome` could be used with:
+
+```js
+var redrun = require('redrun/legacy');
+```
 
 ## Speed comparison
 The less spend time is better:
