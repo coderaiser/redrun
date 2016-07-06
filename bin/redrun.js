@@ -2,25 +2,25 @@
 
 'use strict';
 
-let path        = require('path');
-let tryCatch    = require('try-catch');
-let squad       = require('squad');
-const readjson  = require('readjson');
+const path = require('path');
+const tryCatch = require('try-catch');
+const squad = require('squad');
+const readjson = require('readjson');
 
-const mapsome   = require('mapsome');
+const mapsome = require('mapsome');
 
-let cliParse    = require('../lib/cli-parse');
-let ErrorCode   = 1;
-
-let cwd         = process.cwd();
-let argv        = process.argv.slice(2);
-let first       = argv[0];
-let arg;
+const cliParse = require('../lib/cli-parse');
+const cwd = process.cwd();
+const argv = process.argv.slice(2);
+const first = argv[0];
 
 const Directory = storage();
 const Info = storage();
 
 const tryOrExit = squad(exitIfError, tryCatch);
+
+let arg;
+let ErrorCode = 1;
 
 if (!first|| /^(-v|--version|-h|--help)$/.test(first))
     arg = cliParse(argv, {});
