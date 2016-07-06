@@ -56,7 +56,7 @@ function getEnv() {
     const path = require('path');
     
     const dir = Directory();
-    const config = traverseForInfo(cwd).config;
+    const config = Info().config;
     const assign = Object.assign;
     
     const PATH = env.path(process.env.PATH, path.delimiter, dir, path.sep);
@@ -78,11 +78,7 @@ function exitIfError(error) {
 }
 
 function getInfo(dir) {
-    let info = Info();
-    
-    if (info)
-        return info;
-    
+    let info;
     const infoPath = path.join(dir, 'package.json');
     
     const error = tryCatch(() => {
