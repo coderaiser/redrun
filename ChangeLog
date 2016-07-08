@@ -1,3 +1,16 @@
+2016.07.08, v4.2.1
+
+fix:
+- chore(test) fixlint
+- feature(package) add fixlint
+- (redrun) parsing unrecognized option from package.json
+
+feature:
+- (redrun) let -> const
+- (package) add fixlint
+- (jscs) add validateQuoteMarks, requireSemicolons
+
+
 2016.07.06, v4.2.0
 
 feature:
