@@ -28,7 +28,6 @@ test('get-body: should get script content when name contains args', (t) => {
 });
 
 test('get-body: pre + post + args', (t) => {
-    let cmd = 'jshint --version';
     
     let body = getBody('lint --version', {
         lint: 'jshint',
@@ -42,8 +41,6 @@ test('get-body: pre + post + args', (t) => {
 });
 
 test('get-body: pre + post + args: regexp', (t) => {
-    let cmd = 'jshint --version';
-    
     let body = getBody('lint:*', {
         'lint:jshint': 'jshint lib/*.js',
         'lint:jscs': 'jscs lib/*.js',
@@ -56,8 +53,6 @@ test('get-body: pre + post + args: regexp', (t) => {
 });
 
 test('get-body: args: parallel', (t) => {
-    let cmd = 'jshint --version';
-    
     let body = getBody('lint:*', {parallel: true}, {
         'lint:jshint': 'jshint lib/*.js',
         'lint:jscs': 'jscs lib/*.js',
