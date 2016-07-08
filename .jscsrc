@@ -5,6 +5,8 @@
     "disallowTrailingWhitespace": "ignoreEmptyLines",
     "disallowTrailingComma": false,
     "validateIndentation": false,
+    "validateQuoteMarks": "'",
+    "requireSemicolons": true,
     "requireCurlyBraces": false,
     "requireVarDeclFirst": false,
     "requireMultipleVarDecl": false,
