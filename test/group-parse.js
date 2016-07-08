@@ -26,3 +26,20 @@ test('group-parse: parallel', (t) => {
     
     t.end();
 });
+
+test('group-parse: parallel: params', (t) => {
+    const options = {
+        params: ' --help',
+        parallel: true
+    };
+    
+    let result = groupParse(['one', 'two', 'three'], options, {
+        one: 'ls',
+        two: 'pwd',
+        three: 'whoami'
+    });
+    
+    t.equal(result, 'ls --help & pwd --help & whoami --help', 'should build cmd line with params');
+    
+    t.end();
+});

@@ -150,7 +150,7 @@ test('cli-parse: --calm: linux', (t) => {
     t.end();
 });
 
-test('cli-parse: arguments', (t) => {
+test('cli-parse: scripts arguments', (t) => {
     let result = cliParse(['o*', '--', '--parallel', 'three', 'four'], {
         one: 'ls'
     });
@@ -158,6 +158,24 @@ test('cli-parse: arguments', (t) => {
     let expected = {
         name: 'run',
         cmd: 'ls --parallel three four',
+        quiet: false,
+        calm: false
+    };
+    
+    t.deepEqual(result, expected, 'should build cmd object that contains arguments');
+    
+    t.end();
+});
+
+test('cli-parse: scripts arguments: parallel', (t) => {
+    let result = cliParse(['o*', '--', '--parallel', 'three', 'four'], {
+        one: 'ls',
+        on: 'who'
+    });
+    
+    let expected = {
+        name: 'run',
+        cmd: 'ls --parallel three four && who --parallel three four',
         quiet: false,
         calm: false
     };
