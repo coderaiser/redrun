@@ -1,3 +1,9 @@
+2016.07.08, v5.0.0
+
+feature:
+- (redrun) --parallel, --series --: add params to every script, not only to last
+
+
 2016.07.08, v4.2.1
 
 fix:
