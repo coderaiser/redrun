@@ -128,6 +128,17 @@ test('parse redrun args: "*"', (t) => {
     t.end();
 });
 
+test('parse redrun args: unrecognized', (t) => {
+    let result  = redrun('one', {
+        one: 'npm run two',
+        two: 'redrun hello --fix',
+        hello: 'echo'
+    });
+    
+    t.equal(result, 'echo --fix is not a redrun option. See \'redrun  --help\'', 'should return error');
+    t.end();
+});
+
 test('parse redrun args with ENV set', (t) => {
     let result  = redrun('good', {
         good: 'NODE_ENV=development DEBUG=iocmd* redrun -p t*',
