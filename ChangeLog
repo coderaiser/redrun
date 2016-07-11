@@ -1,3 +1,10 @@
+2016.07.11, v5.0.1
+
+fix:
+- (redrun) prevent built-in behaviour of "npm publish"
+- (redrun) prevent built-in behaviour of "npm version"
+
+
 2016.07.08, v5.0.0
 
 feature:
