@@ -28,7 +28,6 @@ test('get-body: should get script content when name contains args', (t) => {
 });
 
 test('get-body: pre + post + args', (t) => {
-    
     let body = getBody('lint --version', {
         lint: 'jshint',
         prelint: 'pre',
