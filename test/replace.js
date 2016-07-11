@@ -46,6 +46,17 @@ test('replace: npm version', (t) => {
     t.end();
 });
 
+test('replace: npm publish', (t) => {
+    const result = replace('npm publish', (type, str) => {
+        t.equal(type, 'npm', 'type should be npm');
+        return str;
+    });
+    
+    t.equal(result, 'npm publish', 'should leave unchanged "npm publish"');
+    
+    t.end();
+});
+
 test('replace: a few npm runs', (t) => {
     let cmd = replace('npm run one && npm run two', (type, str) => {
         t.equal(type, 'npm', 'type should be npm');
