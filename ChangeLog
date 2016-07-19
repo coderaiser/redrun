@@ -1,3 +1,10 @@
+2016.07.19, v5.1.0
+
+feature:
+- (redrun) add more information about json parsing errors
+- (package) nyc v7.0.0
+
+
 2016.07.11, v5.0.1
 
 fix:
