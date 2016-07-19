@@ -105,7 +105,7 @@ function traverseForInfo(cwd) {
 
 function notEntryError(path, error) {
     if (error && error.code !== 'ENOENT') {
-        const {message} = error;
+        const message = error.message;
         error.message = `${path}: ${message}`;
         
         return error;
