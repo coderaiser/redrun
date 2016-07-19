@@ -18,6 +18,7 @@ const Directory = storage();
 const Info = storage();
 
 const tryOrExit = squad(exitIfError, tryCatch);
+const exitIfNotEntry = squad(exitIfError, notEntryError);
 
 let arg;
 let ErrorCode = 1;
@@ -88,7 +89,7 @@ function getInfo(dir) {
         Directory(dir);
     });
     
-    notEntryError(error);
+    exitIfNotEntry(infoPath, error);
     
     return info;
 }
@@ -102,9 +103,13 @@ function traverseForInfo(cwd) {
     return result;
 }
 
-function notEntryError(error) {
-    if (error && error.code !== 'ENOENT')
+function notEntryError(path, error) {
+    if (error && error.code !== 'ENOENT') {
+        const {message} = error;
+        error.message = `${path}: ${message}`;
+        
         return error;
+    }
 }
 
 function exitIfEntryError(data) {
