@@ -1,3 +1,9 @@
+2016.07.26, v5.1.2
+
+fix:
+- (redrun) crash when no scripts section in package.json
+
+
 2016.07.19, v5.1.1
 
 fix:

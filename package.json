@@ -1,6 +1,6 @@
 {
   "name": "redrun",
-  "version": "5.1.1",
+  "version": "5.1.2",
   "description": "expand scripts from package.json to improve execution speed",
   "main": "lib/redrun.js",
   "babel": {
