@@ -58,6 +58,25 @@ test('cli-parse: parallel --quiet', (t) => {
     t.end();
 });
 
+test('cli-parse: parallel: before script', (t) => {
+    let result = cliParse(['main', '--parallel', 'one', 'two'], {
+        one: 'ls',
+        two: 'pwd',
+        main: 'echo hi'
+    });
+    
+    let expected = {
+        name: 'run',
+        cmd: 'echo hi && ls & pwd',
+        quiet: false,
+        calm: false
+    };
+    
+    t.deepEqual(result, expected, 'should build cmd object');
+    
+    t.end();
+});
+
 test('cli-parse: series and parallel', (t) => {
     let result = cliParse(['--s', 'one', 'two', '-p', 'three', 'four'], {
         one: 'ls',
@@ -68,7 +87,7 @@ test('cli-parse: series and parallel', (t) => {
     
     let expected = {
         name: 'run',
-        cmd: 'whoami & ps aux && ls && pwd',
+        cmd: 'ls && pwd && whoami & ps aux',
         quiet: false,
         calm: false
     };
