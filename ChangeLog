@@ -1,3 +1,9 @@
+2016.07.27, v5.2.0
+
+feature:
+- (cli-parse) put commands without --parallel, --series to begin
+
+
 2016.07.26, v5.1.2
 
 fix:
