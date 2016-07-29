@@ -93,7 +93,7 @@ redrun('one', {
 ```
 ## Environments
 
-In old `node.js` environments that supports `es5` only, `mapsome` could be used with:
+In old `node.js` environments that supports `es5` only, `redrun` could be used with:
 
 ```js
 var redrun = require('redrun/legacy');
