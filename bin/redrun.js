@@ -36,7 +36,7 @@ if (arg.name !== 'run') {
     
     if (arg.calm)
         ErrorCode = 0;
-     
+    
     execute(arg.cmd);
 }
 
