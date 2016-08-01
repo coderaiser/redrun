@@ -1,3 +1,9 @@
+2016.08.01, v5.3.0
+
+feature:
+- (cli-parse) speed up: yargs -> yargs-parser
+
+
 2016.07.27, v5.2.0
 
 feature:
