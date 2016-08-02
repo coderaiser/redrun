@@ -10,7 +10,7 @@
   },
   "scripts": {
     "lint": "bin/redrun.js lint:*",
-    "slowlint": "npm-run-all --parallel lint:*",
+    "speed:npm-run-all": "npm-run-all lint:*",
     "lint:jshint": "jshint bin lib test",
     "lint:eslint-bin": "eslint --rule 'no-console:0' bin",
     "lint:eslint-lib": "eslint lib test",
@@ -18,7 +18,7 @@
     "fixlint": "redrun lint:jscs -- --fix",
     "redlint": "bin/redrun.js lint:*",
     "redlint-parallel": "bin/redrun.js -p lint:*",
-    "simplelint": "npm run lint:jshint && npm run lint:eslint-bin && npm run lint:eslint-lib && npm run lint:jscs",
+    "speed:npm-run": "npm run lint:jshint && npm run lint:eslint-bin && npm run lint:eslint-lib && npm run lint:jscs",
     "test": "tape test/**/*.js",
     "test:min": "npm test | tap-min",
     "watch:test": "npm run watcher -- npm test",
