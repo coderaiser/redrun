@@ -182,7 +182,7 @@ user    0m7.708s
 sys     0m8.868s
 ```
 
-As you see `redrun` more fast and more laconic then regular solutions.
+As you see `redrun` much faster and more laconic way of using `npm scripts` then regular solutions.
 
 ## License
 
