@@ -1,3 +1,9 @@
+2016.08.09, v5.3.1
+
+feature:
+- (cli-parse) parseArgs: simplify aliases
+
+
 2016.08.01, v5.3.0
 
 feature:
