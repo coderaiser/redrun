@@ -34,6 +34,7 @@
     "6to5:lib": "babel lib -d legacy/lib",
     "6to5:bin": "babel bin -d legacy/bin",
     "wisdom": "npm run build",
+    "postpublish": "npm i -g",
     "build": "redrun 6to5:* legacy:*",
     "legacy:index": "echo \"module.exports = require('./lib/redrun');\" > legacy/index.js",
     "legacy:package": "echo \"module.exports = require('../package');\" > legacy/package.js",
