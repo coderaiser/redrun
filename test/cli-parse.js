@@ -313,6 +313,45 @@ test('cli-parse: script not found', (t) => {
     t.end();
 });
 
+test('cli-parse: deep script not found', (t) => {
+    const scriptNotFound = cliParse.scriptNotFound;
+    const result = cliParse(['docker'], {
+      docker: 'redrun docker:pull:node docker:build docker:push',
+      'docker:pull:node': 'echo "docker pull node"'
+    });
+    
+    let expected = {
+        calm: false,
+        cmd: 'echo One of scripts not found: docker:pull:node docker:build docker:push',
+        name: 'run',
+        quiet: false
+    };
+    
+    t.deepEqual(result, expected, 'should return object with name and output');
+    
+    t.end();
+});
+
+test('cli-parse: deep scripts are empty', (t) => {
+    const scriptNotFound = cliParse.scriptNotFound;
+    const result = cliParse(['docker'], {
+      docker: 'redrun docker:pull:node docker:build docker:push',
+      'docker:pull:node': 'echo "docker pull node"',
+      'docker:build': '',
+      'docker:push': ''
+    });
+    
+    let expected = {
+        calm: false,
+        cmd: 'echo "docker pull node"',
+        name: 'run',
+        quiet: false
+    };
+    
+    t.deepEqual(result, expected, 'should return object with name and output');
+    
+    t.end();
+});
 test('cli-parse: args: no scripts', (t) => {
     let fn = () => cliParse([]);
     t.throws(fn, /scripts should be object!/, 'should throw when no scripts');
