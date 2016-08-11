@@ -1,3 +1,9 @@
+2016.08.11, v5.3.2
+
+fix:
+- (redrun) ignore empty deep scripts
+
+
 2016.08.09, v5.3.1
 
 feature:
