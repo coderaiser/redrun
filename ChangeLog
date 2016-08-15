@@ -1,3 +1,12 @@
+2016.08.15, v5.3.4
+
+fix:
+- (env) globally installed modules first then node_modules/.bin -> node_modules/.bin and then global
+
+feature:
+- (package) nyc v8.1.0
+
+
 2016.08.12, v5.3.3
 
 feature:
