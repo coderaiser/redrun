@@ -6,7 +6,7 @@ let env = require('../lib/env');
 test('env: $PATH', (t) => {
     let path = env.path('hello:world', ':', 'home', '/');
     
-    t.equal(path, 'hello:world:home/node_modules/.bin', 'should build PATH');
+    t.equal(path, 'home/node_modules/.bin:hello:world', 'should build PATH');
     t.end();
 });
 
