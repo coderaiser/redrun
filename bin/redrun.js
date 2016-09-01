@@ -57,12 +57,17 @@ function getEnv() {
     const path = require('path');
     
     const dir = Directory();
-    const config = Info().config;
+    const info = Info();
+    const config = info.config;
     const assign = Object.assign;
     
     const PATH = env.path(process.env.PATH, path.delimiter, dir, path.sep);
     
-    const envVars = assign(process.env, env.config(config), {
+    const npmVars = assign(env.config(config), {
+        npm_package_version: info.version
+    });
+    
+    const envVars = assign(process.env, npmVars, {
         PATH: PATH
     });
     
