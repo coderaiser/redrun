@@ -1,3 +1,10 @@
+2016.09.01, v5.4.0
+
+feature:
+- (redrun) add $npm_package_version support
+- (package) npm-run-all v3.0.0
+
+
 2016.08.15, v5.3.4
 
 fix:
