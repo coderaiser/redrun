@@ -28,7 +28,7 @@ Options:
 # Completion
 
 You can enables tab-completion of npm scripts similar to [npm's completion](
-(https://docs.npmjs.com/cli/completion) using:
+https://docs.npmjs.com/cli/completion) using:
 
 ```sh
 redrun-completion >> ~/.bashrc
