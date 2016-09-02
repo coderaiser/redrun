@@ -25,6 +25,18 @@ Options:
   -v, --version           output version information and exit
 ```
 
+# Completion
+
+You can enables tab-completion of npm scripts similar to [npm's completion](
+(https://docs.npmjs.com/cli/completion) using:
+
+```sh
+redrun-completion >> ~/.bashrc
+redrun-completion >> ~/.zshrc
+```
+
+You may also pipe the output of redrun-completion to a file such as /usr/local/etc/bash_completion.d/redrun if you have a system that will read that file for you.
+
 # How it works
 
 ```json
