@@ -1,6 +1,6 @@
 ###-begin-redrun-completion-###
 #
-# npm command completion script
+# redrun npm-scripts completion script
 #
 # Installation: redrun-completion >> ~/.bashrc  (or ~/.zshrc)
 # Or, maybe: redrun-completion > /usr/local/etc/bash_completion.d/npm
