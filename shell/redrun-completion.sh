@@ -30,20 +30,20 @@ if type complete &>/dev/null; then
     IFS="$si"
   }
   complete -o default -F _redrun_completion redrun
-#elif type compdef &>/dev/null; then
-#  _redrun_completion() {
-#    words[3]=${words[2]}
-#    words[2]='run'
-#    
-#    local si=$IFS
-#    compadd -- $(COMP_CWORD=$((CURRENT)) \
-#                 COMP_LINE=$BUFFER \
-#                 COMP_POINT=0 \
-#                 npm completion -- "${words[@]}" \
-#                 2>/dev/null)
-#    IFS=$si
-#  }
-#  compdef _redrun_completion redrun
+elif type compdef &>/dev/null; then
+  _redrun_completion() {
+    words[3]=${words[2]}
+    words[2]='run'
+    
+    local si=$IFS
+    compadd -- $(COMP_CWORD=$((CURRENT)) \
+                 COMP_LINE=$BUFFER \
+                 COMP_POINT=0 \
+                 npm completion -- "${words[@]}" \
+                 2>/dev/null)
+    IFS=$si
+  }
+  compdef _redrun_completion redrun
 elif type compctl &>/dev/null; then
   _redrun_completion () {
     local cword line point words si
