@@ -2,12 +2,12 @@
 
 'use strict';
 
-var fs = require('fs');
-var path = require('path');
+const fs = require('fs');
+const path = require('path');
 
-var name = path.join(__dirname, '..', 'shell/redrun-completion.sh');
-var read = fs.createReadStream(name);
-var write = process.stdout;
+const name = path.join(__dirname, '..', 'shell/redrun-completion.sh');
+const read = fs.createReadStream(name);
+const write = process.stdout;
 
 read.pipe(write);
 
