@@ -5,8 +5,8 @@
 const fs = require('fs');
 const path = require('path');
 
-const name = path.join(__dirname, '..', 'shell/redrun-completion.sh');
-const read = fs.createReadStream(name);
+const filename = path.join(__dirname, '..', 'shell/redrun-completion.sh');
+const read = fs.createReadStream(filename);
 const write = process.stdout;
 
 read.pipe(write);
