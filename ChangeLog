@@ -1,3 +1,9 @@
+2016.09.06, v5.6.0
+
+feature:
+- (redrun) quote arguments after "--"
+
+
 2016.09.06, v5.5.2
 
 fix:
