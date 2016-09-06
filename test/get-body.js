@@ -4,9 +4,9 @@ const test = require('tape');
 const getBody = require('../lib/get-body');
 
 test('get-body: should get script content', (t) => {
-    let cmd = 'jshint lib/*.js';
+    const cmd = 'jshint lib/*.js';
     
-    let body = getBody('lint', {
+    const body = getBody('lint', {
         lint: cmd
     });
     
@@ -28,9 +28,9 @@ test('get-body: should get script content: name with "."', (t) => {
 });
 
 test('get-body: should get script content when name contains args', (t) => {
-    let cmd = 'jshint --version';
+    const cmd = 'jshint --version';
     
-    let body = getBody('lint --version', {
+    const body = getBody('lint --version', {
         lint: 'jshint'
     });
     
@@ -40,7 +40,7 @@ test('get-body: should get script content when name contains args', (t) => {
 });
 
 test('get-body: pre + post + args', (t) => {
-    let body = getBody('lint --version', {
+    const body = getBody('lint --version', {
         lint: 'jshint',
         prelint: 'pre',
         postlint: 'post'
@@ -52,7 +52,7 @@ test('get-body: pre + post + args', (t) => {
 });
 
 test('get-body: pre + post + args: regexp', (t) => {
-    let body = getBody('lint:*', {
+    const body = getBody('lint:*', {
         'lint:jshint': 'jshint lib/*.js',
         'lint:jscs': 'jscs lib/*.js',
         'lint:eslint': 'eslint lib/*.js'
@@ -64,7 +64,7 @@ test('get-body: pre + post + args: regexp', (t) => {
 });
 
 test('get-body: args: parallel', (t) => {
-    let body = getBody('lint:*', {parallel: true}, {
+    const body = getBody('lint:*', {parallel: true}, {
         'lint:jshint': 'jshint lib/*.js',
         'lint:jscs': 'jscs lib/*.js',
         'lint:eslint': 'eslint lib/*.js'

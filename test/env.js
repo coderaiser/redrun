@@ -1,21 +1,21 @@
 'use strict';
 
-let test = require('tape');
-let env = require('../lib/env');
+const test = require('tape');
+const env = require('../lib/env');
 
 test('env: $PATH', (t) => {
-    let path = env.path('hello:world', ':', 'home', '/');
+    const path = env.path('hello:world', ':', 'home', '/');
     
     t.equal(path, 'home/node_modules/.bin:hello:world', 'should build PATH');
     t.end();
 });
 
 test('env: $npm_package_config', (t) => {
-    let result = {
+    const result = {
         npm_package_config_poly: 'hello'
     };
     
-    let config = env.config({
+    const config = env.config({
         poly: 'hello'
     });
     
@@ -24,11 +24,11 @@ test('env: $npm_package_config', (t) => {
 });
 
 test('env: $npm_package_config', (t) => {
-    let result = {
+    const result = {
         npm_package_config_compile_client: 'hello'
     };
     
-    let config = env.config({
+    const config = env.config({
         compile: {
             client: 'hello'
         }

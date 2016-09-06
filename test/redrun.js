@@ -4,8 +4,8 @@ const test = require('tape');
 const redrun = require('..');
 
 test('simplest parse', (t) => {
-    let cmd     = 'echo "hello world"';
-    let result  = redrun('two', {
+    const cmd     = 'echo "hello world"';
+    const result  = redrun('two', {
         two: cmd
     });
     
@@ -24,8 +24,8 @@ test('simplest parse: name with "."', (t) => {
 });
 
 test('simplest parse: name with "-"', (t) => {
-    let cmd     = 'babel lib/*.js';
-    let result  = redrun('build', {
+    const cmd     = 'babel lib/*.js';
+    const result  = redrun('build', {
         'build:js': 'echo \'hello\'',
         'build:js-native-full': 'babel lib/*.js',
         'build': 'redrun build:js-native-full',
@@ -48,7 +48,7 @@ test('simplest parse: &&', (t) => {
 });
 
 test('infinite loop', (t) => {
-    let fn = () => {
+    const fn = () => {
         redrun('one', {
             one: 'npm run two',
             two: 'npm run one'
@@ -60,8 +60,8 @@ test('infinite loop', (t) => {
 });
 
 test('similar name', (t) => {
-    let cmd     = 'redrun.js two';
-    let result  = redrun('one', {
+    const cmd     = 'redrun.js two';
+    const result  = redrun('one', {
         one: 'redrun.js two'
     });
     
@@ -70,8 +70,8 @@ test('similar name', (t) => {
 });
 
 test('parse one level deep', (t) => {
-    let cmd     = 'echo "hello world"';
-    let result  = redrun('one', {
+    const cmd     = 'echo "hello world"';
+    const result  = redrun('one', {
         one: 'npm run two',
         two: cmd
     });
@@ -81,8 +81,8 @@ test('parse one level deep', (t) => {
 });
 
 test('parse arguments', (t) => {
-    let cmd     = 'git "--version"';
-    let result  = redrun('one', {
+    const cmd     = 'git "--version"';
+    const result  = redrun('one', {
         one: 'npm run two -- --version',
         two: 'git'
     });
@@ -92,8 +92,8 @@ test('parse arguments', (t) => {
 });
 
 test('parse reserved names: npm test', (t) => {
-    let cmd     = 'tape test/*.js';
-    let result  = redrun('one', {
+    const cmd     = 'tape test/*.js';
+    const result  = redrun('one', {
         one: 'npm run two',
         two: 'npm test',
         test: cmd
@@ -104,7 +104,7 @@ test('parse reserved names: npm test', (t) => {
 });
 
 test('parse redrun args', (t) => {
-    let result  = redrun('one', {
+    const result  = redrun('one', {
         one: 'npm run two',
         two: 'redrun --parallel test lint',
         test: 'tape test/*.js',
@@ -116,7 +116,7 @@ test('parse redrun args', (t) => {
 });
 
 test('parse redrun args: "*"', (t) => {
-    let result  = redrun('one', {
+    const result  = redrun('one', {
         one: 'npm run two',
         two: 'redrun --parallel lint*',
         'lint:jscs': 'jscs test/*.js',
@@ -128,7 +128,7 @@ test('parse redrun args: "*"', (t) => {
 });
 
 test('parse redrun args: "."', (t) => {
-    let result  = redrun('one.start', {
+    const result  = redrun('one.start', {
         'one.start': 'npm run two',
         two: 'redrun --parallel lint*',
         'lint:jscs': 'jscs test/*.js',
@@ -153,7 +153,7 @@ test('parse redrun args: "--"', (t) => {
 });
 
 test('parse redrun args: unrecognized', (t) => {
-    let result  = redrun('one', {
+    const result  = redrun('one', {
         one: 'npm run two',
         two: 'redrun hello --fix',
         hello: 'echo'
@@ -164,7 +164,7 @@ test('parse redrun args: unrecognized', (t) => {
 });
 
 test('parse redrun args with ENV set', (t) => {
-    let result  = redrun('good', {
+    const result  = redrun('good', {
         good: 'NODE_ENV=development DEBUG=iocmd* redrun -p t*',
         t1: 'tape test/*.js',
         t2: 'jshint lib test'
@@ -175,7 +175,7 @@ test('parse redrun args with ENV set', (t) => {
 });
 
 test('parse a few redrun scripts', (t) => {
-    let result  = redrun('one', {
+    const result  = redrun('one', {
         one: 'redrun -p two three',
         two: 'redrun four five',
         three: 'echo \'hello\'',
@@ -188,8 +188,8 @@ test('parse a few redrun scripts', (t) => {
 });
 
 test('parse a few levels deep', (t) => {
-    let cmd     = 'echo "hello world"';
-    let result  = redrun('one', {
+    const cmd     = 'echo "hello world"';
+    const result  = redrun('one', {
         one: 'npm run two',
         two: 'npm run three',
         three: 'npm run four',
@@ -208,7 +208,7 @@ test('args: no name', (t) => {
 });
 
 test('args: no json', (t) => {
-    let fn = () => {
+    const fn = () => {
         redrun('on');
     };
     

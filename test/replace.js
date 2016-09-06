@@ -1,10 +1,10 @@
 'use strict';
 
-let test = require('tape');
-let replace = require('../lib/replace');
+const test = require('tape');
+const replace = require('../lib/replace');
 
 test('replace: one npm run ', (t) => {
-    let result = replace('npm run one', (type, str) => {
+    const result = replace('npm run one', (type, str) => {
         t.equal(type, 'npm', 'type should be npm');
         return str;
     });
@@ -14,7 +14,7 @@ test('replace: one npm run ', (t) => {
 });
 
 test('replace: npm tst', (t) => {
-    let result = replace('npm tst', (type, str) => {
+    const result = replace('npm tst', (type, str) => {
         t.equal(type, 'npm', 'type should be npm');
         return str;
     });
@@ -25,7 +25,7 @@ test('replace: npm tst', (t) => {
 });
 
 test('replace: npm t', (t) => {
-    let result = replace('npm t', (type, str) => {
+    const result = replace('npm t', (type, str) => {
         t.equal(type, 'npm', 'type should be npm');
         return str;
     });
@@ -58,7 +58,7 @@ test('replace: npm publish', (t) => {
 });
 
 test('replace: a few npm runs', (t) => {
-    let cmd = replace('npm run one && npm run two', (type, str) => {
+    const cmd = replace('npm run one && npm run two', (type, str) => {
         t.equal(type, 'npm', 'type should be npm');
         return str;
     });
@@ -69,7 +69,7 @@ test('replace: a few npm runs', (t) => {
 });
 
 test('replace: arguments', (t) => {
-    let cmd = replace('npm run one -- --help && npm run two -- --version', (type, str) => {
+    const cmd = replace('npm run one -- --help && npm run two -- --version', (type, str) => {
         t.equal(type, 'npm', 'type should be npm');
         return str;
     });

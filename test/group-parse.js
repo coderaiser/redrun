@@ -1,10 +1,10 @@
 'use strict';
 
-let test = require('tape');
-let groupParse = require('../lib/group-parse');
+const test = require('tape');
+const groupParse = require('../lib/group-parse');
 
 test('group-parse: serial', (t) => {
-    let result = groupParse(['one', 'two', 'three'], {
+    const result = groupParse(['one', 'two', 'three'], {
         one: 'ls',
         two: 'pwd',
         three: 'whoami'
@@ -16,7 +16,7 @@ test('group-parse: serial', (t) => {
 });
 
 test('group-parse: parallel', (t) => {
-    let result = groupParse(['one', 'two', 'three'], {parallel: true}, {
+    const result = groupParse(['one', 'two', 'three'], {parallel: true}, {
         one: 'ls',
         two: 'pwd',
         three: 'whoami'
@@ -33,7 +33,7 @@ test('group-parse: parallel: params', (t) => {
         parallel: true
     };
     
-    let result = groupParse(['one', 'two', 'three'], options, {
+    const result = groupParse(['one', 'two', 'three'], options, {
         one: 'ls',
         two: 'pwd',
         three: 'whoami'

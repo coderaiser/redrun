@@ -1,7 +1,7 @@
 'use strict';
 
-let test = require('tape');
-let keys = require('../lib/keys');
+const test = require('tape');
+const keys = require('../lib/keys');
 
 test('keys: args: no obj', (t) => {
     t.throws(keys, /obj should be object/, 'should throw when no object');
@@ -10,7 +10,7 @@ test('keys: args: no obj', (t) => {
 });
 
 test('keys: args: divider not string', (t) => {
-    let fn = () => keys(31337, {});
+    const fn = () => keys(31337, {});
     
     t.throws(fn, /divider should be string!/, 'should throw when divider not string');
     
@@ -18,7 +18,7 @@ test('keys: args: divider not string', (t) => {
 });
 
 test('keys: get paths', (t) => {
-    let expect = [
+    const expect = [
         'config_plugins',
         'config_compile_client',
         'config_compile_client_min',
@@ -26,7 +26,7 @@ test('keys: get paths', (t) => {
         'config_compile_vendor_min'
     ];
     
-    let result = keys('_', {
+    const result = keys('_', {
         config: {
             plugins: 'some',
             compile: {
