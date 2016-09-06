@@ -1,8 +1,8 @@
 'use strict';
 
-let os = require('os');
-let test = require('tape');
-let cliParse = require('../lib/cli-parse');
+const os = require('os');
+const test = require('tape');
+const cliParse = require('../lib/cli-parse');
 
 test('cli-parse: series', (t) => {
     let result = cliParse(['--series', 'one', 'two'], {
@@ -98,16 +98,16 @@ test('cli-parse: series and parallel', (t) => {
 });
 
 test('cli-parse: series calm: linux', (t) => {
-    let platform = os.platform;
+    const platform = os.platform;
     
     os.platform = () => 'linux';
     
-    let result = cliParse(['--series-calm', 'one', 'two'], {
+    const result = cliParse(['--series-calm', 'one', 'two'], {
         one: 'ls',
         two: 'pwd'
     });
     
-    let expected = {
+    const expected = {
         name: 'run',
         cmd: 'ls || true && pwd || true',
         quiet: false,
