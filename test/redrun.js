@@ -1,7 +1,7 @@
 'use strict';
 
-let test = require('tape');
-let redrun = require('..');
+const test = require('tape');
+const redrun = require('..');
 
 test('simplest parse', (t) => {
     let cmd     = 'echo "hello world"';
@@ -14,8 +14,8 @@ test('simplest parse', (t) => {
 });
 
 test('simplest parse: name with "."', (t) => {
-    let cmd     = 'bin/redrun.js lint*';
-    let result  = redrun('two', {
+    const cmd     = 'bin/redrun.js lint*';
+    const result  = redrun('two', {
         two: cmd
     });
     
@@ -118,6 +118,18 @@ test('parse redrun args', (t) => {
 test('parse redrun args: "*"', (t) => {
     let result  = redrun('one', {
         one: 'npm run two',
+        two: 'redrun --parallel lint*',
+        'lint:jscs': 'jscs test/*.js',
+        'lint:jshint': 'jshint lib test'
+    });
+    
+    t.equal(result, 'jscs test/*.js & jshint lib test', 'should parse script test');
+    t.end();
+});
+
+test('parse redrun args: "."', (t) => {
+    let result  = redrun('one.start', {
+        'one.start': 'npm run two',
         two: 'redrun --parallel lint*',
         'lint:jscs': 'jscs test/*.js',
         'lint:jshint': 'jshint lib test'

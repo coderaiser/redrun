@@ -1,13 +1,25 @@
 'use strict';
 
-let test = require('tape');
-let getBody = require('../lib/get-body');
+const test = require('tape');
+const getBody = require('../lib/get-body');
 
 test('get-body: should get script content', (t) => {
     let cmd = 'jshint lib/*.js';
     
     let body = getBody('lint', {
         lint: cmd
+    });
+    
+    t.equal(body, cmd, 'should body be equal to script content');
+    
+    t.end();
+});
+
+test('get-body: should get script content: name with "."', (t) => {
+    const cmd = 'jshint lib/*.js';
+    
+    const body = getBody('lint.one', {
+        'lint.one': cmd
     });
     
     t.equal(body, cmd, 'should body be equal to script content');
