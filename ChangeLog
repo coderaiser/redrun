@@ -1,3 +1,13 @@
+2016.09.06, v5.5.2
+
+fix:
+- (package) redrun-completion-legacy
+- (redrun) support of scripts that contains "." in name
+
+feature:
+- (package) add redrun-completion-legacy
+
+
 2016.09.02, v5.5.1
 
 feature:
