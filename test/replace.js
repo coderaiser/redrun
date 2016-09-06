@@ -74,7 +74,7 @@ test('replace: arguments', (t) => {
         return str;
     });
     
-    t.equal(cmd, 'one --help && two --version', 'should cut npm run and leave arguments');
+    t.equal(cmd, 'one "--help" && two "--version"', 'should cut npm run and leave arguments');
     
     t.end();
 });

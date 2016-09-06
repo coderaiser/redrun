@@ -36,8 +36,8 @@ test('simplest parse: name with "-"', (t) => {
 });
 
 test('simplest parse: &&', (t) => {
-    let cmd     = 'nodemon --exec bin/iocmd.js && pwd';
-    let result  = redrun('run', {
+    const cmd     = 'nodemon --exec "bin/iocmd.js" && pwd';
+    const result  = redrun('run', {
         run: 'redrun watch:iocmd && pwd',
         watcher: 'nodemon --exec',
         'watch:iocmd': 'npm run watcher -- bin/iocmd.js'
@@ -81,7 +81,7 @@ test('parse one level deep', (t) => {
 });
 
 test('parse arguments', (t) => {
-    let cmd     = 'git --version';
+    let cmd     = 'git "--version"';
     let result  = redrun('one', {
         one: 'npm run two -- --version',
         two: 'git'
@@ -136,6 +136,19 @@ test('parse redrun args: "."', (t) => {
     });
     
     t.equal(result, 'jscs test/*.js & jshint lib test', 'should parse script test');
+    t.end();
+});
+
+test('parse redrun args: "--"', (t) => {
+    const expect = 'nodemon -w lib --exec "nyc tape test.js"';
+    const result = redrun('watch-coverage', {
+        watcher: 'nodemon -w lib --exec',
+        coverage: 'nyc npm test',
+        'watch-coverage': 'npm run watcher -- npm run coverage',
+        test: 'tape test.js'
+    });
+    
+    t.equal(result, expect, 'should add quotes to arguments');
     t.end();
 });
 
