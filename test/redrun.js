@@ -138,14 +138,25 @@ test('parse redrun args: "."', (t) => {
     t.equal(result, 'jscs test/*.js & jshint lib test', 'should parse script test');
     t.end();
 });
-
-test('parse redrun args: "--"', (t) => {
+    
+test('parse redrun args: "--": npm run', (t) => {
     const expect = 'nodemon -w lib --exec "nyc tape test.js"';
     const result = redrun('watch-coverage', {
         watcher: 'nodemon -w lib --exec',
         coverage: 'nyc npm test',
         'watch-coverage': 'npm run watcher -- npm run coverage',
         test: 'tape test.js'
+    });
+    
+    t.equal(result, expect, 'should add quotes to arguments');
+    t.end();
+});
+
+test('parse redrun args: "--": redrun', (t) => {
+    const expect = 'nodemon -w lib --exec "bin/iocmd.js"';
+    const result  = redrun('watch:iocmd', {
+      'watch:iocmd': 'redrun watcher -- bin/iocmd.js',
+      'watcher': 'nodemon -w lib --exec',
     });
     
     t.equal(result, expect, 'should add quotes to arguments');
@@ -204,6 +215,13 @@ test('parse a few levels deep', (t) => {
 
 test('args: no name', (t) => {
     t.throws(redrun, /name should be string!/, 'should throw when no name');
+    t.end();
+});
+
+test('args: name is empty', (t) => {
+    const fn = () => redrun('');
+    
+    t.throws(fn, /name should not be empty!/, 'should throw when name is empty');
     t.end();
 });
 
