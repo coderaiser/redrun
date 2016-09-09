@@ -1,3 +1,9 @@
+2016.09.09, v5.6.1
+
+fix:
+- (redrun) args parsing: expand of inner redrun
+
+
 2016.09.06, v5.6.0
 
 feature:
