@@ -163,6 +163,18 @@ test('parse redrun args: "--": redrun', (t) => {
     t.end();
 });
 
+test('parse redrun args: "--": should not quote "--"', (t) => {
+    const expect = 'browserify -s nessy "src/nessy.js" "-o" "dist/nessy.es6.js"'
+    const result  = redrun('es6', {
+        'bundle': 'browserify -s nessy',
+        'es6:base': 'npm run bundle -- src/nessy.js',
+        'es6': 'npm run es6:base -- -o dist/nessy.es6.js',
+    });
+    
+    t.equal(result, expect, 'should add quotes to arguments');
+    t.end();
+});
+
 test('parse redrun args: unrecognized', (t) => {
     const result  = redrun('one', {
         one: 'npm run two',
