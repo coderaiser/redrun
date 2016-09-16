@@ -1,3 +1,12 @@
+2016.09.16, v5.7.0
+
+fix:
+- (redrun) prevent quotes duplication
+
+feature:
+- (redrun) scripts args: quotes to word sequence -> quotes to every word
+
+
 2016.09.09, v5.6.1
 
 fix:
