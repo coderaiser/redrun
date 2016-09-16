@@ -140,7 +140,7 @@ test('parse redrun args: "."', (t) => {
 });
     
 test('parse redrun args: "--": npm run', (t) => {
-    const expect = 'nodemon -w lib --exec "nyc tape test.js"';
+    const expect = 'nodemon -w lib --exec "nyc" "tape" "test.js"';
     const result = redrun('watch-coverage', {
         watcher: 'nodemon -w lib --exec',
         coverage: 'nyc npm test',
