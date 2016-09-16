@@ -15,7 +15,7 @@
     "lint:eslint-bin": "eslint --rule 'no-console:0' bin",
     "lint:eslint-lib": "eslint lib test",
     "lint:jscs": "jscs --esnext bin lib test",
-    "fixlint": "redrun lint:jscs -- --fix",
+    "fixlint": "redrun lint:jscs lint:eslint-bin lint:eslint-lib -- --fix",
     "redlint-parallel": "bin/redrun.js -p lint:*",
     "speed:npm-run": "npm run lint:jshint && npm run lint:eslint-bin && npm run lint:eslint-lib && npm run lint:jscs",
     "test": "tape test/**/*.js",

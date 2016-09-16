@@ -315,8 +315,8 @@ test('cli-parse: script not found', (t) => {
 
 test('cli-parse: deep script not found', (t) => {
     const result = cliParse(['docker'], {
-      docker: 'redrun docker:pull:node docker:build docker:push',
-      'docker:pull:node': 'echo "docker pull node"'
+        docker: 'redrun docker:pull:node docker:build docker:push',
+        'docker:pull:node': 'echo "docker pull node"'
     });
     
     let expected = {
@@ -333,10 +333,10 @@ test('cli-parse: deep script not found', (t) => {
 
 test('cli-parse: deep scripts are empty', (t) => {
     const result = cliParse(['docker'], {
-      docker: 'redrun docker:pull:node docker:build docker:push',
-      'docker:pull:node': 'echo "docker pull node"',
-      'docker:build': '',
-      'docker:push': ''
+        docker: 'redrun docker:pull:node docker:build docker:push',
+        'docker:pull:node': 'echo "docker pull node"',
+        'docker:build': '',
+        'docker:push': ''
     });
     
     let expected = {
