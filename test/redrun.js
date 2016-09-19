@@ -140,11 +140,11 @@ test('parse redrun args: "."', (t) => {
 });
     
 test('parse redrun args: "--": npm run', (t) => {
-    const expect = 'nodemon -w lib --exec "nyc" "tape" "test.js"';
+    const expect = 'nodemon -w lib --exec "nyc tape test.js"';
     const result = redrun('watch-coverage', {
         watcher: 'nodemon -w lib --exec',
         coverage: 'nyc npm test',
-        'watch-coverage': 'npm run watcher -- npm run coverage',
+        'watch-coverage': 'npm run watcher -- "npm run coverage"',
         test: 'tape test.js'
     });
     
@@ -157,6 +157,18 @@ test('parse redrun args: "--": redrun', (t) => {
     const result  = redrun('watch:iocmd', {
         'watch:iocmd': 'redrun watcher -- bin/iocmd.js',
         'watcher': 'nodemon -w lib --exec',
+    });
+    
+    t.equal(result, expect, 'should add quotes to arguments');
+    t.end();
+});
+
+test('parse redrun args: "--": deep npm run', (t) => {
+    const expect = 'echo "es5" && echo "es6"';
+    const result  = redrun('echo:*', {
+        'echo': 'echo',
+        'echo:es5': 'npm run echo -- "es5"',
+        'echo:es6': 'npm run echo -- "es6"'
     });
     
     t.equal(result, expect, 'should add quotes to arguments');

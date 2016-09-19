@@ -68,14 +68,3 @@ test('replace: a few npm runs', (t) => {
     t.end();
 });
 
-test('replace: arguments', (t) => {
-    const cmd = replace('npm run one -- --help && npm run two -- --version', (type, str) => {
-        t.equal(type, 'npm', 'type should be npm');
-        return str;
-    });
-    
-    t.equal(cmd, 'one "--help" && two "--version"', 'should cut npm run and leave arguments');
-    
-    t.end();
-});
-
