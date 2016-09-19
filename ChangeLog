@@ -1,3 +1,11 @@
+2016.09.19, v5.8.0
+
+feature:
+- (keys) keys -> all-object-keys
+- (redrun) improve arguments quots support in deep npm run
+- (eslint) rules: indent: 4
+
+
 2016.09.16, v5.7.0
 
 fix:
