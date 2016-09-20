@@ -35,7 +35,7 @@ redrun-completion >> ~/.bashrc
 redrun-completion >> ~/.zshrc
 ```
 
-You may also pipe the output of redrun-completion to a file such as /usr/local/etc/bash_completion.d/redrun if you have a system that will read that file for you.
+You may also pipe the output of redrun-completion to a file such as `/usr/local/etc/bash_completion.d/redrun` if you have a system that will read that file for you.
 
 # How it works
 
