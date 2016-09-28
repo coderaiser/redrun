@@ -36,7 +36,7 @@ test('simplest parse: name with "-"', (t) => {
 });
 
 test('simplest parse: "npm install"', (t) => {
-    const cmd = 'npm install'
+    const cmd = 'npm install';
     const result = redrun('two', {
         two: cmd
     });
@@ -46,7 +46,7 @@ test('simplest parse: "npm install"', (t) => {
 });
 
 test('simplest parse: "--"', (t) => {
-    const cmd = 'echo -- --hello'
+    const cmd = 'echo -- --hello';
     const result = redrun('echo--', {
         'echo--': cmd
     });
