@@ -7,7 +7,7 @@ const tryCatch = require('try-catch');
 const squad = require('squad');
 const readjson = require('readjson');
 
-const mapsome = require('mapsome');
+const mapsome = require('mapsome/legacy');
 
 const cliParse = require('../lib/cli-parse');
 const cwd = process.cwd();
