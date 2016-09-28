@@ -100,8 +100,9 @@ function getInfo(dir) {
 }
 
 function traverseForInfo(cwd) {
-    const parentDirs = require('parent-dirs')(cwd);
-    const result = mapsome((dir) => getInfo(dir), parentDirs);
+    const result = mapsome((dir) => {
+        return getInfo(dir);
+    }, parentDirs(cwd));
     
     exitIfEntryError(result);
     
@@ -133,5 +134,23 @@ function storage() {
         else
             return value;
     };
+}
+
+// npm parent-dirs in es2015 only
+function parentDirs(str) {
+    const pth = str || process.cwd();
+    
+    if (pth === '/') {
+        return ['/'];
+    }
+    
+    const parts = pth.split(/[\/\\]/);
+    
+    return parts.map((el, i) => {
+        return parts
+            .slice(0, parts.length - i)
+            .join('/')
+            .replace(/^$/, '/');
+    });
 }
 
