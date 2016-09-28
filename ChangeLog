@@ -1,3 +1,13 @@
+2016.09.28, v5.8.4
+
+fix:
+- (redrun) mapsome -> mapsome/legacy
+
+feature:
+- (redrun) includes -> indexOf: add support of old versions of node
+- (package) parent-dirs: put in bin/redrun.js: es2015 only
+
+
 2016.09.28, v5.8.3
 
 fix:
