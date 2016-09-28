@@ -45,6 +45,16 @@ test('simplest parse: "npm install"', (t) => {
     t.end();
 });
 
+test('simplest parse: "--"', (t) => {
+    const cmd = 'echo -- --hello'
+    const result = redrun('echo--', {
+        'echo--': cmd
+    });
+    
+    t.equal(result, cmd, 'should return cmd');
+    t.end();
+});
+
 test('simplest parse: &&', (t) => {
     const cmd     = 'nodemon --exec "bin/iocmd.js" && pwd';
     const result  = redrun('run', {
