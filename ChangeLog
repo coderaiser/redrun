@@ -1,3 +1,10 @@
+2016.09.28, v5.8.3
+
+fix:
+- (redrun) drop every "--"
+- (redrun) "npm install" -> "null"
+
+
 2016.09.26, v5.8.2
 
 feature:
