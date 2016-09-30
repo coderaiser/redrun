@@ -5,12 +5,12 @@ const test = require('tape');
 const cliParse = require('../lib/cli-parse');
 
 test('cli-parse: series', (t) => {
-    let result = cliParse(['--series', 'one', 'two'], {
+    const result = cliParse(['--series', 'one', 'two'], {
         one: 'ls',
         two: 'pwd'
     });
     
-    let expected = {
+    const expected = {
         name: 'run',
         cmd: 'ls && pwd',
         quiet: false,
@@ -23,12 +23,12 @@ test('cli-parse: series', (t) => {
 });
 
 test('cli-parse: parallel', (t) => {
-    let result = cliParse(['--parallel', 'one', 'two'], {
+    const result = cliParse(['--parallel', 'one', 'two'], {
         one: 'ls',
         two: 'pwd'
     });
     
-    let expected = {
+    const expected = {
         name: 'run',
         cmd: 'ls & pwd',
         quiet: false,
@@ -41,12 +41,12 @@ test('cli-parse: parallel', (t) => {
 });
 
 test('cli-parse: parallel --quiet', (t) => {
-    let result = cliParse(['--parallel', 'one', 'two', '--quiet'], {
+    const result = cliParse(['--parallel', 'one', 'two', '--quiet'], {
         one: 'ls',
         two: 'pwd'
     });
     
-    let expected = {
+    const expected = {
         name: 'run',
         cmd: 'ls & pwd',
         quiet: true,
@@ -59,13 +59,13 @@ test('cli-parse: parallel --quiet', (t) => {
 });
 
 test('cli-parse: parallel: before script', (t) => {
-    let result = cliParse(['main', '--parallel', 'one', 'two'], {
+    const result = cliParse(['main', '--parallel', 'one', 'two'], {
         one: 'ls',
         two: 'pwd',
         main: 'echo hi'
     });
     
-    let expected = {
+    const expected = {
         name: 'run',
         cmd: 'echo hi && ls & pwd',
         quiet: false,
@@ -78,14 +78,14 @@ test('cli-parse: parallel: before script', (t) => {
 });
 
 test('cli-parse: series and parallel', (t) => {
-    let result = cliParse(['--s', 'one', 'two', '-p', 'three', 'four'], {
+    const result = cliParse(['--s', 'one', 'two', '-p', 'three', 'four'], {
         one: 'ls',
         two: 'pwd',
         three: 'whoami',
         four: 'ps aux'
     });
     
-    let expected = {
+    const expected = {
         name: 'run',
         cmd: 'ls && pwd && whoami & ps aux',
         quiet: false,
@@ -122,16 +122,16 @@ test('cli-parse: series calm: linux', (t) => {
 });
 
 test('cli-parse: parallel calm: windows', (t) => {
-    let platform = os.platform;
+    const platform = os.platform;
     
     os.platform = () => 'win32';
     
-    let result = cliParse(['--parallel-calm', 'one', 'two'], {
+    const result = cliParse(['--parallel-calm', 'one', 'two'], {
         one: 'ls',
         two: 'pwd'
     });
     
-    let expected = {
+    const expected = {
         name: 'run',
         cmd: 'ls || (exit 0) & pwd || (exit 0)',
         quiet: false,
@@ -146,16 +146,16 @@ test('cli-parse: parallel calm: windows', (t) => {
 });
 
 test('cli-parse: --calm: linux', (t) => {
-    let platform = os.platform;
+    const platform = os.platform;
     
     os.platform = () => 'linux';
     
-    let result = cliParse(['--calm', 'one', 'two'], {
+    const result = cliParse(['--calm', 'one', 'two'], {
         one: 'ls',
         two: 'pwd'
     });
     
-    let expected = {
+    const expected = {
         name: 'run',
         cmd: 'ls || true && pwd || true',
         quiet: false,
@@ -170,11 +170,11 @@ test('cli-parse: --calm: linux', (t) => {
 });
 
 test('cli-parse: scripts arguments', (t) => {
-    let result = cliParse(['o*', '--', '--parallel', 'three', 'four'], {
+    const result = cliParse(['o*', '--', '--parallel', 'three', 'four'], {
         one: 'ls'
     });
     
-    let expected = {
+    const expected = {
         name: 'run',
         cmd: 'ls --parallel three four',
         quiet: false,
@@ -187,12 +187,12 @@ test('cli-parse: scripts arguments', (t) => {
 });
 
 test('cli-parse: scripts arguments: parallel', (t) => {
-    let result = cliParse(['o*', '--', '--parallel', 'three', 'four'], {
+    const result = cliParse(['o*', '--', '--parallel', 'three', 'four'], {
         one: 'ls',
         on: 'who'
     });
     
-    let expected = {
+    const expected = {
         name: 'run',
         cmd: 'ls --parallel three four && who --parallel three four',
         quiet: false,
@@ -205,11 +205,11 @@ test('cli-parse: scripts arguments: parallel', (t) => {
 });
 
 test('cli-parse: --version', (t) => {
-    let version = cliParse.version();
-    let result = cliParse(['--version'], {
+    const version = cliParse.version();
+    const result = cliParse(['--version'], {
     });
     
-    let expected = {
+    const expected = {
         name: 'version',
         output: version
     };
@@ -220,11 +220,11 @@ test('cli-parse: --version', (t) => {
 });
 
 test('cli-parse: -v', (t) => {
-    let version = cliParse.version();
-    let result = cliParse(['-v'], {
+    const version = cliParse.version();
+    const result = cliParse(['-v'], {
     });
     
-    let expected = {
+    const expected = {
         name: 'version',
         output: version
     };
@@ -235,11 +235,11 @@ test('cli-parse: -v', (t) => {
 });
 
 test('cli-parse: --help', (t) => {
-    let help = cliParse.help();
-    let result = cliParse(['--help'], {
+    const help = cliParse.help();
+    const result = cliParse(['--help'], {
     });
     
-    let expected = {
+    const expected = {
         name: 'help',
         output: help
     };
@@ -250,11 +250,11 @@ test('cli-parse: --help', (t) => {
 });
 
 test('cli-parse: -h', (t) => {
-    let help = cliParse.help();
-    let result = cliParse(['-h'], {
+    const help = cliParse.help();
+    const result = cliParse(['-h'], {
     });
     
-    let expected = {
+    const expected = {
         name: 'help',
         output: help
     };
@@ -265,11 +265,11 @@ test('cli-parse: -h', (t) => {
 });
 
 test('cli-parse: unknown short argument', (t) => {
-    let unknown = cliParse.unknown;
-    let result = cliParse(['-w'], {
+    const unknown = cliParse.unknown;
+    const result = cliParse(['-w'], {
     });
     
-    let expected = {
+    const expected = {
         name: 'unknown',
         output: unknown('w')
     };
@@ -280,11 +280,11 @@ test('cli-parse: unknown short argument', (t) => {
 });
 
 test('cli-parse: unknown long argument', (t) => {
-    let unknown = cliParse.unknown;
-    let result = cliParse(['--world'], {
+    const unknown = cliParse.unknown;
+    const result = cliParse(['--world'], {
     });
     
-    let expected = {
+    const expected = {
         name: 'unknown',
         output: unknown('world')
     };
@@ -295,11 +295,11 @@ test('cli-parse: unknown long argument', (t) => {
 });
 
 test('cli-parse: script not found', (t) => {
-    let scriptNotFound = cliParse.scriptNotFound;
-    let result = cliParse(['hello'], {
+    const scriptNotFound = cliParse.scriptNotFound;
+    const result = cliParse(['hello'], {
     });
     
-    let expected = {
+    const expected = {
         name: 'script-not-found',
         output: scriptNotFound({
             _: ['hello'],
@@ -319,7 +319,7 @@ test('cli-parse: deep script not found', (t) => {
         'docker:pull:node': 'echo "docker pull node"'
     });
     
-    let expected = {
+    const expected = {
         calm: false,
         cmd: 'echo One of scripts not found: docker:pull:node docker:build docker:push',
         name: 'run',
@@ -339,7 +339,7 @@ test('cli-parse: deep scripts are empty', (t) => {
         'docker:push': ''
     });
     
-    let expected = {
+    const expected = {
         calm: false,
         cmd: 'echo "docker pull node"',
         name: 'run',
@@ -351,7 +351,7 @@ test('cli-parse: deep scripts are empty', (t) => {
     t.end();
 });
 test('cli-parse: args: no scripts', (t) => {
-    let fn = () => cliParse([]);
+    const fn = () => cliParse([]);
     t.throws(fn, /scripts should be object!/, 'should throw when no scripts');
     t.end();
 });
