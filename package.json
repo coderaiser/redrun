@@ -46,9 +46,9 @@
   },
   "bin": {
     "redrun": "bin/redrun.js",
-    "redrun-legacy": "legacy/bin/redrun.js",
+    "redrun_": "legacy/bin/redrun.js",
     "redrun-completion": "bin/redrun-completion.js",
-    "redrun-completion-legacy": "legacy/bin/redrun-completion.js"
+    "redrun-completion_": "legacy/bin/redrun-completion.js"
   },
   "keywords": [
     "redrun",
