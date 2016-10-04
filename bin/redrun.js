@@ -59,7 +59,7 @@ function getEnv() {
     const dir = Directory();
     const info = Info();
     const config = info.config;
-    const assign = Object.assign;
+    const assign = Object.assign || objectAssign;
     
     const PATH = env.path(process.env.PATH, path.delimiter, dir, path.sep);
     
@@ -154,3 +154,16 @@ function parentDirs(str) {
     });
 }
 
+function objectAssign(defaults, configuration = {}) {
+    const o = {};
+    
+    Object.keys(defaults).forEach((k) => {
+        o[k] = defaults[k];
+    });
+    
+    Object.keys(configuration).forEach((k) => {
+        o[k] = configuration[k];
+    });
+      
+    return o;
+}
