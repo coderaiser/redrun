@@ -1,3 +1,9 @@
+2016.10.06, v5.9.1
+
+fix:
+- (bin) redrun: bring back node v4.0 support
+
+
 2016.10.04, v5.9.0
 
 feature:
