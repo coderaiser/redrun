@@ -169,3 +169,4 @@ function objectAssign(defaults, configuration) {
       
     return o;
 }
+
