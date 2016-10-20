@@ -1,3 +1,9 @@
+2016.10.20, v5.9.2
+
+fix:
+- (env) $npm_package_config: name with "_"
+
+
 2016.10.06, v5.9.1
 
 fix:
