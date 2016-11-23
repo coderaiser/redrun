@@ -77,7 +77,7 @@
   "engine": ">=4",
   "dependencies": {
     "all-object-keys": "^1.0.0",
-    "currify": "^1.0.0",
+    "currify": "^2.0.0",
     "debug": "^2.2.0",
     "jessy": "^2.0.0",
     "mapsome": "^1.0.0",
