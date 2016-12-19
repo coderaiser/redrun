@@ -154,19 +154,15 @@ function parentDirs(str) {
     });
 }
 
-function objectAssign(defaults, configuration) {
-    configuration = configuration || {};
-    
+function objectAssign() {
     const o = {};
     
-    Object.keys(defaults).forEach((k) => {
-        o[k] = defaults[k];
+    [].forEach.call(arguments, (obj) => {
+        Object.keys(obj).forEach((k) => {
+            o[k] = obj[k];
+        });
     });
     
-    Object.keys(configuration).forEach((k) => {
-        o[k] = configuration[k];
-    });
-      
     return o;
 }
 
