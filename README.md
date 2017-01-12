@@ -1,6 +1,6 @@
 # Redrun [![License][LicenseIMGURL]][LicenseURL] [![NPM version][NPMIMGURL]][NPMURL] [![Dependency Status][DependencyStatusIMGURL]][DependencyStatusURL] [![Build Status][BuildStatusIMGURL]][BuildStatusURL] [![Coverage Status][CoverageIMGURL]][CoverageURL]
 
-Expand `script` from `package.json` to improve execution speed.
+CLI tool to run multiple npm-scripts fast.
 
 ![Redrun](https://github.com/coderaiser/redrun/raw/master/redrun.png "Redrun")
 
