@@ -1,3 +1,11 @@
+2017.01.12, v5.9.5
+
+feature:
+- (package) description
+- (package) npm-run-all v4.0.0
+- (package) nyc v10.0.0
+
+
 2016.11.23, v5.9.4
 
 feature:
