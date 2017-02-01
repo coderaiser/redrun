@@ -59,15 +59,14 @@ function getEnv() {
     const dir = Directory();
     const info = Info();
     const config = info.config;
-    const assign = Object.assign || objectAssign;
     
     const PATH = env.path(process.env.PATH, path.delimiter, dir, path.sep);
     
-    const npmVars = assign(env.config(config), {
+    const npmVars = Object.assign(env.config(config), {
         npm_package_version: info.version
     });
     
-    const envVars = assign(process.env, npmVars, {
+    const envVars = Object.assign(process.env, npmVars, {
         PATH: PATH
     });
     
@@ -152,17 +151,5 @@ function parentDirs(str) {
             .join('/')
             .replace(/^$/, '/');
     });
-}
-
-function objectAssign() {
-    const o = {};
-    
-    [].forEach.call(arguments, (obj) => {
-        Object.keys(obj).forEach((k) => {
-            o[k] = obj[k];
-        });
-    });
-    
-    return o;
 }
 
