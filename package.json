@@ -28,6 +28,7 @@
     "watch:coverage:base": "npm run watcher -- nyc npm test",
     "watch:coverage:tape": "npm run watcher -- nyc tape",
     "watch:coverage": "bin/redrun.js watch:coverage:base",
+    "watch:lint": "npm run watcher -- redrun lint:eslint*",
     "watcher": "nodemon -w test -w lib --exec",
     "coverage": "nyc npm test",
     "report": "nyc report --reporter=text-lcov | coveralls",
