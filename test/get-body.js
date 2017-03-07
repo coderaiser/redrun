@@ -63,6 +63,19 @@ test('get-body: pre + post + args: regexp', (t) => {
     t.end();
 });
 
+test('get-body: pre + post + symbols: regexp', (t) => {
+    const cmd = 'pre && jshint --version && post';
+    const result = getBody('lint:*', {
+        'lint:': 'jshint --version',
+        'prelint:': 'pre',
+        'postlint:': 'post',
+    });
+    
+    t.equal(result, cmd, 'should body be equal to script content + args');
+    
+    t.end();
+});
+
 test('get-body: args: parallel', (t) => {
     const body = getBody('lint:*', {parallel: true}, {
         'lint:jshint': 'jshint lib/*.js',
