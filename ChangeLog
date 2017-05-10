@@ -1,3 +1,9 @@
+2017.05.10, v5.9.12
+
+feature:
+- (package) yargs-parser v7.0.0
+
+
 2017.03.20, v5.9.11
 
 fix:
