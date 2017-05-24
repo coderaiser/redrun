@@ -10,6 +10,17 @@ test('env: $PATH', (t) => {
     t.end();
 });
 
+test('env: empty config', (t) => {
+    const result = {
+    };
+    
+    const config = env.config();
+    
+    t.deepEqual(config, result, 'should return empty config');
+    t.end();
+});
+
+
 test('env: $npm_package_config', (t) => {
     const result = {
         npm_package_config_poly: 'hello'
