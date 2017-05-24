@@ -8,6 +8,7 @@ const squad = require('squad');
 const readjson = require('readjson');
 
 const mapsome = require('mapsome/legacy');
+const storage = require('fullstore/legacy');
 
 const cliParse = require('../lib/cli-parse');
 const cwd = process.cwd();
@@ -123,16 +124,6 @@ function exitIfEntryError(data) {
         const error = Error(`Cannot find module \'${infoPath}\'`);
         exitIfError(error);
     }
-}
-
-function storage() {
-    let value;
-    return (data) => {
-        if (data)
-            value = data;
-        else
-            return value;
-    };
 }
 
 // npm parent-dirs in es2015 only
