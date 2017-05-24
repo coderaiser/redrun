@@ -14,8 +14,8 @@ test('simplest parse', (t) => {
 });
 
 test('simplest parse: name with "."', (t) => {
-    const cmd     = 'bin/redrun.js lint*';
-    const result  = redrun('two', {
+    const cmd = 'bin/redrun.js lint*';
+    const result = redrun('two', {
         two: cmd
     });
     
@@ -24,8 +24,8 @@ test('simplest parse: name with "."', (t) => {
 });
 
 test('simplest parse: name with "-"', (t) => {
-    const cmd     = 'babel lib/*.js';
-    const result  = redrun('build', {
+    const cmd = 'babel lib/*.js';
+    const result = redrun('build', {
         'build:js': 'echo \'hello\'',
         'build:js-native-full': 'babel lib/*.js',
         'build': 'redrun build:js-native-full',
@@ -56,8 +56,8 @@ test('simplest parse: "--"', (t) => {
 });
 
 test('simplest parse: &&', (t) => {
-    const cmd     = 'nodemon --exec "bin/iocmd.js" && pwd';
-    const result  = redrun('run', {
+    const cmd = 'nodemon --exec "bin/iocmd.js" && pwd';
+    const result = redrun('run', {
         run: 'redrun watch:iocmd && pwd',
         watcher: 'nodemon --exec',
         'watch:iocmd': 'npm run watcher -- bin/iocmd.js'
@@ -80,8 +80,8 @@ test('infinite loop', (t) => {
 });
 
 test('similar name', (t) => {
-    const cmd     = 'redrun.js two';
-    const result  = redrun('one', {
+    const cmd = 'redrun.js two';
+    const result = redrun('one', {
         one: 'redrun.js two'
     });
     
@@ -90,8 +90,8 @@ test('similar name', (t) => {
 });
 
 test('parse one level deep', (t) => {
-    const cmd     = 'echo "hello world"';
-    const result  = redrun('one', {
+    const cmd = 'echo "hello world"';
+    const result = redrun('one', {
         one: 'npm run two',
         two: cmd
     });
@@ -101,8 +101,8 @@ test('parse one level deep', (t) => {
 });
 
 test('parse arguments', (t) => {
-    const cmd     = 'git "--version"';
-    const result  = redrun('one', {
+    const cmd = 'git "--version"';
+    const result = redrun('one', {
         one: 'npm run two -- --version',
         two: 'git'
     });
@@ -112,8 +112,8 @@ test('parse arguments', (t) => {
 });
 
 test('parse reserved names: npm test', (t) => {
-    const cmd     = 'tape test/*.js';
-    const result  = redrun('one', {
+    const cmd = 'tape test/*.js';
+    const result = redrun('one', {
         one: 'npm run two',
         two: 'npm test',
         test: cmd
