@@ -68,7 +68,7 @@ function getEnv() {
     });
     
     const envVars = Object.assign(process.env, npmVars, {
-        PATH: PATH
+        PATH
     });
     
     return envVars;
