@@ -1,5 +1,6 @@
 .*.swp
 node_modules
+package-lock.json
 npm-debug.log
 .nyc_output
 legacy

@@ -12,9 +12,6 @@
     ]
   },
   "scripts": {
-    "a:1": "echo",
-    "a:2": "echo",
-    "a": "redrun a:*",
     "lint": "bin/redrun.js lint:*",
     "speed:npm-run-all": "npm-run-all lint:*",
     "lint:jshint": "jshint bin lib test",
@@ -41,6 +38,7 @@
     "6to5:lib": "babel lib -d legacy/lib",
     "6to5:bin": "babel bin -d legacy/bin",
     "wisdom": "npm run build",
+    "prewisdom": "rm -f package-lock.json",
     "postpublish": "npm i -g",
     "build": "redrun 6to5:* legacy:*",
     "legacy:index": "echo \"module.exports = require('./lib/redrun');\" > legacy/index.js",
