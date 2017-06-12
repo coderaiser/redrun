@@ -46,7 +46,7 @@ function execute(cmd) {
     
     tryOrExit(() => {
         execSync(cmd, {
-            stdio: 'inherit',
+            stdio: [0, 1, 2, 'pipe'],
             env: getEnv(),
             cwd: Directory()
         });
