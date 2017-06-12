@@ -121,7 +121,7 @@ function notEntryError(path, error) {
 function exitIfEntryError(data) {
     if (!data) {
         const infoPath = path.join(cwd, 'package.json');
-        const error = Error(`Cannot find module \'${infoPath}\'`);
+        const error = Error(`Cannot find module '${infoPath}'`);
         exitIfError(error);
     }
 }
@@ -134,7 +134,7 @@ function parentDirs(str) {
         return ['/'];
     }
     
-    const parts = pth.split(/[\/\\]/);
+    const parts = pth.split(/[/\\]/);
     
     return parts.map((el, i) => {
         return parts
