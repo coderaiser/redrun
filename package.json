@@ -83,7 +83,7 @@
   "dependencies": {
     "all-object-keys": "^1.0.0",
     "currify": "^2.0.0",
-    "debug": "^2.2.0",
+    "debug": "^3.0.0",
     "fullstore": "^1.0.0",
     "jessy": "^2.0.0",
     "mapsome": "^1.0.0",
