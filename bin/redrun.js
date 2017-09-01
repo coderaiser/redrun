@@ -54,21 +54,15 @@ function execute(cmd) {
 }
 
 function getEnv() {
-    const env = require('../lib/env');
-    const path = require('path');
+    const envir = require('envir');
     
     const dir = Directory();
     const info = Info();
-    const config = info.config;
     
-    const PATH = env.path(process.env.PATH, path.delimiter, dir, path.sep);
+    const PATH = process.env.PATH;
+    const env = envir(PATH, dir, info);
     
-    const envVars = Object.assign({}, process.env, env.config(config), {
-        PATH,
-        npm_package_version: info.version,
-    });
-    
-    return envVars;
+    return Object.assign({}, process.env, env);
 }
 
 function exitIfError(error) {
