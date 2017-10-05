@@ -1,3 +1,10 @@
+2017.10.05, v5.9.18
+
+feature:
+- (package) yargs-parser v8.0.0
+- (package) coveralls v3.0.0
+
+
 2017.09.01, v5.9.17
 
 feature:
