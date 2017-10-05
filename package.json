@@ -84,14 +84,14 @@
     "all-object-keys": "^1.0.0",
     "currify": "^2.0.0",
     "debug": "^3.0.0",
+    "envir": "^1.0.0",
     "fullstore": "^1.0.0",
     "jessy": "^2.0.0",
     "mapsome": "^1.0.0",
     "readjson": "^1.1.3",
     "squad": "^1.1.3",
     "try-catch": "^1.0.0",
-    "yargs-parser": "^7.0.0",
-    "envir": "^1.0.0"
+    "yargs-parser": "^8.0.0"
   },
   "devDependencies": {
     "babel-cli": "^6.10.1",
