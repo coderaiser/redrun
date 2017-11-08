@@ -243,8 +243,8 @@ test('parse a few redrun scripts', (t) => {
 });
 
 test('parse a few levels deep', (t) => {
-    const cmd     = 'echo "hello world"';
-    const result  = redrun('one', {
+    const cmd = 'echo "hello world"';
+    const result = redrun('one', {
         one: 'npm run two',
         two: 'npm run three',
         three: 'npm run four',
@@ -256,6 +256,18 @@ test('parse a few levels deep', (t) => {
     t.equal(result, cmd, 'should parse command a few levels deep');
     t.end();
 });
+
+test('npx', (t) => {
+    const cmd = 'npx pug -b src src/pages -o dist';
+    const body = redrun('build', {
+        "build": "npx redrun build:html",
+        "build:html": cmd,
+    });
+    
+    t.equal(body, cmd, 'should count npx');
+    t.end();
+});
+
 
 test('args: no name', (t) => {
     t.throws(redrun, /name should be string!/, 'should throw when no name');
