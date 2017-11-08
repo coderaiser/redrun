@@ -260,8 +260,8 @@ test('parse a few levels deep', (t) => {
 test('npx', (t) => {
     const cmd = 'npx pug -b src src/pages -o dist';
     const body = redrun('build', {
-        "build": "npx redrun build:html",
-        "build:html": cmd,
+        'build': 'npx redrun build:html',
+        'build:html': cmd,
     });
     
     t.equal(body, cmd, 'should count npx');
