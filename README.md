@@ -67,7 +67,7 @@ hello
 ```
 
 Usually all this steps is slow, becouse every `npm run` it is a new process.
-We use `npm run` for comfort of build tools of yesterday (like `gulp` and `grunt`) but without their weacknesses
+We use `npm run` for comfort of build tools of yesterday (like `gulp` and `grunt`) but without their weaknesses
 (a lot dependencies and plugins management frustrations)
 
 What `redrun` does is expand all this commands into one (which is much faster):
