@@ -2,3 +2,5 @@
 test
 redrun.png
 redrun.ai
+*.md
+!README.md
