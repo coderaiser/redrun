@@ -17,8 +17,9 @@ const first = argv[0];
 
 const Directory = storage();
 const Info = storage();
+const pop = (a) => a[0];
 
-const tryOrExit = squad(exitIfError, tryCatch);
+const tryOrExit = squad(exitIfError, pop, tryCatch);
 const exitIfNotEntry = squad(exitIfError, notEntryError);
 
 let arg;
@@ -75,25 +76,22 @@ function exitIfError(error) {
 }
 
 function getInfo(dir) {
-    let info;
     const infoPath = path.join(dir, 'package.json');
     
-    const error = tryCatch(() => {
-        info = readjson.sync(infoPath);
-        
-        Info(info);
-        Directory(dir);
-    });
+    const result = tryCatch(readjson.sync, infoPath);
+    const error = result[0];
+    const info = result[1];
     
     exitIfNotEntry(infoPath, error);
+    
+    Info(info);
+    Directory(dir);
     
     return info;
 }
 
 function traverseForInfo(cwd) {
-    const result = mapsome((dir) => {
-        return getInfo(dir);
-    }, parentDirs(cwd));
+    const result = mapsome(getInfo, parentDirs(cwd));
     
     exitIfEntryError(result);
     
