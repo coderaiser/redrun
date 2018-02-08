@@ -82,7 +82,6 @@
   "engine": ">=4",
   "dependencies": {
     "all-object-keys": "^1.0.0",
-    "babel-preset-env": "^1.6.1",
     "currify": "^2.0.0",
     "debug": "^3.0.0",
     "envir": "^1.0.0",
@@ -97,6 +96,7 @@
   "devDependencies": {
     "babel-cli": "^6.10.1",
     "babel-plugin-transform-object-assign": "^6.22.0",
+    "babel-preset-env": "^1.6.1",
     "coveralls": "^3.0.0",
     "eslint": "^4.0.0",
     "jscs": "^3.0.1",
