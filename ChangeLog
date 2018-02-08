@@ -1,3 +1,9 @@
+2018.02.08, v5.10.2
+
+fix:
+- (package) babel-preset-env: dependencies -> devDependencies
+
+
 2018.02.08, v5.10.1
 
 feature:
