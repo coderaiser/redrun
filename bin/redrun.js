@@ -4,9 +4,9 @@
 
 const path = require('path');
 const tryCatch = require('try-catch');
-const squad = require('squad');
 const readjson = require('readjson');
 
+const squad = require('squad/legacy');
 const mapsome = require('mapsome/legacy');
 const storage = require('fullstore/legacy');
 
