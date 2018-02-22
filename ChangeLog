@@ -1,3 +1,12 @@
+2018.02.22, v5.10.4
+
+fix:
+- (redrun) npm run script not found: null -> not found
+
+feature:
+- (package) somefilter v2.0.0
+
+
 2018.02.16, v5.10.3
 
 feature:
