@@ -1,3 +1,9 @@
+2018.02.22, v5.10.5
+
+fix:
+- (redrun) somefilter: node v4 support
+
+
 2018.02.22, v5.10.4
 
 fix:
