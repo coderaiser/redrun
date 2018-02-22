@@ -29,7 +29,7 @@ if (!first|| /^(-v|--version|-h|--help)$/.test(first))
     arg = cliParse(argv, {});
 else
     arg = cliParse(argv,  traverseForInfo(cwd).scripts || {});
-
+    
 if (arg.name !== 'run') {
     console.log(arg.output);
 } else {
