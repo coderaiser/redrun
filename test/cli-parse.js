@@ -315,7 +315,6 @@ test('cli-parse: unknown long argument', (t) => {
 });
 
 test('cli-parse: script not found', (t) => {
-    const scriptNotFound = cliParse.scriptNotFound;
     const result = cliParse(['hello'], {
         'hello': 'npm run world'
     });
