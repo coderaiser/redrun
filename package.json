@@ -3,14 +3,6 @@
   "version": "5.10.5",
   "description": "CLI tool to run multiple npm-scripts fast",
   "main": "lib/redrun.js",
-  "babel": {
-    "presets": [
-      "env"
-    ],
-    "plugins": [
-      "transform-object-assign"
-    ]
-  },
   "scripts": {
     "lint": "bin/redrun.js lint:*",
     "speed:npm-run-all": "npm-run-all lint:*",
@@ -32,15 +24,8 @@
     "one": "npm run two",
     "two": "npm run three",
     "three": "echo 'hello'",
-    "6to5:lib": "babel lib -d legacy/lib",
-    "6to5:bin": "babel bin -d legacy/bin",
-    "wisdom": "npm run build",
     "prewisdom": "rm -f package-lock.json",
-    "postpublish": "npm i -g",
-    "build": "redrun 6to5:* legacy:*",
-    "legacy:index": "echo \"module.exports = require('./lib/redrun');\" > legacy/index.js",
-    "legacy:package": "echo \"module.exports = require('../package');\" > legacy/package.js",
-    "legacy:help": "echo \"module.exports = require('../help');\" > legacy/help.js"
+    "postpublish": "npm i -g"
   },
   "repository": {
     "type": "git",
@@ -48,9 +33,7 @@
   },
   "bin": {
     "redrun": "bin/redrun.js",
-    "redrun_": "legacy/bin/redrun.js",
-    "redrun-completion": "bin/redrun-completion.js",
-    "redrun-completion_": "legacy/bin/redrun-completion.js"
+    "redrun-completion": "bin/redrun-completion.js"
   },
   "keywords": [
     "redrun",
@@ -85,6 +68,7 @@
     "fullstore": "^1.0.0",
     "jessy": "^2.0.0",
     "mapsome": "^1.0.0",
+    "parent-dirs": "^1.0.0",
     "readjson": "^1.1.3",
     "somefilter": "^2.0.0",
     "squad": "^2.0.0",
@@ -92,9 +76,6 @@
     "yargs-parser": "^9.0.2"
   },
   "devDependencies": {
-    "babel-cli": "^6.10.1",
-    "babel-plugin-transform-object-assign": "^6.22.0",
-    "babel-preset-env": "^1.6.1",
     "coveralls": "^3.0.0",
     "eslint": "^4.0.0",
     "nodemon": "^1.9.1",

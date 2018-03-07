@@ -9,6 +9,7 @@ const readjson = require('readjson');
 const squad = require('squad/legacy');
 const mapsome = require('mapsome/legacy');
 const storage = require('fullstore/legacy');
+const parentDirs = require('parent-dirs');
 
 const cliParse = require('../lib/cli-parse');
 const cwd = process.cwd();
@@ -113,23 +114,5 @@ function exitIfEntryError(data) {
         const error = Error(`Cannot find module '${infoPath}'`);
         exitIfError(error);
     }
-}
-
-// npm parent-dirs in es2015 only
-function parentDirs(str) {
-    const pth = str || process.cwd();
-    
-    if (pth === '/') {
-        return ['/'];
-    }
-    
-    const parts = pth.split(/[/\\]/);
-    
-    return parts.map((el, i) => {
-        return parts
-            .slice(0, parts.length - i)
-            .join('/')
-            .replace(/^$/, '/');
-    });
 }
 
