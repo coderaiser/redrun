@@ -1,3 +1,10 @@
+2018.03.07, v6.0.0
+
+feature:
+- (redrun) drop support of node < 4, legacy
+- (redrun) add ability to determine infinite loop
+
+
 2018.02.22, v5.10.5
 
 fix:
