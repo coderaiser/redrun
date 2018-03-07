@@ -67,15 +67,30 @@ test('simplest parse: &&', (t) => {
     t.end();
 });
 
-test('infinite loop', (t) => {
-    const fn = () => {
-        redrun('one', {
-            one: 'npm run two',
-            two: 'npm run one'
-        });
-    };
+test('infinite loop: one step', (t) => {
+    const result = redrun('one', {
+        one: 'npm run two',
+        two: 'npm run one'
+    });
     
-    t.throws(fn, /Too deep traverse. Consider reduce scripts deepness./, 'should throw when infinite loop');
+    const expected = 'echo "inifinite loop detected: one: npm run two -> npm run one"';
+    
+    t.equal(result, expected, 'should determine infinite loop');
+    t.end();
+});
+
+test('infinite loop: more steps', (t) => {
+    const result = redrun('one', {
+        one: 'npm run two',
+        two: 'npm run three',
+        three: 'npm run four',
+        four: 'npm run one',
+    });
+    
+    const expected = 'echo "inifinite loop detected: one: npm run two -> npm run three -> npm run four -> npm run one"';
+    
+    
+    t.equal(result, expected, 'should determine infinite loop');
     t.end();
 });
 
