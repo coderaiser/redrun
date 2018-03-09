@@ -73,7 +73,7 @@ test('infinite loop: one step', (t) => {
         two: 'npm run one'
     });
     
-    const expected = 'echo "inifinite loop detected: one: npm run two -> npm run one"';
+    const expected = 'echo "Inifinite loop detected: one: npm run two -> npm run one"';
     
     t.equal(result, expected, 'should determine infinite loop');
     t.end();
@@ -87,8 +87,7 @@ test('infinite loop: more steps', (t) => {
         four: 'npm run one',
     });
     
-    const expected = 'echo "inifinite loop detected: one: npm run two -> npm run three -> npm run four -> npm run one"';
-    
+    const expected = 'echo "Inifinite loop detected: one: npm run two -> npm run three -> npm run four -> npm run one"';
     
     t.equal(result, expected, 'should determine infinite loop');
     t.end();
