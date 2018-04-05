@@ -1,3 +1,10 @@
+2018.04.05, v6.0.2
+
+feature:
+- (package) yargs-parser v10.0.0
+- (package) for-each-key
+
+
 2018.03.09, v6.0.1
 
 fix:
