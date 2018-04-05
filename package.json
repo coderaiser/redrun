@@ -65,6 +65,7 @@
     "currify": "^2.0.0",
     "debug": "^3.0.0",
     "envir": "^1.0.0",
+    "for-each-key": "^1.0.0",
     "fullstore": "^1.0.0",
     "jessy": "^2.0.0",
     "mapsome": "^1.0.0",
