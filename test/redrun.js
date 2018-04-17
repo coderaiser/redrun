@@ -186,6 +186,19 @@ test('parse redrun args: "--": npm run', (t) => {
     t.end();
 });
 
+test('parse redrun args: "--": quotes', (t) => {
+    const expect = 'nodemon -w test -w lib --exec "tape \'lib/**/*.spec.js\'"';
+    const result = redrun('watch:test', {
+        "test": "tape 'lib/**/*.spec.js'",
+        "watch:test": "npm run watcher -- npm test",
+        "watcher": "nodemon -w test -w lib --exec",
+    });
+    
+    t.equal(result, expect, 'should add quotes to arguments');
+    t.end();
+});
+
+
 test('parse redrun args: "--": redrun', (t) => {
     const expect = 'nodemon -w lib --exec "bin/iocmd.js"';
     const result  = redrun('watch:iocmd', {
