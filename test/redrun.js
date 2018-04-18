@@ -186,6 +186,19 @@ test('parse redrun args: "--": npm run', (t) => {
     t.end();
 });
 
+test('parse redrun args: "--": npm run', (t) => {
+    const expect = 'nodemon -w lib --exec \'nyc tape test.js\'';
+    const result = redrun('watch-coverage', {
+        watcher: 'nodemon -w lib --exec',
+        coverage: 'nyc npm test',
+        'watch-coverage': 'npm run watcher -- \'npm run coverage\'',
+        test: 'tape test.js'
+    });
+    
+    t.equal(result, expect, 'should not add quotes when there is one');
+    t.end();
+});
+
 test('parse redrun args: "--": quotes', (t) => {
     const expect = 'nodemon -w test -w lib --exec "tape \'lib/**/*.spec.js\'"';
     const result = redrun('watch:test', {
