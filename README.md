@@ -191,11 +191,11 @@ MIT
 
 [NPMIMGURL]:                https://img.shields.io/npm/v/redrun.svg?style=flat
 [BuildStatusIMGURL]:        https://img.shields.io/travis/coderaiser/redrun/master.svg?style=flat
-[DependencyStatusIMGURL]:   https://img.shields.io/gemnasium/coderaiser/redrun.svg?style=flat
+[DependencyStatusIMGURL]:   https://img.shields.io/david/coderaiser/redrun.svg?style=flat
 [LicenseIMGURL]:            https://img.shields.io/badge/license-MIT-317BF9.svg?style=flat
 [NPMURL]:                   https://npmjs.org/package/redrun "npm"
 [BuildStatusURL]:           https://travis-ci.org/coderaiser/redrun  "Build Status"
-[DependencyStatusURL]:      https://gemnasium.com/coderaiser/redrun "Dependency Status"
+[DependencyStatusURL]:      https://david-dm.org/coderaiser/redrun "Dependency Status"
 [LicenseURL]:               https://tldrlegal.com/license/mit-license "MIT License"
 
 [CoverageURL]:              https://coveralls.io/github/coderaiser/redrun?branch=master
