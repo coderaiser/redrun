@@ -1,3 +1,12 @@
+2018.06.04, v6.0.5
+
+fix:
+- (redrun) one-line infinite loop detect
+
+feature:
+- (package) nyc v12.0.2
+
+
 2018.04.18, v6.0.4
 
 fix:
