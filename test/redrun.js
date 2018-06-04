@@ -67,6 +67,18 @@ test('simplest parse: &&', (t) => {
     t.end();
 });
 
+test('infinite loop', (t) => {
+    const result = redrun('one', {
+        one: 'redrun one',
+    });
+    
+    const expected = 'echo "Inifinite loop detected: one -> one"';
+    
+    t.equal(result, expected);
+    t.end();
+});
+
+
 test('infinite loop: one step', (t) => {
     const result = redrun('one', {
         one: 'npm run two',
