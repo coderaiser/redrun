@@ -1,3 +1,9 @@
+2018.06.07, v6.0.6
+
+feature:
+- (package) debug v3.1.0: regular expression ddos
+
+
 2018.06.04, v6.0.5
 
 fix:
