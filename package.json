@@ -6,7 +6,7 @@
   "scripts": {
     "lint": "bin/redrun.js lint:*",
     "speed:npm-run-all": "npm-run-all lint:*",
-    "lint:eslint-bin": "eslint --rule 'no-console:0' bin",
+    "lint:eslint-bin": "eslint --rule 'no-console:0,no-process-exit:0' bin",
     "lint:eslint-lib": "eslint lib test",
     "redlint-parallel": "bin/redrun.js -p lint:*",
     "speed:npm-run": "npm run lint:eslint-bin && npm run lint:eslint-lib",
@@ -79,6 +79,7 @@
   "devDependencies": {
     "coveralls": "^3.0.0",
     "eslint": "^5.1.0",
+    "eslint-plugin-node": "^7.0.1",
     "nodemon": "^1.9.1",
     "npm-run-all": "^4.0.0",
     "nyc": "^12.0.2",
