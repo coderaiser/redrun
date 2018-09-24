@@ -1,3 +1,12 @@
+2018.09.24, v6.0.7
+
+feature:
+- (package) squad v3.0.0
+- (package) nyc v13.0.1
+- (package) add eslint-plugin-node
+- (package) eslint v5.1.0
+
+
 2018.06.07, v6.0.6
 
 feature:
