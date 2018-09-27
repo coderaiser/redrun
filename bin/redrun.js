@@ -6,9 +6,9 @@ const path = require('path');
 const tryCatch = require('try-catch');
 const readjson = require('readjson');
 
-const squad = require('squad/legacy');
-const mapsome = require('mapsome/legacy');
-const storage = require('fullstore/legacy');
+const squad = require('squad');
+const mapsome = require('mapsome');
+const storage = require('fullstore');
 const parentDirs = require('parent-dirs');
 
 const cliParse = require('../lib/cli-parse');
