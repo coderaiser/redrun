@@ -1,9 +1,10 @@
 language: node_js
 node_js:
-    - 9
+    - 10
     - 8
-    - 7
-    - 6
+
+before_install:
+ - npm i redrun -g
 
 script:
   - npm run lint
