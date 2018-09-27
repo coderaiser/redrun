@@ -1,3 +1,10 @@
+2018.09.27, v7.0.0
+
+feature:
+- (package) debug v4.0.1
+- (redrun) drop support of node < 8
+
+
 2018.09.24, v6.0.7
 
 feature:
