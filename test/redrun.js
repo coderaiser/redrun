@@ -270,7 +270,7 @@ test('parse redrun args: unrecognized', (t) => {
     t.end();
 });
 
-test('parse redrun args with ENV set', (t) => {
+test.only('parse redrun args with ENV set', (t) => {
     const result  = redrun('good', {
         good: 'NODE_ENV=development DEBUG=iocmd* redrun -p t*',
         t1: 'tape test/*.js',
