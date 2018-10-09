@@ -62,7 +62,7 @@
   "engine": ">=8",
   "dependencies": {
     "all-object-keys": "^1.0.0",
-    "currify": "^2.0.0",
+    "currify": "^3.0.0",
     "debug": "^4.0.1",
     "envir": "^1.0.0",
     "for-each-key": "^1.0.0",
@@ -74,7 +74,7 @@
     "somefilter": "^2.0.0",
     "squad": "^3.0.0",
     "try-catch": "^2.0.0",
-    "yargs-parser": "^10.0.0"
+    "yargs-parser": "^11.0.0"
   },
   "devDependencies": {
     "coveralls": "^3.0.0",
