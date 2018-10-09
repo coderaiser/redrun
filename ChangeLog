@@ -1,3 +1,10 @@
+2018.10.09, v7.0.2
+
+fix:
+- (package) back to working yargs-parser v10
+- (redrun) rm console.log
+
+
 2018.10.09, v7.0.1
 
 feature:
