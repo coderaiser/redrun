@@ -1,7 +1,7 @@
 'use strict';
 
 const os = require('os');
-const test = require('tape');
+const test = require('supertape');
 const cliParse = require('../lib/cli-parse');
 
 test('cli-parse: series', (t) => {

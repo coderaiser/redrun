@@ -1,6 +1,6 @@
 'use strict';
 
-const test = require('tape');
+const test = require('supertape');
 const redrun = require('..');
 
 test('simplest parse', (t) => {
@@ -184,7 +184,7 @@ test('parse redrun args: "."', (t) => {
     t.equal(result, 'jscs test/*.js & jshint lib test', 'should parse script test');
     t.end();
 });
-    
+
 test('parse redrun args: "--": npm run', (t) => {
     const expect = 'nodemon -w lib --exec "nyc tape test.js"';
     const result = redrun('watch-coverage', {

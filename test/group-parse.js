@@ -1,6 +1,6 @@
 'use strict';
 
-const test = require('tape');
+const test = require('supertape');
 const groupParse = require('../lib/group-parse');
 
 test('group-parse: serial', (t) => {

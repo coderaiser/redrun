@@ -1,6 +1,6 @@
 # Redrun [![License][LicenseIMGURL]][LicenseURL] [![NPM version][NPMIMGURL]][NPMURL] [![Dependency Status][DependencyStatusIMGURL]][DependencyStatusURL] [![Build Status][BuildStatusIMGURL]][BuildStatusURL] [![Coverage Status][CoverageIMGURL]][CoverageURL]
 
-CLI tool to run multiple npm-scripts fast.
+CLI tool to run multiple npm-scripts fast. Supports madly comfortable [madrun](https://github.com/coderaiser/madrun).
 
 ![Redrun](https://github.com/coderaiser/redrun/raw/master/redrun.png "Redrun")
 

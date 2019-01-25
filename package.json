@@ -4,27 +4,26 @@
   "description": "CLI tool to run multiple npm-scripts fast",
   "main": "lib/redrun.js",
   "scripts": {
+    "fix:lint": "madrun fix:lint",
+    "test": "madrun test",
+    "watch:test": "npm run watcher -- npm test",
+    "watch:coverage": "redrun watch:coverage:base",
+    "watch:lint": "npm run watcher -- redrun lint:eslint*",
+    "coverage": "nyc npm test",
+    "report": "nyc report --reporter=text-lcov | coveralls",
     "lint": "redrun lint:*",
     "speed:npm-run-all": "npm-run-all lint:*",
     "lint:eslint-bin": "eslint --rule 'no-console:0,no-process-exit:0' bin",
     "lint:eslint-lib": "eslint lib test",
     "redlint-parallel": "redrun -p lint:*",
     "speed:npm-run": "npm run lint:eslint-bin && npm run lint:eslint-lib",
-    "test": "tape test/**/*.js",
-    "test:min": "npm test | tap-min",
-    "watch:test": "npm run watcher -- npm test",
     "watch:tape": "nodemon -w test -w lib --exec tape",
     "watch:coverage:base": "npm run watcher -- nyc npm test",
     "watch:coverage:tape": "npm run watcher -- nyc tape",
-    "watch:coverage": "redrun watch:coverage:base",
-    "watch:lint": "npm run watcher -- redrun lint:eslint*",
     "watcher": "nodemon -w test -w lib --exec",
-    "coverage": "nyc npm test",
-    "report": "nyc report --reporter=text-lcov | coveralls",
     "one": "npm run two",
     "two": "npm run three",
     "three": "echo 'hello'",
-    "prewisdom": "rm -f package-lock.json",
     "postpublish": "npm i -g"
   },
   "repository": {
@@ -68,6 +67,7 @@
     "for-each-key": "^1.0.0",
     "fullstore": "^1.0.0",
     "jessy": "^2.0.0",
+    "madrun": "^1.0.1",
     "mapsome": "^1.0.0",
     "parent-dirs": "^1.0.0",
     "readjson": "^1.1.3",
@@ -77,13 +77,14 @@
     "yargs-parser": "^11.1.0"
   },
   "devDependencies": {
+    "@cloudcmd/stub": "^2.3.1",
     "coveralls": "^3.0.0",
     "eslint": "^5.1.0",
     "eslint-plugin-node": "^8.0.0",
+    "mock-require": "^3.0.3",
     "nodemon": "^1.9.1",
     "npm-run-all": "^4.0.0",
     "nyc": "^13.0.1",
-    "tap-min": "^1.1.0",
-    "tape": "^4.5.1"
+    "supertape": "^1.2.1"
   }
 }
