@@ -86,5 +86,8 @@
     "npm-run-all": "^4.0.0",
     "nyc": "^13.0.1",
     "supertape": "^1.2.1"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
