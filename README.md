@@ -185,6 +185,10 @@ sys     0m9.113s
 
 As you see `redrun` much faster and more laconic way of using `npm scripts` then regular solutions.
 
+## Related
+
+- [madrun](https://github.com/coderaiser/madrun) - CLI tool to run multiple npm-scripts in a madly comfortable way.
+
 ## License
 
 MIT
