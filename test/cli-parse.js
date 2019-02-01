@@ -7,14 +7,14 @@ const cliParse = require('../lib/cli-parse');
 test('cli-parse: series', (t) => {
     const result = cliParse(['--series', 'one', 'two'], {
         one: 'ls',
-        two: 'pwd'
+        two: 'pwd',
     });
     
     const expected = {
         name: 'run',
         cmd: 'ls && pwd',
         quiet: false,
-        calm: false
+        calm: false,
     };
     
     t.deepEqual(result, expected, 'should build cmd object');
@@ -25,14 +25,14 @@ test('cli-parse: series', (t) => {
 test('cli-parse: parallel', (t) => {
     const result = cliParse(['--parallel', 'one', 'two'], {
         one: 'ls',
-        two: 'pwd'
+        two: 'pwd',
     });
     
     const expected = {
         name: 'run',
         cmd: 'ls & pwd',
         quiet: false,
-        calm: false
+        calm: false,
     };
     
     t.deepEqual(result, expected, 'should build cmd object');
@@ -43,14 +43,14 @@ test('cli-parse: parallel', (t) => {
 test('cli-parse: parallel --quiet', (t) => {
     const result = cliParse(['--parallel', 'one', 'two', '--quiet'], {
         one: 'ls',
-        two: 'pwd'
+        two: 'pwd',
     });
     
     const expected = {
         name: 'run',
         cmd: 'ls & pwd',
         quiet: true,
-        calm: false
+        calm: false,
     };
     
     t.deepEqual(result, expected, 'should build cmd object');
@@ -62,14 +62,14 @@ test('cli-parse: parallel: before script', (t) => {
     const result = cliParse(['main', '--parallel', 'one', 'two'], {
         one: 'ls',
         two: 'pwd',
-        main: 'echo hi'
+        main: 'echo hi',
     });
     
     const expected = {
         name: 'run',
         cmd: 'echo hi && ls & pwd',
         quiet: false,
-        calm: false
+        calm: false,
     };
     
     t.deepEqual(result, expected, 'should build cmd object');
@@ -82,14 +82,14 @@ test('cli-parse: series and parallel', (t) => {
         one: 'ls',
         two: 'pwd',
         three: 'whoami',
-        four: 'ps aux'
+        four: 'ps aux',
     });
     
     const expected = {
         name: 'run',
         cmd: 'ls && pwd && whoami & ps aux',
         quiet: false,
-        calm: false
+        calm: false,
     };
     
     t.deepEqual(result, expected, 'should build cmd object');
@@ -98,20 +98,20 @@ test('cli-parse: series and parallel', (t) => {
 });
 
 test('cli-parse: series calm: linux', (t) => {
-    const platform = os.platform;
+    const {platform} = os;
     
     os.platform = () => 'linux';
     
     const result = cliParse(['--series-calm', 'one', 'two'], {
         one: 'ls',
-        two: 'pwd'
+        two: 'pwd',
     });
     
     const expected = {
         name: 'run',
         cmd: 'ls || true && pwd || true',
         quiet: false,
-        calm: false
+        calm: false,
     };
     
     t.deepEqual(result, expected, 'should build cmd object with "true"');
@@ -122,20 +122,20 @@ test('cli-parse: series calm: linux', (t) => {
 });
 
 test('cli-parse: parallel calm: windows', (t) => {
-    const platform = os.platform;
+    const {platform} = os;
     
     os.platform = () => 'win32';
     
     const result = cliParse(['--parallel-calm', 'one', 'two'], {
         one: 'ls',
-        two: 'pwd'
+        two: 'pwd',
     });
     
     const expected = {
         name: 'run',
         cmd: 'ls || (exit 0) & pwd || (exit 0)',
         quiet: false,
-        calm: false
+        calm: false,
     };
     
     t.deepEqual(result, expected, 'should build cmd object with "exit 0"');
@@ -146,20 +146,20 @@ test('cli-parse: parallel calm: windows', (t) => {
 });
 
 test('cli-parse: --calm: linux', (t) => {
-    const platform = os.platform;
+    const {platform} = os;
     
     os.platform = () => 'linux';
     
     const result = cliParse(['--calm', 'one', 'two'], {
         one: 'ls',
-        two: 'pwd'
+        two: 'pwd',
     });
     
     const expected = {
         name: 'run',
         cmd: 'ls || true && pwd || true',
         quiet: false,
-        calm: true
+        calm: true,
     };
     
     t.deepEqual(result, expected, 'should build cmd object with "exit 0"');
@@ -209,14 +209,14 @@ test('cli-parse: scripts arguments: *', (t) => {
 test('cli-parse: scripts arguments: parallel', (t) => {
     const result = cliParse(['o*', '--', '--parallel', 'three', 'four'], {
         one: 'ls',
-        on: 'who'
+        on: 'who',
     });
     
     const expected = {
         name: 'run',
         cmd: 'ls --parallel three four && who --parallel three four',
         quiet: false,
-        calm: false
+        calm: false,
     };
     
     t.deepEqual(result, expected, 'should build cmd object that contains arguments');
@@ -231,7 +231,7 @@ test('cli-parse: --version', (t) => {
     
     const expected = {
         name: 'version',
-        output: version
+        output: version,
     };
     
     t.deepEqual(result, expected, 'should return object with name, output and cmd');
@@ -246,7 +246,7 @@ test('cli-parse: -v', (t) => {
     
     const expected = {
         name: 'version',
-        output: version
+        output: version,
     };
     
     t.deepEqual(result, expected, 'should return object with name, output and cmd');
@@ -261,7 +261,7 @@ test('cli-parse: --help', (t) => {
     
     const expected = {
         name: 'help',
-        output: help
+        output: help,
     };
     
     t.deepEqual(result, expected, 'should return object with name, output and cmd');
@@ -276,7 +276,7 @@ test('cli-parse: -h', (t) => {
     
     const expected = {
         name: 'help',
-        output: help
+        output: help,
     };
     
     t.deepEqual(result, expected, 'should return object with name, output and cmd');
@@ -285,13 +285,13 @@ test('cli-parse: -h', (t) => {
 });
 
 test('cli-parse: unknown short argument', (t) => {
-    const unknown = cliParse.unknown;
+    const {unknown} = cliParse;
     const result = cliParse(['-w'], {
     });
     
     const expected = {
         name: 'unknown',
-        output: unknown('w')
+        output: unknown('w'),
     };
     
     t.deepEqual(result, expected, 'should return object with name, output and cmd');
@@ -300,13 +300,13 @@ test('cli-parse: unknown short argument', (t) => {
 });
 
 test('cli-parse: unknown long argument', (t) => {
-    const unknown = cliParse.unknown;
+    const {unknown} = cliParse;
     const result = cliParse(['--world'], {
     });
     
     const expected = {
         name: 'unknown',
-        output: unknown('world')
+        output: unknown('world'),
     };
     
     t.deepEqual(result, expected, 'should return object with name, output and cmd');
@@ -316,7 +316,7 @@ test('cli-parse: unknown long argument', (t) => {
 
 test('cli-parse: script not found', (t) => {
     const result = cliParse(['hello'], {
-        'hello': 'npm run world'
+        'hello': 'npm run world',
     });
     
     const expected = {
@@ -333,14 +333,14 @@ test('cli-parse: script not found', (t) => {
 test('cli-parse: deep script not found', (t) => {
     const result = cliParse(['docker'], {
         docker: 'redrun docker:pull:node docker:build docker:push',
-        'docker:pull:node': 'echo "docker pull node"'
+        'docker:pull:node': 'echo "docker pull node"',
     });
     
     const expected = {
         calm: false,
         cmd: 'echo One of scripts not found: docker:pull:node docker:build docker:push',
         name: 'run',
-        quiet: false
+        quiet: false,
     };
     
     t.deepEqual(result, expected, 'should return object with name and output');
@@ -353,14 +353,14 @@ test('cli-parse: deep scripts are empty', (t) => {
         docker: 'redrun docker:pull:node docker:build docker:push',
         'docker:pull:node': 'echo "docker pull node"',
         'docker:build': '',
-        'docker:push': ''
+        'docker:push': '',
     });
     
     const expected = {
         calm: false,
         cmd: 'echo "docker pull node"',
         name: 'run',
-        quiet: false
+        quiet: false,
     };
     
     t.deepEqual(result, expected, 'should return object with name and output');

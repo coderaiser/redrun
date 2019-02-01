@@ -2,7 +2,7 @@
 
 const {
     run,
-    parallel
+    parallel,
 } = require('madrun');
 
 module.exports = {
@@ -27,6 +27,6 @@ module.exports = {
     'watcher': () => 'nodemon -w test -w lib --exec',
     'coverage': () => `nyc ${run('test')}`,
     'report': () => 'nyc report --reporter=text-lcov | coveralls',
-    'postpublish': () => 'npm i -g'
+    'postpublish': () => 'npm i -g',
 };
 

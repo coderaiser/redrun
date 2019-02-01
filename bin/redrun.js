@@ -30,7 +30,7 @@ if (!first|| /^(-v|--version|-h|--help)$/.test(first))
     arg = cliParse(argv, {});
 else
     arg = cliParse(argv,  traverseForInfo(cwd).scripts || {});
-    
+
 if (arg.name !== 'run') {
     console.log(arg.output);
 } else {
@@ -44,13 +44,13 @@ if (arg.name !== 'run') {
 }
 
 function execute(cmd) {
-    const execSync = require('child_process').execSync;
+    const {execSync} = require('child_process');
     
     tryOrExit(() => {
         execSync(cmd, {
             stdio: [0, 1, 2, 'pipe'],
             env: getEnv(),
-            cwd: Directory()
+            cwd: Directory(),
         });
     });
 }
@@ -61,7 +61,7 @@ function getEnv() {
     const dir = Directory();
     const info = Info();
     
-    const PATH = process.env.PATH;
+    const {PATH} = process.env;
     const env = envir(PATH, dir, info);
     
     return Object.assign({}, process.env, env);
@@ -101,7 +101,7 @@ function traverseForInfo(cwd) {
 
 function notEntryError(path, error) {
     if (error && error.code !== 'ENOENT') {
-        const message = error.message;
+        const {message} = error;
         error.message = `${path}: ${message}`;
         
         return error;

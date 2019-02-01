@@ -6,7 +6,7 @@ const redrun = require('..');
 test('simplest parse', (t) => {
     const cmd     = 'echo "hello world"';
     const result  = redrun('two', {
-        two: cmd
+        two: cmd,
     });
     
     t.equal(result, cmd, 'should return cmd');
@@ -16,7 +16,7 @@ test('simplest parse', (t) => {
 test('simplest parse: name with "."', (t) => {
     const cmd = 'bin/redrun.js lint*';
     const result = redrun('two', {
-        two: cmd
+        two: cmd,
     });
     
     t.equal(result, cmd, 'should return cmd');
@@ -38,7 +38,7 @@ test('simplest parse: name with "-"', (t) => {
 test('simplest parse: "npm install"', (t) => {
     const cmd = 'npm install';
     const result = redrun('two', {
-        two: cmd
+        two: cmd,
     });
     
     t.equal(result, cmd, 'should return cmd');
@@ -48,7 +48,7 @@ test('simplest parse: "npm install"', (t) => {
 test('simplest parse: "--"', (t) => {
     const cmd = 'echo -- --hello';
     const result = redrun('echo--', {
-        'echo--': cmd
+        'echo--': cmd,
     });
     
     t.equal(result, cmd, 'should return cmd');
@@ -60,7 +60,7 @@ test('simplest parse: &&', (t) => {
     const result = redrun('run', {
         run: 'redrun watch:iocmd && pwd',
         watcher: 'nodemon --exec',
-        'watch:iocmd': 'npm run watcher -- bin/iocmd.js'
+        'watch:iocmd': 'npm run watcher -- bin/iocmd.js',
     });
     
     t.equal(result, cmd, 'should return cmd');
@@ -78,11 +78,10 @@ test('infinite loop', (t) => {
     t.end();
 });
 
-
 test('infinite loop: one step', (t) => {
     const result = redrun('one', {
         one: 'npm run two',
-        two: 'npm run one'
+        two: 'npm run one',
     });
     
     const expected = 'echo "Inifinite loop detected: one: npm run two -> npm run one"';
@@ -108,7 +107,7 @@ test('infinite loop: more steps', (t) => {
 test('similar name', (t) => {
     const cmd = 'redrun.js two';
     const result = redrun('one', {
-        one: 'redrun.js two'
+        one: 'redrun.js two',
     });
     
     t.equal(result, cmd, 'should not try to parse similar name');
@@ -119,7 +118,7 @@ test('parse one level deep', (t) => {
     const cmd = 'echo "hello world"';
     const result = redrun('one', {
         one: 'npm run two',
-        two: cmd
+        two: cmd,
     });
     
     t.equal(result, cmd, 'should parse command one leve deep');
@@ -130,7 +129,7 @@ test('parse arguments', (t) => {
     const cmd = 'git "--version"';
     const result = redrun('one', {
         one: 'npm run two -- --version',
-        two: 'git'
+        two: 'git',
     });
     
     t.equal(result, cmd, 'should parse command one leve deep');
@@ -142,7 +141,7 @@ test('parse reserved names: npm test', (t) => {
     const result = redrun('one', {
         one: 'npm run two',
         two: 'npm test',
-        test: cmd
+        test: cmd,
     });
     
     t.equal(result, cmd, 'should parse script test');
@@ -154,7 +153,7 @@ test('parse redrun args', (t) => {
         one: 'npm run two',
         two: 'redrun --parallel test lint',
         test: 'tape test/*.js',
-        lint: 'jshint lib test'
+        lint: 'jshint lib test',
     });
     
     t.equal(result, 'tape test/*.js & jshint lib test', 'should parse script test');
@@ -166,7 +165,7 @@ test('parse redrun args: "*"', (t) => {
         one: 'npm run two',
         two: 'redrun --parallel lint*',
         'lint:jscs': 'jscs test/*.js',
-        'lint:jshint': 'jshint lib test'
+        'lint:jshint': 'jshint lib test',
     });
     
     t.equal(result, 'jscs test/*.js & jshint lib test', 'should parse script test');
@@ -178,7 +177,7 @@ test('parse redrun args: "."', (t) => {
         'one.start': 'npm run two',
         two: 'redrun --parallel lint*',
         'lint:jscs': 'jscs test/*.js',
-        'lint:jshint': 'jshint lib test'
+        'lint:jshint': 'jshint lib test',
     });
     
     t.equal(result, 'jscs test/*.js & jshint lib test', 'should parse script test');
@@ -191,7 +190,7 @@ test('parse redrun args: "--": npm run', (t) => {
         watcher: 'nodemon -w lib --exec',
         coverage: 'nyc npm test',
         'watch-coverage': 'npm run watcher -- "npm run coverage"',
-        test: 'tape test.js'
+        test: 'tape test.js',
     });
     
     t.equal(result, expect, 'should add quotes to arguments');
@@ -204,7 +203,7 @@ test('parse redrun args: "--": npm run', (t) => {
         watcher: 'nodemon -w lib --exec',
         coverage: 'nyc npm test',
         'watch-coverage': 'npm run watcher -- \'npm run coverage\'',
-        test: 'tape test.js'
+        test: 'tape test.js',
     });
     
     t.equal(result, expect, 'should not add quotes when there is one');
@@ -214,15 +213,14 @@ test('parse redrun args: "--": npm run', (t) => {
 test('parse redrun args: "--": quotes', (t) => {
     const expect = 'nodemon -w test -w lib --exec "tape \'lib/**/*.spec.js\'"';
     const result = redrun('watch:test', {
-        "test": "tape 'lib/**/*.spec.js'",
-        "watch:test": "npm run watcher -- npm test",
-        "watcher": "nodemon -w test -w lib --exec",
+        'test': 'tape \'lib/**/*.spec.js\'',
+        'watch:test': 'npm run watcher -- npm test',
+        'watcher': 'nodemon -w test -w lib --exec',
     });
     
     t.equal(result, expect, 'should add quotes to arguments');
     t.end();
 });
-
 
 test('parse redrun args: "--": redrun', (t) => {
     const expect = 'nodemon -w lib --exec "bin/iocmd.js"';
@@ -240,7 +238,7 @@ test('parse redrun args: "--": deep npm run', (t) => {
     const result  = redrun('echo:*', {
         'echo': 'echo',
         'echo:es5': 'npm run echo -- "es5"',
-        'echo:es6': 'npm run echo -- "es6"'
+        'echo:es6': 'npm run echo -- "es6"',
     });
     
     t.equal(result, expect, 'should add quotes to arguments');
@@ -263,7 +261,7 @@ test('parse redrun args: unrecognized', (t) => {
     const result  = redrun('one', {
         one: 'npm run two',
         two: 'redrun hello --fix',
-        hello: 'echo'
+        hello: 'echo',
     });
     
     t.equal(result, 'echo --fix is not a redrun option. See \'redrun  --help\'', 'should return error');
@@ -274,7 +272,7 @@ test('parse redrun args with ENV set', (t) => {
     const result  = redrun('good', {
         good: 'NODE_ENV=development DEBUG=iocmd* redrun -p t*',
         t1: 'tape test/*.js',
-        t2: 'jshint lib test'
+        t2: 'jshint lib test',
     });
     
     t.equal(result, 'NODE_ENV=development DEBUG=iocmd* tape test/*.js & jshint lib test', 'should parse script test');
@@ -287,7 +285,7 @@ test('parse a few redrun scripts', (t) => {
         two: 'redrun four five',
         three: 'echo \'hello\'',
         four: 'jshint lib',
-        five: 'jscs test'
+        five: 'jscs test',
     });
     
     t.equal(result, 'jshint lib && jscs test & echo \'hello\'', 'should parse script test');
@@ -302,7 +300,7 @@ test('parse a few levels deep', (t) => {
         three: 'npm run four',
         four: 'npm run five',
         five: 'npm run six',
-        six: cmd
+        six: cmd,
     });
     
     t.equal(result, cmd, 'should parse command a few levels deep');
@@ -319,7 +317,6 @@ test('npx', (t) => {
     t.equal(body, cmd, 'should count npx');
     t.end();
 });
-
 
 test('args: no name', (t) => {
     t.throws(redrun, /name should be string!/, 'should throw when no name');

@@ -7,7 +7,7 @@ test('get-body: should get script content', (t) => {
     const cmd = 'jshint lib/*.js';
     
     const body = getBody('lint', {
-        lint: cmd
+        lint: cmd,
     });
     
     t.equal(body, cmd, 'should body be equal to script content');
@@ -19,7 +19,7 @@ test('get-body: should get script content: name with "."', (t) => {
     const cmd = 'jshint lib/*.js';
     
     const body = getBody('lint.one', {
-        'lint.one': cmd
+        'lint.one': cmd,
     });
     
     t.equal(body, cmd, 'should body be equal to script content');
@@ -31,7 +31,7 @@ test('get-body: should get script content when name contains args', (t) => {
     const cmd = 'jshint --version';
     
     const body = getBody('lint --version', {
-        lint: 'jshint'
+        lint: 'jshint',
     });
     
     t.equal(body, cmd, 'should body be equal to script content + args');
@@ -43,7 +43,7 @@ test('get-body: pre + post + args', (t) => {
     const body = getBody('lint --version', {
         lint: 'jshint',
         prelint: 'pre',
-        postlint: 'post'
+        postlint: 'post',
     });
     
     t.equal(body, 'pre && jshint --version && post', 'should body be equal to script content + args');
@@ -55,7 +55,7 @@ test('get-body: pre + post + args: regexp', (t) => {
     const body = getBody('lint:*', {
         'lint:jshint': 'jshint lib/*.js',
         'lint:jscs': 'jscs lib/*.js',
-        'lint:eslint': 'eslint lib/*.js'
+        'lint:eslint': 'eslint lib/*.js',
     });
     
     t.equal(body, 'jshint lib/*.js && jscs lib/*.js && eslint lib/*.js', 'should body be equal to script content + args');
@@ -80,7 +80,7 @@ test('get-body: args: parallel', (t) => {
     const body = getBody('lint:*', {parallel: true}, {
         'lint:jshint': 'jshint lib/*.js',
         'lint:jscs': 'jscs lib/*.js',
-        'lint:eslint': 'eslint lib/*.js'
+        'lint:eslint': 'eslint lib/*.js',
     });
     
     t.equal(body, 'jshint lib/*.js & jscs lib/*.js & eslint lib/*.js', 'should body be equal to script content + args');
