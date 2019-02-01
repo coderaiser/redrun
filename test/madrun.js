@@ -26,3 +26,14 @@ test('redrun: madrun', (t) => {
     t.end();
 });
 
+test.only('redrun: madrun.js', (t) => {
+    const redrun = reRequire('..');
+    
+    const result = redrun('lint', {
+        'lint': 'bin/madrun.js lint'
+    });
+    
+    t.equal(result, 'bin/madrun.js lint', 'should equal');
+    t.end();
+});
+
