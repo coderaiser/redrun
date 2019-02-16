@@ -4,8 +4,8 @@ const test = require('supertape');
 const redrun = require('..');
 
 test('simplest parse', (t) => {
-    const cmd     = 'echo "hello world"';
-    const result  = redrun('two', {
+    const cmd = 'echo "hello world"';
+    const result = redrun('two', {
         two: cmd,
     });
     
@@ -149,7 +149,7 @@ test('parse reserved names: npm test', (t) => {
 });
 
 test('parse redrun args', (t) => {
-    const result  = redrun('one', {
+    const result = redrun('one', {
         one: 'npm run two',
         two: 'redrun --parallel test lint',
         test: 'tape test/*.js',
@@ -161,7 +161,7 @@ test('parse redrun args', (t) => {
 });
 
 test('parse redrun args: "*"', (t) => {
-    const result  = redrun('one', {
+    const result = redrun('one', {
         one: 'npm run two',
         two: 'redrun --parallel lint*',
         'lint:jscs': 'jscs test/*.js',
@@ -173,7 +173,7 @@ test('parse redrun args: "*"', (t) => {
 });
 
 test('parse redrun args: "."', (t) => {
-    const result  = redrun('one.start', {
+    const result = redrun('one.start', {
         'one.start': 'npm run two',
         two: 'redrun --parallel lint*',
         'lint:jscs': 'jscs test/*.js',
@@ -224,7 +224,7 @@ test('parse redrun args: "--": quotes', (t) => {
 
 test('parse redrun args: "--": redrun', (t) => {
     const expect = 'nodemon -w lib --exec "bin/iocmd.js"';
-    const result  = redrun('watch:iocmd', {
+    const result = redrun('watch:iocmd', {
         'watch:iocmd': 'redrun watcher -- bin/iocmd.js',
         'watcher': 'nodemon -w lib --exec',
     });
@@ -235,7 +235,7 @@ test('parse redrun args: "--": redrun', (t) => {
 
 test('parse redrun args: "--": deep npm run', (t) => {
     const expect = 'echo "es5" && echo "es6"';
-    const result  = redrun('echo:*', {
+    const result = redrun('echo:*', {
         'echo': 'echo',
         'echo:es5': 'npm run echo -- "es5"',
         'echo:es6': 'npm run echo -- "es6"',
@@ -247,7 +247,7 @@ test('parse redrun args: "--": deep npm run', (t) => {
 
 test('parse redrun args: "--": should not quote "--"', (t) => {
     const expect = 'browserify -s nessy "src/nessy.js" "-o" "dist/nessy.es6.js"';
-    const result  = redrun('es6', {
+    const result = redrun('es6', {
         'bundle': 'browserify -s nessy',
         'es6:base': 'npm run bundle -- src/nessy.js',
         'es6': 'npm run es6:base -- -o dist/nessy.es6.js',
@@ -258,7 +258,7 @@ test('parse redrun args: "--": should not quote "--"', (t) => {
 });
 
 test('parse redrun args: unrecognized', (t) => {
-    const result  = redrun('one', {
+    const result = redrun('one', {
         one: 'npm run two',
         two: 'redrun hello --fix',
         hello: 'echo',
@@ -269,7 +269,7 @@ test('parse redrun args: unrecognized', (t) => {
 });
 
 test('parse redrun args with ENV set', (t) => {
-    const result  = redrun('good', {
+    const result = redrun('good', {
         good: 'NODE_ENV=development DEBUG=iocmd* redrun -p t*',
         t1: 'tape test/*.js',
         t2: 'jshint lib test',
@@ -280,7 +280,7 @@ test('parse redrun args with ENV set', (t) => {
 });
 
 test('parse a few redrun scripts', (t) => {
-    const result  = redrun('one', {
+    const result = redrun('one', {
         one: 'redrun -p two three',
         two: 'redrun four five',
         three: 'echo \'hello\'',

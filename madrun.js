@@ -3,17 +3,17 @@
 const {
     run,
     parallel,
+    series,
 } = require('madrun');
 
 module.exports = {
-    'lint': () => parallel('lint:*'),
-    'lint:eslint-bin': () => `eslint --rule 'no-console:0,no-process-exit:0' bin`,
-    'lint:eslint-lib': () => 'eslint lib test',
-    'lint:eslint-dot': () => `eslint --ignore-pattern '!.madrun.js' .madrun.js`,
-    'lint:putout': () => 'putout bin lib test .madrun.js',
+    'lint': () => series(['putout', 'lint:*']),
+    'lint:bin': () => `eslint --rule 'no-console:0,no-process-exit:0' bin`,
+    'lint:lib': () => 'eslint lib test madrun.js',
+    'putout': () => 'putout bin lib test madrun.js',
     'fix:lint': () => {
-        const putout = run('lint:putout', '--fix');
-        const eslint = parallel('lint:e*', '--fix');
+        const putout = run('putout', '--fix');
+        const eslint = parallel('lint:*', '--fix');
         
         return `${putout} && ${eslint}`;
     },

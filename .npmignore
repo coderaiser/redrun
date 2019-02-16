@@ -4,6 +4,7 @@ redrun.png
 redrun.ai
 *.md
 !README.md
+madrun.js
 
 yarn-error.log
 
