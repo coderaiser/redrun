@@ -14,7 +14,7 @@ const parentDirs = require('parent-dirs');
 const cliParse = require('../lib/cli-parse');
 const cwd = process.cwd();
 const argv = process.argv.slice(2);
-const first = argv[0];
+const [first] = argv;
 
 const Directory = storage();
 const Info = storage();
@@ -80,7 +80,7 @@ function getInfo(dir) {
     const infoPath = path.join(dir, 'package.json');
     
     const result = tryCatch(readjson.sync, infoPath);
-    const error = result[0];
+    const [error] = result;
     const info = result[1];
     
     exitIfNotEntry(infoPath, error);
