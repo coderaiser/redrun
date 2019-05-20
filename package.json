@@ -55,7 +55,9 @@
   },
   "homepage": "https://github.com/coderaiser/redrun",
   "license": "MIT",
-  "engine": ">=8",
+  "engines": {
+    "node": ">=8.3.0"
+  },
   "dependencies": {
     "all-object-keys": "^1.0.0",
     "currify": "^3.0.0",

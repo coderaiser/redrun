@@ -64,7 +64,10 @@ function getEnv() {
     const {PATH} = process.env;
     const env = envir(PATH, dir, info);
     
-    return Object.assign({}, process.env, env);
+    return {
+        ...process.env,
+        ...env,
+    };
 }
 
 function exitIfError(error) {
