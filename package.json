@@ -77,7 +77,7 @@
     "@cloudcmd/stub": "^2.3.1",
     "coveralls": "^3.0.0",
     "eslint": "^5.1.0",
-    "eslint-plugin-node": "^8.0.0",
+    "eslint-plugin-node": "^9.0.1",
     "eslint-plugin-putout": "^1.0.2",
     "mock-require": "^3.0.3",
     "nodemon": "^1.9.1",
