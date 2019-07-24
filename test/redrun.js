@@ -58,8 +58,8 @@ test('simplest parse: "--"', (t) => {
 test('simplest parse: &&', (t) => {
     const cmd = 'nodemon --exec "bin/iocmd.js" && pwd';
     const result = redrun('run', {
-        run: 'redrun watch:iocmd && pwd',
-        watcher: 'nodemon --exec',
+        'run': 'redrun watch:iocmd && pwd',
+        'watcher': 'nodemon --exec',
         'watch:iocmd': 'npm run watcher -- bin/iocmd.js',
     });
     
@@ -162,8 +162,8 @@ test('parse redrun args', (t) => {
 
 test('parse redrun args: "*"', (t) => {
     const result = redrun('one', {
-        one: 'npm run two',
-        two: 'redrun --parallel lint*',
+        'one': 'npm run two',
+        'two': 'redrun --parallel lint*',
         'lint:jscs': 'jscs test/*.js',
         'lint:jshint': 'jshint lib test',
     });
@@ -175,7 +175,7 @@ test('parse redrun args: "*"', (t) => {
 test('parse redrun args: "."', (t) => {
     const result = redrun('one.start', {
         'one.start': 'npm run two',
-        two: 'redrun --parallel lint*',
+        'two': 'redrun --parallel lint*',
         'lint:jscs': 'jscs test/*.js',
         'lint:jshint': 'jshint lib test',
     });
@@ -187,10 +187,10 @@ test('parse redrun args: "."', (t) => {
 test('parse redrun args: "--": npm run', (t) => {
     const expect = 'nodemon -w lib --exec "nyc tape test.js"';
     const result = redrun('watch-coverage', {
-        watcher: 'nodemon -w lib --exec',
-        coverage: 'nyc npm test',
+        'watcher': 'nodemon -w lib --exec',
+        'coverage': 'nyc npm test',
         'watch-coverage': 'npm run watcher -- "npm run coverage"',
-        test: 'tape test.js',
+        'test': 'tape test.js',
     });
     
     t.equal(result, expect, 'should add quotes to arguments');
@@ -200,10 +200,10 @@ test('parse redrun args: "--": npm run', (t) => {
 test('parse redrun args: "--": npm run', (t) => {
     const expect = 'nodemon -w lib --exec \'nyc tape test.js\'';
     const result = redrun('watch-coverage', {
-        watcher: 'nodemon -w lib --exec',
-        coverage: 'nyc npm test',
+        'watcher': 'nodemon -w lib --exec',
+        'coverage': 'nyc npm test',
         'watch-coverage': 'npm run watcher -- \'npm run coverage\'',
-        test: 'tape test.js',
+        'test': 'tape test.js',
     });
     
     t.equal(result, expect, 'should not add quotes when there is one');
