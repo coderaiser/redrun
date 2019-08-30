@@ -4,8 +4,7 @@ const {run} = require('madrun');
 
 module.exports = {
     'lint:bin': () => `eslint --rule 'no-console:0,no-process-exit:0' bin`,
-    'lint': () => 'eslint lib test madrun.js',
-    'putout': () => 'putout bin lib test madrun.js',
+    'lint': () => 'putout bin lib test madrun.js',
     'fix:lint': () => run('lint', '--fix'),
     'test': () => 'tape test/**/*.js',
     'watch:test': () => run('watcher', run('test')),
