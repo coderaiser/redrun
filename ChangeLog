@@ -1,3 +1,15 @@
+2019.08.30, v7.1.6
+
+feature:
+- (package) madrun v3.0.1
+- (package) putout v5.10.2
+- (package) eslint-plugin-putout v2.0.0
+- (package) eslint v6.1.0
+- (package) eslint-plugin-node v9.0.1
+- (package) nyc v14.1.1
+- (package) putout v4.2.2
+
+
 2019.02.15, v7.1.5
 
 feature:
