@@ -1,3 +1,10 @@
+2019.09.07, v7.1.7
+
+feature:
+- (package) yargs-parser v14.0.0
+- (package) eslint-plugin-node v10.0.0
+
+
 2019.08.30, v7.1.6
 
 feature:
