@@ -3,7 +3,6 @@
 const {run} = require('madrun');
 
 module.exports = {
-    'lint:bin': () => `eslint --rule 'no-console:0,no-process-exit:0' bin`,
     'lint': () => 'putout bin lib test madrun.js',
     'fix:lint': () => run('lint', '--fix'),
     'test': () => 'tape test/**/*.js',
@@ -12,7 +11,6 @@ module.exports = {
     'watch:coverage:base': () => run('watcher', `nyc ${run('test')}`),
     'watch:coverage:tape': () => run('watcher', 'nyc tape'),
     'watch:coverage': () => run('watch:coverage:base'),
-    'watch:lint': () => run('watcher', run('lint:eslint*')),
     'watcher': () => 'nodemon -w test -w lib --exec',
     'coverage': () => `nyc ${run('test')}`,
     'report': () => 'nyc report --reporter=text-lcov | coveralls',
