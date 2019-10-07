@@ -225,13 +225,13 @@ test('cli-parse: scripts arguments: parallel', (t) => {
 });
 
 test('cli-parse: --version', (t) => {
-    const version = cliParse.version();
+    const output = cliParse.version();
     const result = cliParse(['--version'], {
     });
     
     const expected = {
         name: 'version',
-        output: version,
+        output,
     };
     
     t.deepEqual(result, expected, 'should return object with name, output and cmd');
@@ -240,13 +240,13 @@ test('cli-parse: --version', (t) => {
 });
 
 test('cli-parse: -v', (t) => {
-    const version = cliParse.version();
+    const output = cliParse.version();
     const result = cliParse(['-v'], {
     });
     
     const expected = {
         name: 'version',
-        output: version,
+        output,
     };
     
     t.deepEqual(result, expected, 'should return object with name, output and cmd');
@@ -255,13 +255,13 @@ test('cli-parse: -v', (t) => {
 });
 
 test('cli-parse: --help', (t) => {
-    const help = cliParse.help();
+    const output = cliParse.help();
     const result = cliParse(['--help'], {
     });
     
     const expected = {
         name: 'help',
-        output: help,
+        output,
     };
     
     t.deepEqual(result, expected, 'should return object with name, output and cmd');
@@ -270,13 +270,13 @@ test('cli-parse: --help', (t) => {
 });
 
 test('cli-parse: -h', (t) => {
-    const help = cliParse.help();
+    const output = cliParse.help();
     const result = cliParse(['-h'], {
     });
     
     const expected = {
         name: 'help',
-        output: help,
+        output,
     };
     
     t.deepEqual(result, expected, 'should return object with name, output and cmd');
