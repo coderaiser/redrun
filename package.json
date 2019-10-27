@@ -67,7 +67,7 @@
     "somefilter": "^3.0.0",
     "squad": "^3.0.0",
     "try-catch": "^2.0.0",
-    "yargs-parser": "^15.0.0"
+    "yargs-parser": "^16.0.0"
   },
   "devDependencies": {
     "@cloudcmd/stub": "^2.3.1",
