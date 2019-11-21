@@ -1,3 +1,10 @@
+2019.11.21, v7.1.13
+
+feature:
+- (package) rm unused all-object-keys
+- (package) nodemon v2.0.0
+
+
 2019.11.06, v7.1.12
 
 feature:
