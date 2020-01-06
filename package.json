@@ -76,7 +76,7 @@
     "mock-require": "^3.0.3",
     "nodemon": "^2.0.0",
     "npm-run-all": "^4.0.0",
-    "nyc": "^14.1.1",
+    "nyc": "^15.0.0",
     "putout": "^7.0.0",
     "supertape": "^1.2.1"
   },
