@@ -1,3 +1,11 @@
+2020.02.10, v7.1.17
+
+feature:
+- (package) yargs-parser v17.0.0
+- (package) eslint-plugin-node v11.0.0
+- (package) nyc v15.0.0
+
+
 2019.12.21, v7.1.16
 
 feature:
