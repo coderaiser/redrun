@@ -64,7 +64,7 @@
     "readjson": "^1.1.3",
     "somefilter": "^3.0.0",
     "squad": "^3.0.0",
-    "try-catch": "^2.0.0",
+    "try-catch": "^3.0.0",
     "yargs-parser": "^17.0.0"
   },
   "devDependencies": {
