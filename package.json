@@ -50,7 +50,7 @@
   "homepage": "https://github.com/coderaiser/redrun",
   "license": "MIT",
   "engines": {
-    "node": ">=8.3.0"
+    "node": ">=10"
   },
   "dependencies": {
     "currify": "^4.0.0",
