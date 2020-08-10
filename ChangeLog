@@ -1,3 +1,12 @@
+2020.08.10, v8.0.2
+
+fix:
+- (redrun) replace: madrun: rm useless code
+
+feature:
+- (package) yargs-parser v19.0.1
+
+
 2020.06.26, v8.0.1
 
 feature:
