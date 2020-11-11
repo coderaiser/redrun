@@ -27,8 +27,7 @@ Options:
 
 # Completion
 
-You can enable tab-completion of npm scripts similar to [npm's completion](
-https://docs.npmjs.com/cli/completion) using:
+You can enable tab-completion of npm scripts similar to [npm's completion](https://docs.npmjs.com/cli/completion) using:
 
 ```sh
 redrun-completion >> ~/.bashrc
@@ -88,23 +87,24 @@ const redrun = require('redrun');
 redrun('one', {
     one: 'npm run two',
     two: 'npm run three',
-    three: 'echo \'hello\''
+    three: 'echo \'hello\'',
 });
 // returns
-"echo 'hello'"
+"echo 'hello'";
 
 redrun('one', {
     one: 'redrun -p two three',
     two: 'redrun four five',
     three: 'echo \'hello\'',
     four: 'jshint lib',
-    five: 'jscs test'
+    five: 'jscs test',
 });
 // returns
-"jshint lib && jscs test & echo 'hello'"
+"jshint lib && jscs test & echo 'hello'";
 ```
 
 ## Speed comparison
+
 The less spend time is better:
 
 - `npm-run-all`: 1m12.570s
@@ -114,6 +114,7 @@ The less spend time is better:
 Here are logs:
 
 ### npm-run-all:
+
 ```sh
 coderaiser@cloudcmd:~/redrun$ time npm run speed:npm-run-all
 
@@ -193,15 +194,13 @@ As you see `redrun` much faster and more laconic way of using `npm scripts` then
 
 MIT
 
-[NPMIMGURL]:                https://img.shields.io/npm/v/redrun.svg?style=flat
-[BuildStatusIMGURL]:        https://img.shields.io/travis/coderaiser/redrun/master.svg?style=flat
-[DependencyStatusIMGURL]:   https://img.shields.io/david/coderaiser/redrun.svg?style=flat
-[LicenseIMGURL]:            https://img.shields.io/badge/license-MIT-317BF9.svg?style=flat
-[NPMURL]:                   https://npmjs.org/package/redrun "npm"
-[BuildStatusURL]:           https://travis-ci.org/coderaiser/redrun  "Build Status"
-[DependencyStatusURL]:      https://david-dm.org/coderaiser/redrun "Dependency Status"
-[LicenseURL]:               https://tldrlegal.com/license/mit-license "MIT License"
-
-[CoverageURL]:              https://coveralls.io/github/coderaiser/redrun?branch=master
-[CoverageIMGURL]:           https://coveralls.io/repos/coderaiser/redrun/badge.svg?branch=master&service=github
-
+[NPMIMGURL]: https://img.shields.io/npm/v/redrun.svg?style=flat
+[BuildStatusIMGURL]: https://img.shields.io/travis/coderaiser/redrun/master.svg?style=flat
+[DependencyStatusIMGURL]: https://img.shields.io/david/coderaiser/redrun.svg?style=flat
+[LicenseIMGURL]: https://img.shields.io/badge/license-MIT-317BF9.svg?style=flat
+[NPMURL]: https://npmjs.org/package/redrun "npm"
+[BuildStatusURL]: https://travis-ci.org/coderaiser/redrun "Build Status"
+[DependencyStatusURL]: https://david-dm.org/coderaiser/redrun "Dependency Status"
+[LicenseURL]: https://tldrlegal.com/license/mit-license "MIT License"
+[CoverageURL]: https://coveralls.io/github/coderaiser/redrun?branch=master
+[CoverageIMGURL]: https://coveralls.io/repos/coderaiser/redrun/badge.svg?branch=master&service=github
