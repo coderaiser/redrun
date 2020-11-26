@@ -8,7 +8,7 @@ const {
     stopAll,
 } = mockRequire;
 
-test('redrun: madrun', (t) => {
+test('redrun: madrun', async (t) => {
     const run = stub()
         .returns('eslint lib');
     
@@ -16,7 +16,7 @@ test('redrun: madrun', (t) => {
     
     const redrun = reRequire('..');
     
-    redrun('lint', {
+    await redrun('lint', {
         lint: 'madrun lint',
     });
     
@@ -26,10 +26,10 @@ test('redrun: madrun', (t) => {
     t.end();
 });
 
-test('redrun: madrun.js', (t) => {
+test('redrun: madrun.js', async (t) => {
     const redrun = reRequire('..');
     
-    const result = redrun('lint', {
+    const result = await redrun('lint', {
         lint: 'bin/madrun.js lint',
     });
     

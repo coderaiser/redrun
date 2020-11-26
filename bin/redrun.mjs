@@ -2,16 +2,17 @@
 
 'use strict';
 
-const path = require('path');
-const tryCatch = require('try-catch');
-const readjson = require('readjson');
+import path from 'path';
+import tryCatch from 'try-catch';
+import readjson from 'readjson';
 
-const squad = require('squad');
-const mapsome = require('mapsome');
-const storage = require('fullstore');
-const parentDirs = require('parent-dirs');
+import squad from 'squad';
+import mapsome from 'mapsome';
+import storage from 'fullstore';
+import parentDirs from 'parent-dirs';
 
-const cliParse = require('../lib/cli-parse');
+import cliParse from '../lib/cli-parse.js';
+
 const cwd = process.cwd();
 const argv = process.argv.slice(2);
 const [first] = argv;
@@ -27,9 +28,9 @@ let arg;
 let ErrorCode = 1;
 
 if (!first || /^(-v|--version|-h|--help)$/.test(first))
-    arg = cliParse(argv, {});
+    arg = await cliParse(argv, {});
 else
-    arg = cliParse(argv, traverseForInfo(cwd).scripts || {});
+    arg = await cliParse(argv, traverseForInfo(cwd).scripts || {});
 
 if (arg.name !== 'run') {
     console.log(arg.output);
@@ -40,23 +41,24 @@ if (arg.name !== 'run') {
     if (arg.calm)
         ErrorCode = 0;
     
-    execute(arg.cmd);
+    await execute(arg.cmd);
 }
 
-function execute(cmd) {
-    const {execSync} = require('child_process');
+async function execute(cmd) {
+    const {execSync} = await import('child_process');
+    const env = await getEnv();
     
     tryOrExit(() => {
         execSync(cmd, {
+            env,
             stdio: [0, 1, 2, 'pipe'],
-            env: getEnv(),
             cwd: Directory(),
         });
     });
 }
 
-function getEnv() {
-    const envir = require('envir');
+async function getEnv() {
+    const envir = (await import('envir')).default;
     
     const dir = Directory();
     const info = Info();
@@ -81,10 +83,7 @@ function exitIfError(error) {
 
 function getInfo(dir) {
     const infoPath = path.join(dir, 'package.json');
-    
-    const result = tryCatch(readjson.sync, infoPath);
-    const [error] = result;
-    const info = result[1];
+    const [error, info] = tryCatch(readjson.sync, infoPath);
     
     exitIfNotEntry(infoPath, error);
     

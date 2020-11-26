@@ -22,7 +22,7 @@
     "url": "git://github.com/coderaiser/redrun.git"
   },
   "bin": {
-    "redrun": "bin/redrun.js",
+    "redrun": "bin/redrun.mjs",
     "redrun-completion": "bin/redrun-completion.js"
   },
   "keywords": [
@@ -50,7 +50,7 @@
   "homepage": "https://github.com/coderaiser/redrun",
   "license": "MIT",
   "engines": {
-    "node": ">=10"
+    "node": ">=14"
   },
   "dependencies": {
     "currify": "^4.0.0",
@@ -62,9 +62,10 @@
     "mapsome": "^1.0.0",
     "parent-dirs": "^1.0.0",
     "readjson": "^2.0.1",
-    "somefilter": "^3.0.0",
     "squad": "^3.0.0",
+    "string-replace-async": "^2.0.0",
     "try-catch": "^3.0.0",
+    "try-to-catch": "^3.0.0",
     "yargs-parser": "^20.0.0"
   },
   "devDependencies": {

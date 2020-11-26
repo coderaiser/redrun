@@ -1,11 +1,12 @@
 'use strict';
 
 const test = require('supertape');
+const tryToCatch = require('try-to-catch');
 const redrun = require('..');
 
-test('simplest parse', (t) => {
+test('simplest parse', async (t) => {
     const cmd = 'echo "hello world"';
-    const result = redrun('two', {
+    const result = await redrun('two', {
         two: cmd,
     });
     
@@ -13,9 +14,9 @@ test('simplest parse', (t) => {
     t.end();
 });
 
-test('simplest parse: name with "."', (t) => {
+test('simplest parse: name with "."', async (t) => {
     const cmd = 'bin/redrun.js lint*';
-    const result = redrun('two', {
+    const result = await redrun('two', {
         two: cmd,
     });
     
@@ -23,9 +24,9 @@ test('simplest parse: name with "."', (t) => {
     t.end();
 });
 
-test('simplest parse: name with "-"', (t) => {
+test('simplest parse: name with "-"', async (t) => {
     const cmd = 'babel lib/*.js';
-    const result = redrun('build', {
+    const result = await redrun('build', {
         'build:js': 'echo \'hello\'',
         'build:js-native-full': 'babel lib/*.js',
         'build': 'redrun build:js-native-full',
@@ -35,9 +36,9 @@ test('simplest parse: name with "-"', (t) => {
     t.end();
 });
 
-test('simplest parse: "npm install"', (t) => {
+test('simplest parse: "npm install"', async (t) => {
     const cmd = 'npm install';
-    const result = redrun('two', {
+    const result = await redrun('two', {
         two: cmd,
     });
     
@@ -45,9 +46,9 @@ test('simplest parse: "npm install"', (t) => {
     t.end();
 });
 
-test('simplest parse: "--"', (t) => {
+test('simplest parse: "--"', async (t) => {
     const cmd = 'echo -- --hello';
-    const result = redrun('echo--', {
+    const result = await redrun('echo--', {
         'echo--': cmd,
     });
     
@@ -55,9 +56,9 @@ test('simplest parse: "--"', (t) => {
     t.end();
 });
 
-test('simplest parse: &&', (t) => {
+test('simplest parse: &&', async (t) => {
     const cmd = 'nodemon --exec "bin/iocmd.js" && pwd';
-    const result = redrun('run', {
+    const result = await redrun('run', {
         'run': 'redrun watch:iocmd && pwd',
         'watcher': 'nodemon --exec',
         'watch:iocmd': 'npm run watcher -- bin/iocmd.js',
@@ -67,8 +68,8 @@ test('simplest parse: &&', (t) => {
     t.end();
 });
 
-test('infinite loop', (t) => {
-    const result = redrun('one', {
+test('infinite loop', async (t) => {
+    const result = await redrun('one', {
         one: 'redrun one',
     });
     
@@ -78,8 +79,8 @@ test('infinite loop', (t) => {
     t.end();
 });
 
-test('infinite loop: one step', (t) => {
-    const result = redrun('one', {
+test('infinite loop: one step', async (t) => {
+    const result = await redrun('one', {
         one: 'npm run two',
         two: 'npm run one',
     });
@@ -90,8 +91,8 @@ test('infinite loop: one step', (t) => {
     t.end();
 });
 
-test('infinite loop: more steps', (t) => {
-    const result = redrun('one', {
+test('infinite loop: more steps', async (t) => {
+    const result = await redrun('one', {
         one: 'npm run two',
         two: 'npm run three',
         three: 'npm run four',
@@ -104,9 +105,9 @@ test('infinite loop: more steps', (t) => {
     t.end();
 });
 
-test('similar name', (t) => {
+test('similar name', async (t) => {
     const cmd = 'redrun.js two';
-    const result = redrun('one', {
+    const result = await redrun('one', {
         one: 'redrun.js two',
     });
     
@@ -114,9 +115,9 @@ test('similar name', (t) => {
     t.end();
 });
 
-test('parse one level deep', (t) => {
+test('parse one level deep', async (t) => {
     const cmd = 'echo "hello world"';
-    const result = redrun('one', {
+    const result = await redrun('one', {
         one: 'npm run two',
         two: cmd,
     });
@@ -125,9 +126,9 @@ test('parse one level deep', (t) => {
     t.end();
 });
 
-test('parse arguments', (t) => {
+test('parse arguments', async (t) => {
     const cmd = 'git "--version"';
-    const result = redrun('one', {
+    const result = await redrun('one', {
         one: 'npm run two -- --version',
         two: 'git',
     });
@@ -136,9 +137,9 @@ test('parse arguments', (t) => {
     t.end();
 });
 
-test('parse reserved names: npm test', (t) => {
+test('parse reserved names: npm test', async (t) => {
     const cmd = 'tape test/*.js';
-    const result = redrun('one', {
+    const result = await redrun('one', {
         one: 'npm run two',
         two: 'npm test',
         test: cmd,
@@ -148,8 +149,8 @@ test('parse reserved names: npm test', (t) => {
     t.end();
 });
 
-test('parse redrun args', (t) => {
-    const result = redrun('one', {
+test('parse redrun args', async (t) => {
+    const result = await redrun('one', {
         one: 'npm run two',
         two: 'redrun --parallel test lint',
         test: 'tape test/*.js',
@@ -160,8 +161,8 @@ test('parse redrun args', (t) => {
     t.end();
 });
 
-test('parse redrun args: "*"', (t) => {
-    const result = redrun('one', {
+test('parse redrun args: "*"', async (t) => {
+    const result = await redrun('one', {
         'one': 'npm run two',
         'two': 'redrun --parallel lint*',
         'lint:jscs': 'jscs test/*.js',
@@ -172,8 +173,8 @@ test('parse redrun args: "*"', (t) => {
     t.end();
 });
 
-test('parse redrun args: "."', (t) => {
-    const result = redrun('one.start', {
+test('parse redrun args: "."', async (t) => {
+    const result = await redrun('one.start', {
         'one.start': 'npm run two',
         'two': 'redrun --parallel lint*',
         'lint:jscs': 'jscs test/*.js',
@@ -184,9 +185,9 @@ test('parse redrun args: "."', (t) => {
     t.end();
 });
 
-test('parse redrun args: "--": npm run', (t) => {
+test('parse redrun args: "--": npm run', async (t) => {
     const expect = 'nodemon -w lib --exec "nyc tape test.js"';
-    const result = redrun('watch-coverage', {
+    const result = await redrun('watch-coverage', {
         'watcher': 'nodemon -w lib --exec',
         'coverage': 'nyc npm test',
         'watch-coverage': 'npm run watcher -- "npm run coverage"',
@@ -197,9 +198,9 @@ test('parse redrun args: "--": npm run', (t) => {
     t.end();
 });
 
-test('parse redrun args: "--": npm run', (t) => {
+test('parse redrun args: "--": npm run', async (t) => {
     const expect = 'nodemon -w lib --exec \'nyc tape test.js\'';
-    const result = redrun('watch-coverage', {
+    const result = await redrun('watch-coverage', {
         'watcher': 'nodemon -w lib --exec',
         'coverage': 'nyc npm test',
         'watch-coverage': 'npm run watcher -- \'npm run coverage\'',
@@ -210,9 +211,9 @@ test('parse redrun args: "--": npm run', (t) => {
     t.end();
 });
 
-test('parse redrun args: "--": quotes', (t) => {
+test('parse redrun args: "--": quotes', async (t) => {
     const expect = 'nodemon -w test -w lib --exec "tape \'lib/**/*.spec.js\'"';
-    const result = redrun('watch:test', {
+    const result = await redrun('watch:test', {
         'test': 'tape \'lib/**/*.spec.js\'',
         'watch:test': 'npm run watcher -- npm test',
         'watcher': 'nodemon -w test -w lib --exec',
@@ -222,9 +223,9 @@ test('parse redrun args: "--": quotes', (t) => {
     t.end();
 });
 
-test('parse redrun args: "--": redrun', (t) => {
+test('parse redrun args: "--": redrun', async (t) => {
     const expect = 'nodemon -w lib --exec "bin/iocmd.js"';
-    const result = redrun('watch:iocmd', {
+    const result = await redrun('watch:iocmd', {
         'watch:iocmd': 'redrun watcher -- bin/iocmd.js',
         'watcher': 'nodemon -w lib --exec',
     });
@@ -233,9 +234,9 @@ test('parse redrun args: "--": redrun', (t) => {
     t.end();
 });
 
-test('parse redrun args: "--": deep npm run', (t) => {
+test('parse redrun args: "--": deep npm run', async (t) => {
     const expect = 'echo "es5" && echo "es6"';
-    const result = redrun('echo:*', {
+    const result = await redrun('echo:*', {
         'echo': 'echo',
         'echo:es5': 'npm run echo -- "es5"',
         'echo:es6': 'npm run echo -- "es6"',
@@ -245,9 +246,9 @@ test('parse redrun args: "--": deep npm run', (t) => {
     t.end();
 });
 
-test('parse redrun args: "--": should not quote "--"', (t) => {
+test('parse redrun args: "--": should not quote "--"', async (t) => {
     const expect = 'browserify -s nessy "src/nessy.js" "-o" "dist/nessy.es6.js"';
-    const result = redrun('es6', {
+    const result = await redrun('es6', {
         'bundle': 'browserify -s nessy',
         'es6:base': 'npm run bundle -- src/nessy.js',
         'es6': 'npm run es6:base -- -o dist/nessy.es6.js',
@@ -257,8 +258,8 @@ test('parse redrun args: "--": should not quote "--"', (t) => {
     t.end();
 });
 
-test('parse redrun args: unrecognized', (t) => {
-    const result = redrun('one', {
+test('parse redrun args: unrecognized', async (t) => {
+    const result = await redrun('one', {
         one: 'npm run two',
         two: 'redrun hello --fix',
         hello: 'echo',
@@ -268,8 +269,8 @@ test('parse redrun args: unrecognized', (t) => {
     t.end();
 });
 
-test('parse redrun args with ENV set', (t) => {
-    const result = redrun('good', {
+test('parse redrun args with ENV set', async (t) => {
+    const result = await redrun('good', {
         good: 'NODE_ENV=development DEBUG=iocmd* redrun -p t*',
         t1: 'tape test/*.js',
         t2: 'jshint lib test',
@@ -279,8 +280,8 @@ test('parse redrun args with ENV set', (t) => {
     t.end();
 });
 
-test('parse a few redrun scripts', (t) => {
-    const result = redrun('one', {
+test('parse a few redrun scripts', async (t) => {
+    const result = await redrun('one', {
         one: 'redrun -p two three',
         two: 'redrun four five',
         three: 'echo \'hello\'',
@@ -292,9 +293,9 @@ test('parse a few redrun scripts', (t) => {
     t.end();
 });
 
-test('parse a few levels deep', (t) => {
+test('parse a few levels deep', async (t) => {
     const cmd = 'echo "hello world"';
-    const result = redrun('one', {
+    const result = await redrun('one', {
         one: 'npm run two',
         two: 'npm run three',
         three: 'npm run four',
@@ -307,9 +308,9 @@ test('parse a few levels deep', (t) => {
     t.end();
 });
 
-test('npx', (t) => {
+test('npx', async (t) => {
     const cmd = 'npx pug -b src src/pages -o dist';
-    const body = redrun('build', {
+    const body = await redrun('build', {
         'build': 'npx redrun build:html',
         'build:html': cmd,
     });
@@ -318,24 +319,24 @@ test('npx', (t) => {
     t.end();
 });
 
-test('args: no name', (t) => {
-    t.throws(redrun, /name should be string!/, 'should throw when no name');
+test('args: no name', async (t) => {
+    const [e] = await tryToCatch(redrun);
+    
+    t.equal(e.message, 'name should be string!', 'should throw when no name');
     t.end();
 });
 
-test('args: name is empty', (t) => {
-    const fn = () => redrun('');
+test('args: name is empty', async (t) => {
+    const [e] = await tryToCatch(redrun, '');
     
-    t.throws(fn, /name should not be empty!/, 'should throw when name is empty');
+    t.equal(e.message, 'name should not be empty!', 'should throw when name is empty');
     t.end();
 });
 
-test('args: no json', (t) => {
-    const fn = () => {
-        redrun('on');
-    };
+test('args: no json', async (t) => {
+    const [e] = await tryToCatch(redrun, 'on');
     
-    t.throws(fn, /json should be object!/, 'should throw when no json');
+    t.equal(e.message, 'json should be object!', 'should throw when no json');
     t.end();
 });
 

@@ -1,7 +1,0 @@
-{
-    "match": {
-        "bin": {
-            "remove-console": false
-        }
-    }
-}

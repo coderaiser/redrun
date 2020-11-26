@@ -3,7 +3,7 @@
 const {run} = require('madrun');
 
 module.exports = {
-    'lint': () => 'putout bin lib test *.js *.md',
+    'lint': () => 'putout .',
     'fix:lint': () => run('lint', '--fix'),
     'test': () => 'tape test/**/*.js',
     'watch:test': () => run('watcher', run('test')),

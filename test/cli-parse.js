@@ -2,10 +2,12 @@
 
 const os = require('os');
 const test = require('supertape');
+const tryToCatch = require('try-to-catch');
+
 const cliParse = require('../lib/cli-parse');
 
-test('cli-parse: series', (t) => {
-    const result = cliParse(['--series', 'one', 'two'], {
+test('cli-parse: series', async (t) => {
+    const result = await cliParse(['--series', 'one', 'two'], {
         one: 'ls',
         two: 'pwd',
     });
@@ -22,8 +24,8 @@ test('cli-parse: series', (t) => {
     t.end();
 });
 
-test('cli-parse: parallel', (t) => {
-    const result = cliParse(['--parallel', 'one', 'two'], {
+test('cli-parse: parallel', async (t) => {
+    const result = await cliParse(['--parallel', 'one', 'two'], {
         one: 'ls',
         two: 'pwd',
     });
@@ -40,8 +42,8 @@ test('cli-parse: parallel', (t) => {
     t.end();
 });
 
-test('cli-parse: parallel --quiet', (t) => {
-    const result = cliParse(['--parallel', 'one', 'two', '--quiet'], {
+test('cli-parse: parallel --quiet', async (t) => {
+    const result = await cliParse(['--parallel', 'one', 'two', '--quiet'], {
         one: 'ls',
         two: 'pwd',
     });
@@ -58,8 +60,8 @@ test('cli-parse: parallel --quiet', (t) => {
     t.end();
 });
 
-test('cli-parse: parallel: before script', (t) => {
-    const result = cliParse(['main', '--parallel', 'one', 'two'], {
+test('cli-parse: parallel: before script', async (t) => {
+    const result = await cliParse(['main', '--parallel', 'one', 'two'], {
         one: 'ls',
         two: 'pwd',
         main: 'echo hi',
@@ -77,8 +79,8 @@ test('cli-parse: parallel: before script', (t) => {
     t.end();
 });
 
-test('cli-parse: series and parallel', (t) => {
-    const result = cliParse(['--s', 'one', 'two', '-p', 'three', 'four'], {
+test('cli-parse: series and parallel', async (t) => {
+    const result = await cliParse(['--s', 'one', 'two', '-p', 'three', 'four'], {
         one: 'ls',
         two: 'pwd',
         three: 'whoami',
@@ -97,12 +99,12 @@ test('cli-parse: series and parallel', (t) => {
     t.end();
 });
 
-test('cli-parse: series calm: linux', (t) => {
+test('cli-parse: series calm: linux', async (t) => {
     const {platform} = os;
     
     os.platform = () => 'linux';
     
-    const result = cliParse(['--series-calm', 'one', 'two'], {
+    const result = await cliParse(['--series-calm', 'one', 'two'], {
         one: 'ls',
         two: 'pwd',
     });
@@ -121,12 +123,12 @@ test('cli-parse: series calm: linux', (t) => {
     t.end();
 });
 
-test('cli-parse: parallel calm: windows', (t) => {
+test('cli-parse: parallel calm: windows', async (t) => {
     const {platform} = os;
     
     os.platform = () => 'win32';
     
-    const result = cliParse(['--parallel-calm', 'one', 'two'], {
+    const result = await cliParse(['--parallel-calm', 'one', 'two'], {
         one: 'ls',
         two: 'pwd',
     });
@@ -145,12 +147,12 @@ test('cli-parse: parallel calm: windows', (t) => {
     t.end();
 });
 
-test('cli-parse: --calm: linux', (t) => {
+test('cli-parse: --calm: linux', async (t) => {
     const {platform} = os;
     
     os.platform = () => 'linux';
     
-    const result = cliParse(['--calm', 'one', 'two'], {
+    const result = await cliParse(['--calm', 'one', 'two'], {
         one: 'ls',
         two: 'pwd',
     });
@@ -169,8 +171,8 @@ test('cli-parse: --calm: linux', (t) => {
     t.end();
 });
 
-test('cli-parse: scripts arguments: *', (t) => {
-    const result = cliParse(['o*', '--', '--parallel', 'three', 'four'], {
+test('cli-parse: scripts arguments: *', async (t) => {
+    const result = await cliParse(['o*', '--', '--parallel', 'three', 'four'], {
         'one:ls': 'ls',
         'one:ps': 'ps',
     });
@@ -187,8 +189,8 @@ test('cli-parse: scripts arguments: *', (t) => {
     t.end();
 });
 
-test('cli-parse: scripts arguments: *', (t) => {
-    const result = cliParse(['one', '--', '--fix'], {
+test('cli-parse: scripts arguments: *', async (t) => {
+    const result = await cliParse(['one', '--', '--fix'], {
         'one': 'redrun one:*',
         'one:ls': 'ls',
         'one:ps': 'ps',
@@ -206,8 +208,8 @@ test('cli-parse: scripts arguments: *', (t) => {
     t.end();
 });
 
-test('cli-parse: scripts arguments: parallel', (t) => {
-    const result = cliParse(['o*', '--', '--parallel', 'three', 'four'], {
+test('cli-parse: scripts arguments: parallel', async (t) => {
+    const result = await cliParse(['o*', '--', '--parallel', 'three', 'four'], {
         one: 'ls',
         on: 'who',
     });
@@ -224,9 +226,9 @@ test('cli-parse: scripts arguments: parallel', (t) => {
     t.end();
 });
 
-test('cli-parse: --version', (t) => {
-    const output = cliParse.version();
-    const result = cliParse(['--version'], {
+test('cli-parse: --version', async (t) => {
+    const output = await cliParse.version();
+    const result = await cliParse(['--version'], {
     });
     
     const expected = {
@@ -239,9 +241,9 @@ test('cli-parse: --version', (t) => {
     t.end();
 });
 
-test('cli-parse: -v', (t) => {
-    const output = cliParse.version();
-    const result = cliParse(['-v'], {
+test('cli-parse: -v', async (t) => {
+    const output = await cliParse.version();
+    const result = await cliParse(['-v'], {
     });
     
     const expected = {
@@ -254,9 +256,9 @@ test('cli-parse: -v', (t) => {
     t.end();
 });
 
-test('cli-parse: --help', (t) => {
-    const output = cliParse.help();
-    const result = cliParse(['--help'], {
+test('cli-parse: --help', async (t) => {
+    const output = await cliParse.help();
+    const result = await cliParse(['--help'], {
     });
     
     const expected = {
@@ -269,9 +271,9 @@ test('cli-parse: --help', (t) => {
     t.end();
 });
 
-test('cli-parse: -h', (t) => {
-    const output = cliParse.help();
-    const result = cliParse(['-h'], {
+test('cli-parse: -h', async (t) => {
+    const output = await cliParse.help();
+    const result = await cliParse(['-h'], {
     });
     
     const expected = {
@@ -284,9 +286,9 @@ test('cli-parse: -h', (t) => {
     t.end();
 });
 
-test('cli-parse: unknown short argument', (t) => {
-    const {unknown} = cliParse;
-    const result = cliParse(['-w'], {
+test('cli-parse: unknown short argument', async (t) => {
+    const {unknown} = await cliParse;
+    const result = await cliParse(['-w'], {
     });
     
     const expected = {
@@ -299,9 +301,9 @@ test('cli-parse: unknown short argument', (t) => {
     t.end();
 });
 
-test('cli-parse: unknown long argument', (t) => {
-    const {unknown} = cliParse;
-    const result = cliParse(['--world'], {
+test('cli-parse: unknown long argument', async (t) => {
+    const {unknown} = await cliParse;
+    const result = await cliParse(['--world'], {
     });
     
     const expected = {
@@ -314,8 +316,9 @@ test('cli-parse: unknown long argument', (t) => {
     t.end();
 });
 
-test('cli-parse: script not found', (t) => {
-    const result = cliParse(['hello'], {
+test('cli-parse: script not found', async (t) => {
+    debugger;
+    const result = await cliParse(['hello'], {
         hello: 'npm run world',
     });
     
@@ -330,8 +333,8 @@ test('cli-parse: script not found', (t) => {
     t.end();
 });
 
-test('cli-parse: deep script not found', (t) => {
-    const result = cliParse(['docker'], {
+test('cli-parse: deep script not found', async (t) => {
+    const result = await cliParse(['docker'], {
         'docker': 'redrun docker:pull:node docker:build docker:push',
         'docker:pull:node': 'echo "docker pull node"',
     });
@@ -344,12 +347,11 @@ test('cli-parse: deep script not found', (t) => {
     };
     
     t.deepEqual(result, expected, 'should return object with name and output');
-    
     t.end();
 });
 
-test('cli-parse: deep scripts are empty', (t) => {
-    const result = cliParse(['docker'], {
+test('cli-parse: deep scripts are empty', async (t) => {
+    const result = await cliParse(['docker'], {
         'docker': 'redrun docker:pull:node docker:build docker:push',
         'docker:pull:node': 'echo "docker pull node"',
         'docker:build': '',
@@ -364,17 +366,19 @@ test('cli-parse: deep scripts are empty', (t) => {
     };
     
     t.deepEqual(result, expected, 'should return object with name and output');
-    
     t.end();
 });
-test('cli-parse: args: no scripts', (t) => {
-    const fn = () => cliParse([]);
-    t.throws(fn, /scripts should be object!/, 'should throw when no scripts');
+test('cli-parse: args: no scripts', async (t) => {
+    const [e] = await tryToCatch(cliParse, []);
+    
+    t.equal(e.message, 'scripts should be object!', 'should throw when no args');
     t.end();
 });
 
-test('cli-parse: args: no', (t) => {
-    t.throws(cliParse, /argv should be an array!/, 'should throw when no args');
+test('cli-parse: args: no', async (t) => {
+    const [e] = await tryToCatch(cliParse);
+    
+    t.equal(e.message, 'argv should be an array!', 'should throw when no args');
     t.end();
 });
 
