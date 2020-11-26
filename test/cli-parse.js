@@ -317,7 +317,6 @@ test('cli-parse: unknown long argument', async (t) => {
 });
 
 test('cli-parse: script not found', async (t) => {
-    debugger;
     const result = await cliParse(['hello'], {
         hello: 'npm run world',
     });

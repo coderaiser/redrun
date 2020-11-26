@@ -1,19 +1,13 @@
 language: node_js
 node_js:
-    - 15
-    - 14
-
-before_install:
- - npm i redrun -g
-
+  - 15
+  - 14
 script:
   - npm run lint
   - npm run coverage && npm run report
-
 notifications:
-    email:
-        on_success: never
-        on_failure: change
-
+  email:
+    on_success: never
+    on_failure: change
 sudo: false
-
+cache: false
