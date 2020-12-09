@@ -12,7 +12,7 @@ module.exports = {
     'watch:coverage:tape': () => run('watcher', 'nyc tape'),
     'watch:coverage': () => run('watch:coverage:base'),
     'watcher': () => 'nodemon -w test -w lib --exec',
-    'coverage': () => `nyc ${run('test')}`,
+    'coverage': async () => `nyc ${await run('test')}`,
     'report': () => 'nyc report --reporter=text-lcov | coveralls',
     'postpublish': () => 'npm i -g',
 };

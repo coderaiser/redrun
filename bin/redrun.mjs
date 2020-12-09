@@ -1,7 +1,5 @@
 #!/usr/bin/env node
 
-'use strict';
-
 import path from 'path';
 import tryCatch from 'try-catch';
 import readjson from 'readjson';
