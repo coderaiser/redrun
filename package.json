@@ -78,7 +78,7 @@
     "nodemon": "^2.0.0",
     "npm-run-all": "^4.0.0",
     "nyc": "^15.0.0",
-    "putout": "^11.0.5",
+    "putout": "^12.1.0",
     "supertape": "^3.7.3"
   },
   "publishConfig": {
