@@ -22,7 +22,7 @@ test('redrun: madrun', async (t) => {
     
     stopAll();
     
-    t.ok(run.calledWith('lint', ''), 'should call madrun');
+    t.calledWith(run, ['lint', ''], 'should call madrun');
     t.end();
 });
 
