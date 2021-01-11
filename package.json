@@ -79,7 +79,7 @@
     "npm-run-all": "^4.0.0",
     "nyc": "^15.0.0",
     "putout": "^13.3.0",
-    "supertape": "^3.7.3"
+    "supertape": "^4.6.0"
   },
   "publishConfig": {
     "access": "public"
