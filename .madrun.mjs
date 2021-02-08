@@ -12,8 +12,8 @@ export default {
     'watch:coverage:tape': () => run('watcher', 'nyc tape'),
     'watch:coverage': () => run('watch:coverage:base'),
     'watcher': () => 'nodemon -w test -w lib --exec',
-    'coverage': async () => `nyc ${await run('test')}`,
-    'report': () => 'nyc report --reporter=text-lcov | coveralls',
+    'coverage': async () => `c8 ${await run('test')}`,
+    'report': () => 'c8 report --reporter=text-lcov | coveralls',
     'postpublish': () => 'npm i -g',
 };
 
