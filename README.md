@@ -82,7 +82,7 @@ hello
 Redrun could be used via command line, scripts section of `package.json` or programmaticly.
 
 ```js
-const redrun = require('redrun');
+import redrun from 'redrun';
 
 await redrun('one', {
     one: 'npm run two',
