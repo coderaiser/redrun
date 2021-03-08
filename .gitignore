@@ -6,6 +6,5 @@ npm-debug.log
 .nyc_output
 
 yarn-error.log
-.putoutcache
 
 coverage

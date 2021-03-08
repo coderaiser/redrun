@@ -13,7 +13,7 @@ export default {
     'watch:coverage': () => run('watch:coverage:base'),
     'watcher': () => 'nodemon -w test -w lib --exec',
     'coverage': async () => `c8 ${await run('test')}`,
-    'report': () => 'c8 report --reporter=text-lcov | coveralls',
+    'report': () => 'c8 report --reporter=lcov',
     'postpublish': () => 'npm i -g',
 };
 
