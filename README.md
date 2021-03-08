@@ -1,5 +1,17 @@
 # Redrun [![License][LicenseIMGURL]][LicenseURL] [![NPM version][NPMIMGURL]][NPMURL] [![Dependency Status][DependencyStatusIMGURL]][DependencyStatusURL] [![Build Status][BuildStatusIMGURL]][BuildStatusURL] [![Coverage Status][CoverageIMGURL]][CoverageURL]
 
+
+[NPMIMGURL]: https://img.shields.io/npm/v/redrun.svg?style=flat
+[BuildStatusURL]: https://github.com/coderaiser/redrun/actions?query=workflow%3A%22Node+CI%22 "Build Status"
+[BuildStatusIMGURL]: https://github.com/coderaiser/redrun/workflows/Node%20CI/badge.svg
+[DependencyStatusIMGURL]: https://img.shields.io/david/coderaiser/redrun.svg?style=flat
+[LicenseIMGURL]: https://img.shields.io/badge/license-MIT-317BF9.svg?style=flat
+[NPMURL]: https://npmjs.org/package/redrun "npm"
+[DependencyStatusURL]: https://david-dm.org/coderaiser/redrun "Dependency Status"
+[LicenseURL]: https://tldrlegal.com/license/mit-license "MIT License"
+[CoverageURL]: https://coveralls.io/github/coderaiser/redrun?branch=master
+[CoverageIMGURL]: https://coveralls.io/repos/coderaiser/redrun/badge.svg?branch=master&service=github
+
 CLI tool to run multiple npm-scripts fast. Supports madly comfortable [madrun](https://github.com/coderaiser/madrun).
 
 ![Redrun](https://github.com/coderaiser/redrun/raw/master/redrun.png "Redrun")
@@ -193,14 +205,3 @@ As you see `redrun` much faster and more laconic way of using `npm scripts` then
 ## License
 
 MIT
-
-[NPMIMGURL]: https://img.shields.io/npm/v/redrun.svg?style=flat
-[BuildStatusIMGURL]: https://img.shields.io/travis/coderaiser/redrun/master.svg?style=flat
-[DependencyStatusIMGURL]: https://img.shields.io/david/coderaiser/redrun.svg?style=flat
-[LicenseIMGURL]: https://img.shields.io/badge/license-MIT-317BF9.svg?style=flat
-[NPMURL]: https://npmjs.org/package/redrun "npm"
-[BuildStatusURL]: https://travis-ci.org/coderaiser/redrun "Build Status"
-[DependencyStatusURL]: https://david-dm.org/coderaiser/redrun "Dependency Status"
-[LicenseURL]: https://tldrlegal.com/license/mit-license "MIT License"
-[CoverageURL]: https://coveralls.io/github/coderaiser/redrun?branch=master
-[CoverageIMGURL]: https://coveralls.io/repos/coderaiser/redrun/badge.svg?branch=master&service=github
