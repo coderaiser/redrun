@@ -1,3 +1,18 @@
+2021.05.09, v9.0.1
+
+feature:
+- (package) supertape v5.4.0
+- (package) putout v17.1.0
+- (package) parent-dirs v2.0.0
+- (package) putout v15.1.1
+- (package) eslint-plugin-putout v7.1.1
+- (package) putout v14.1.3
+- (package) supertape v4.6.0
+- (package) putout v13.3.0
+- (package) putout v12.1.0
+- (package) supertape v3.7.3
+
+
 2020.11.27, v9.0.0
 
 feature:
