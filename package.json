@@ -72,7 +72,7 @@
   "devDependencies": {
     "@cloudcmd/stub": "^3.1.0",
     "coveralls": "^3.0.0",
-    "eslint": "^7.3.1",
+    "eslint": "^8.0.0-beta.1",
     "eslint-plugin-node": "^11.0.0",
     "eslint-plugin-putout": "^9.3.0",
     "mock-require": "^3.0.3",
