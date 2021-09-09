@@ -198,7 +198,7 @@ test('parse redrun args: "--": npm run', async (t) => {
     t.end();
 });
 
-test('parse redrun args: "--": npm run', async (t) => {
+test('parse redrun args: "--": npm run: should not add quotes', async (t) => {
     const expect = 'nodemon -w lib --exec \'nyc tape test.js\'';
     const result = await redrun('watch-coverage', {
         'watcher': 'nodemon -w lib --exec',

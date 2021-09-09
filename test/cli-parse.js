@@ -189,7 +189,7 @@ test('cli-parse: scripts arguments: *', async (t) => {
     t.end();
 });
 
-test('cli-parse: scripts arguments: *', async (t) => {
+test('cli-parse: scripts arguments: simple', async (t) => {
     const result = await cliParse(['one', '--', '--fix'], {
         'one': 'redrun one:*',
         'one:ls': 'ls',
