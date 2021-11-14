@@ -228,8 +228,7 @@ test('cli-parse: scripts arguments: parallel', async (t) => {
 
 test('cli-parse: --version', async (t) => {
     const output = await cliParse.version();
-    const result = await cliParse(['--version'], {
-    });
+    const result = await cliParse(['--version'], {});
     
     const expected = {
         name: 'version',
@@ -243,8 +242,7 @@ test('cli-parse: --version', async (t) => {
 
 test('cli-parse: -v', async (t) => {
     const output = await cliParse.version();
-    const result = await cliParse(['-v'], {
-    });
+    const result = await cliParse(['-v'], {});
     
     const expected = {
         name: 'version',
@@ -258,8 +256,7 @@ test('cli-parse: -v', async (t) => {
 
 test('cli-parse: --help', async (t) => {
     const output = await cliParse.help();
-    const result = await cliParse(['--help'], {
-    });
+    const result = await cliParse(['--help'], {});
     
     const expected = {
         name: 'help',
@@ -273,8 +270,7 @@ test('cli-parse: --help', async (t) => {
 
 test('cli-parse: -h', async (t) => {
     const output = await cliParse.help();
-    const result = await cliParse(['-h'], {
-    });
+    const result = await cliParse(['-h'], {});
     
     const expected = {
         name: 'help',
@@ -288,8 +284,7 @@ test('cli-parse: -h', async (t) => {
 
 test('cli-parse: unknown short argument', async (t) => {
     const {unknown} = await cliParse;
-    const result = await cliParse(['-w'], {
-    });
+    const result = await cliParse(['-w'], {});
     
     const expected = {
         name: 'unknown',
@@ -303,8 +298,7 @@ test('cli-parse: unknown short argument', async (t) => {
 
 test('cli-parse: unknown long argument', async (t) => {
     const {unknown} = await cliParse;
-    const result = await cliParse(['--world'], {
-    });
+    const result = await cliParse(['--world'], {});
     
     const expected = {
         name: 'unknown',
@@ -367,6 +361,7 @@ test('cli-parse: deep scripts are empty', async (t) => {
     t.deepEqual(result, expected, 'should return object with name and output');
     t.end();
 });
+
 test('cli-parse: args: no scripts', async (t) => {
     const [e] = await tryToCatch(cliParse, []);
     

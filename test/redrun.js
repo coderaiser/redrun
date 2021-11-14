@@ -27,7 +27,7 @@ test('simplest parse: name with "."', async (t) => {
 test('simplest parse: name with "-"', async (t) => {
     const cmd = 'babel lib/*.js';
     const result = await redrun('build', {
-        'build:js': 'echo \'hello\'',
+        'build:js': `echo 'hello'`,
         'build:js-native-full': 'babel lib/*.js',
         'build': 'redrun build:js-native-full',
     });
@@ -199,11 +199,11 @@ test('parse redrun args: "--": npm run', async (t) => {
 });
 
 test('parse redrun args: "--": npm run: should not add quotes', async (t) => {
-    const expect = 'nodemon -w lib --exec \'nyc tape test.js\'';
+    const expect = `nodemon -w lib --exec 'nyc tape test.js'`;
     const result = await redrun('watch-coverage', {
         'watcher': 'nodemon -w lib --exec',
         'coverage': 'nyc npm test',
-        'watch-coverage': 'npm run watcher -- \'npm run coverage\'',
+        'watch-coverage': `npm run watcher -- 'npm run coverage'`,
         'test': 'tape test.js',
     });
     
@@ -212,9 +212,9 @@ test('parse redrun args: "--": npm run: should not add quotes', async (t) => {
 });
 
 test('parse redrun args: "--": quotes', async (t) => {
-    const expect = 'nodemon -w test -w lib --exec "tape \'lib/**/*.spec.js\'"';
+    const expect = `nodemon -w test -w lib --exec "tape 'lib/**/*.spec.js'"`;
     const result = await redrun('watch:test', {
-        'test': 'tape \'lib/**/*.spec.js\'',
+        'test': `tape 'lib/**/*.spec.js'`,
         'watch:test': 'npm run watcher -- npm test',
         'watcher': 'nodemon -w test -w lib --exec',
     });
@@ -265,7 +265,7 @@ test('parse redrun args: unrecognized', async (t) => {
         hello: 'echo',
     });
     
-    t.equal(result, 'echo --fix is not a redrun option. See \'redrun  --help\'', 'should return error');
+    t.equal(result, `echo --fix is not a redrun option. See 'redrun  --help'`, 'should return error');
     t.end();
 });
 
@@ -284,12 +284,12 @@ test('parse a few redrun scripts', async (t) => {
     const result = await redrun('one', {
         one: 'redrun -p two three',
         two: 'redrun four five',
-        three: 'echo \'hello\'',
+        three: `echo 'hello'`,
         four: 'jshint lib',
         five: 'jscs test',
     });
     
-    t.equal(result, 'jshint lib && jscs test & echo \'hello\'', 'should parse script test');
+    t.equal(result, `jshint lib && jscs test & echo 'hello'`, 'should parse script test');
     t.end();
 });
 

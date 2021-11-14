@@ -1,6 +1,5 @@
 # Redrun [![License][LicenseIMGURL]][LicenseURL] [![NPM version][NPMIMGURL]][NPMURL] [![Build Status][BuildStatusIMGURL]][BuildStatusURL] [![Coverage Status][CoverageIMGURL]][CoverageURL]
 
-
 [NPMIMGURL]: https://img.shields.io/npm/v/redrun.svg?style=flat
 [BuildStatusURL]: https://github.com/coderaiser/redrun/actions?query=workflow%3A%22Node+CI%22 "Build Status"
 [BuildStatusIMGURL]: https://github.com/coderaiser/redrun/workflows/Node%20CI/badge.svg
@@ -97,20 +96,20 @@ import redrun from 'redrun';
 await redrun('one', {
     one: 'npm run two',
     two: 'npm run three',
-    three: 'echo \'hello\'',
+    three: `echo 'hello'`,
 });
 // returns
-"echo 'hello'";
+`echo 'hello'`;
 
 await redrun('one', {
     one: 'redrun -p two three',
     two: 'redrun four five',
-    three: 'echo \'hello\'',
+    three: `echo 'hello'`,
     four: 'jshint lib',
     five: 'jscs test',
 });
 // returns
-"jshint lib && jscs test & echo 'hello'";
+`jshint lib && jscs test & echo 'hello'`;
 ```
 
 ## Speed comparison

@@ -33,7 +33,7 @@ test('redrun: madrun.js', async (t) => {
         lint: 'bin/madrun.js lint',
     });
     
-    t.equal(result, 'bin/madrun.js lint', 'should equal');
+    t.equal(result, 'bin/madrun.js lint');
     t.end();
 });
 
