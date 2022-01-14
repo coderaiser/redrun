@@ -11,7 +11,6 @@ test('get-body: should get script content', (t) => {
     });
     
     t.equal(body, cmd, 'should body be equal to script content');
-    
     t.end();
 });
 
@@ -23,7 +22,6 @@ test('get-body: should get script content: name with "."', (t) => {
     });
     
     t.equal(body, cmd, 'should body be equal to script content');
-    
     t.end();
 });
 
@@ -35,7 +33,6 @@ test('get-body: should get script content when name contains args', (t) => {
     });
     
     t.equal(body, cmd, 'should body be equal to script content + args');
-    
     t.end();
 });
 
@@ -47,7 +44,6 @@ test('get-body: pre + post + args', (t) => {
     });
     
     t.equal(body, 'pre && jshint --version && post', 'should body be equal to script content + args');
-    
     t.end();
 });
 
@@ -59,7 +55,6 @@ test('get-body: pre + post + args: regexp', (t) => {
     });
     
     t.equal(body, 'jshint lib/*.js && jscs lib/*.js && eslint lib/*.js', 'should body be equal to script content + args');
-    
     t.end();
 });
 
@@ -72,7 +67,6 @@ test('get-body: pre + post + symbols: regexp', (t) => {
     });
     
     t.equal(result, cmd, 'should body be equal to script content + args');
-    
     t.end();
 });
 
@@ -84,7 +78,6 @@ test('get-body: args: parallel', (t) => {
     });
     
     t.equal(body, 'jshint lib/*.js & jscs lib/*.js & eslint lib/*.js', 'should body be equal to script content + args');
-    
     t.end();
 });
 

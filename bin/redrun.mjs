@@ -112,6 +112,7 @@ function exitIfEntryError(data) {
     if (!data) {
         const infoPath = path.join(cwd, 'package.json');
         const error = Error(`Cannot find module '${infoPath}'`);
+        
         exitIfError(error);
     }
 }

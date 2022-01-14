@@ -20,7 +20,6 @@ test('replace: npm tst', async (t) => {
     });
     
     t.equal(result, 'test', 'should determine reserved: tst');
-    
     t.end();
 });
 
@@ -31,7 +30,6 @@ test('replace: npm t', async (t) => {
     });
     
     t.equal(result, 'test', 'should determine reserved: t');
-    
     t.end();
 });
 
@@ -42,7 +40,6 @@ test('replace: npm version', async (t) => {
     });
     
     t.equal(result, 'npm version', 'should leave unchanged "npm version"');
-    
     t.end();
 });
 

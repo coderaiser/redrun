@@ -20,7 +20,6 @@ test('cli-parse: series', async (t) => {
     };
     
     t.deepEqual(result, expected, 'should build cmd object');
-    
     t.end();
 });
 
@@ -38,7 +37,6 @@ test('cli-parse: parallel', async (t) => {
     };
     
     t.deepEqual(result, expected, 'should build cmd object');
-    
     t.end();
 });
 
@@ -56,7 +54,6 @@ test('cli-parse: parallel --quiet', async (t) => {
     };
     
     t.deepEqual(result, expected, 'should build cmd object');
-    
     t.end();
 });
 
@@ -75,7 +72,6 @@ test('cli-parse: parallel: before script', async (t) => {
     };
     
     t.deepEqual(result, expected, 'should build cmd object');
-    
     t.end();
 });
 
@@ -95,7 +91,6 @@ test('cli-parse: series and parallel', async (t) => {
     };
     
     t.deepEqual(result, expected, 'should build cmd object');
-    
     t.end();
 });
 
@@ -185,7 +180,6 @@ test('cli-parse: scripts arguments: *', async (t) => {
     };
     
     t.deepEqual(result, expected, 'should build cmd object that contains arguments');
-    
     t.end();
 });
 
@@ -204,7 +198,6 @@ test('cli-parse: scripts arguments: simple', async (t) => {
     };
     
     t.deepEqual(result, expected, 'should build cmd object that contains arguments');
-    
     t.end();
 });
 
@@ -222,7 +215,6 @@ test('cli-parse: scripts arguments: parallel', async (t) => {
     };
     
     t.deepEqual(result, expected, 'should build cmd object that contains arguments');
-    
     t.end();
 });
 
@@ -236,7 +228,6 @@ test('cli-parse: --version', async (t) => {
     };
     
     t.deepEqual(result, expected, 'should return object with name, output and cmd');
-    
     t.end();
 });
 
@@ -250,7 +241,6 @@ test('cli-parse: -v', async (t) => {
     };
     
     t.deepEqual(result, expected, 'should return object with name, output and cmd');
-    
     t.end();
 });
 
@@ -264,7 +254,6 @@ test('cli-parse: --help', async (t) => {
     };
     
     t.deepEqual(result, expected, 'should return object with name, output and cmd');
-    
     t.end();
 });
 
@@ -278,7 +267,6 @@ test('cli-parse: -h', async (t) => {
     };
     
     t.deepEqual(result, expected, 'should return object with name, output and cmd');
-    
     t.end();
 });
 
@@ -292,7 +280,6 @@ test('cli-parse: unknown short argument', async (t) => {
     };
     
     t.deepEqual(result, expected, 'should return object with name, output and cmd');
-    
     t.end();
 });
 
@@ -306,7 +293,6 @@ test('cli-parse: unknown long argument', async (t) => {
     };
     
     t.deepEqual(result, expected, 'should return object with name, output and cmd');
-    
     t.end();
 });
 
