@@ -1,6 +1,6 @@
 {
   "name": "redrun",
-  "version": "9.0.1",
+  "version": "10.0.0",
   "type": "commonjs",
   "description": "CLI tool to run multiple npm-scripts fast",
   "main": "lib/redrun.js",
