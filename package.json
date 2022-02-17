@@ -80,7 +80,7 @@
     "nodemon": "^2.0.0",
     "npm-run-all": "^4.0.0",
     "putout": "^25.0.0",
-    "supertape": "^6.1.0"
+    "supertape": "^7.0.1"
   },
   "publishConfig": {
     "access": "public"
