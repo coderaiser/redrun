@@ -51,7 +51,7 @@
   "homepage": "https://github.com/coderaiser/redrun",
   "license": "MIT",
   "engines": {
-    "node": ">=14"
+    "node": ">=16"
   },
   "dependencies": {
     "c8": "^7.5.0",
@@ -71,7 +71,6 @@
     "yargs-parser": "^21.0.0"
   },
   "devDependencies": {
-    "@cloudcmd/stub": "^3.1.0",
     "coveralls": "^3.0.0",
     "eslint": "^8.0.0-beta.1",
     "eslint-plugin-node": "^11.0.0",
