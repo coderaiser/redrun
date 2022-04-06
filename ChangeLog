@@ -1,3 +1,13 @@
+2022.04.06, v10.0.1
+
+fix:
+- (redrun) engines
+
+
+feature:
+- (package) eslint-plugin-putout v14.8.0
+
+
 2022.02.17, v10.0.0
 
 feature:
