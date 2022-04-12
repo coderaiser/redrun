@@ -1,10 +1,14 @@
-name: Node CI
+
+      name: Node CI
 on:
   - push
   - pull_request
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      NAME: redrun
+
     strategy:
       matrix:
         node-version:
@@ -18,15 +22,17 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - name: Install Redrun
         run: npm i redrun -g
-      - name: Install
-        run: npm install -f
-      - name: Bootstrap
-        run: redrun bootstrap
       - name: Lint
-        run: redrun lint
+        run: redrun fix:lint
+      - name: Commit fixes
+        uses: EndBug/add-and-commit@v7
+        with:
+          message: chore(${{ env.NAME }}) lint using actions
       - name: Coverage
-        run: redrun coverage report
+        run: redrun coverage:ci report
       - name: Coveralls
         uses: coverallsapp/github-action@master
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: typos-action
+        uses: crate-ci/typos@v1.0.4
