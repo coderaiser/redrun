@@ -32,7 +32,7 @@ jobs:
         with:
           message: chore(${{ env.NAME }}) lint using actions
       - name: Coverage
-        run: redrun coverage:ci report
+        run: redrun coverage report
       - name: Coveralls
         uses: coverallsapp/github-action@master
         with:
