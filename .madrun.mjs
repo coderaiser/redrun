@@ -1,11 +1,16 @@
 import {run} from 'madrun';
 
+const env = {
+    CHECK_ASSERTIONS_COUNT: 0,
+    CHECK_SCOPES: 0,
+};
+
 export default {
     'lint': () => 'putout .',
     'fresh:lint': () => run('lint', '--fresh'),
     'lint:fresh': () => run('lint', '--fresh'),
     'fix:lint': () => run('lint', '--fix'),
-    'test': () => 'tape test/**/*.js',
+    'test': () => [env, 'tape test/**/*.js'],
     'watch:test': async () => await run('watcher', await run('test')),
     'watch:tape': () => 'nodemon -w test -w lib --exec tape',
     'watch:coverage:base': async () => await run('watcher', `nyc ${await run('test')}`),
