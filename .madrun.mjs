@@ -1,4 +1,7 @@
-import {run} from 'madrun';
+import {
+    run,
+    cutEnv,
+} from 'madrun';
 
 const env = {
     CHECK_ASSERTIONS_COUNT: 0,
@@ -11,13 +14,13 @@ export default {
     'lint:fresh': () => run('lint', '--fresh'),
     'fix:lint': () => run('lint', '--fix'),
     'test': () => [env, 'tape test/**/*.js'],
-    'watch:test': async () => await run('watcher', await run('test')),
+    'watch:test': async () => [env, await run('watcher', await cutEnv('test'))],
     'watch:tape': () => 'nodemon -w test -w lib --exec tape',
-    'watch:coverage:base': async () => await run('watcher', `nyc ${await run('test')}`),
+    'watch:coverage:base': async () => [env, await run('watcher', `nyc ${await cutEnv('test')}`)],
     'watch:coverage:tape': () => run('watcher', 'nyc tape'),
-    'watch:coverage': () => run('watch:coverage:base'),
+    'watch:coverage': async () => [env, await cutEnv('watch:coverage:base')],
     'watcher': () => 'nodemon -w test -w lib --exec',
-    'coverage': async () => `c8 ${await run('test')}`,
+    'coverage': async () => [env, `c8 ${await cutEnv('test')}`],
     'report': () => 'c8 report --reporter=lcov',
     'postpublish': () => 'npm i -g',
 };
