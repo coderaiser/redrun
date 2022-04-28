@@ -9,7 +9,7 @@
 [CoverageURL]: https://coveralls.io/github/coderaiser/redrun?branch=master
 [CoverageIMGURL]: https://coveralls.io/repos/coderaiser/redrun/badge.svg?branch=master&service=github
 
-CLI tool to run multiple npm-scripts fast. Supports madly comfortable [madrun](https://github.com/coderaiser/madrun).
+CLI tool to run multiple npm-scripts fast. Supports madly comfortable 🏎 [**Madrun**](https://github.com/coderaiser/madrun).
 
 ![Redrun](https://github.com/coderaiser/redrun/raw/master/redrun.png "Redrun")
 
