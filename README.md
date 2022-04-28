@@ -74,7 +74,7 @@ coderaiser@cloudcmd:~/redrun$ npm run one
 hello
 ```
 
-Usually all this steps is slow, becouse every `npm run` it is a new process.
+Usually all this steps is slow, because every `npm run` it is a new process.
 We use `npm run` for comfort of build tools of yesterday (like `gulp` and `grunt`) but without their weaknesses
 (a lot dependencies and plugins management frustrations)
 

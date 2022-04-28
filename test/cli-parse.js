@@ -113,7 +113,7 @@ test('cli-parse: series calm: linux', async (t) => {
     
     t.deepEqual(result, expected, 'should build cmd object with "true"');
     
-    os.platfrom = platform;
+    os.platform = platform;
     
     t.end();
 });
@@ -137,7 +137,7 @@ test('cli-parse: parallel calm: windows', async (t) => {
     
     t.deepEqual(result, expected, 'should build cmd object with "exit 0"');
     
-    os.platfrom = platform;
+    os.platform = platform;
     
     t.end();
 });
@@ -161,7 +161,7 @@ test('cli-parse: --calm: linux', async (t) => {
     
     t.deepEqual(result, expected, 'should build cmd object with "exit 0"');
     
-    os.platfrom = platform;
+    os.platform = platform;
     
     t.end();
 });
