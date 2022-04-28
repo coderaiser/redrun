@@ -4,8 +4,8 @@ import {
 } from 'madrun';
 
 const env = {
-    CHECK_ASSERTIONS_COUNT: 0,
-    CHECK_SCOPES: 0,
+    SUPERTAPE_CHECK_ASSERTIONS_COUNT: 0,
+    SUPERTAPE_CHECK_SCOPES: 0,
 };
 
 export default {
