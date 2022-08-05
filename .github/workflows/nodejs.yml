@@ -31,6 +31,7 @@ jobs:
         uses: EndBug/add-and-commit@v7
         with:
           message: chore(${{ env.NAME }}) lint using actions
+          
       - name: Coverage
         run: redrun coverage report
       - name: Coveralls
