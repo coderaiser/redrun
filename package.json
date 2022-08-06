@@ -60,7 +60,7 @@
     "envir": "^2.0.0",
     "for-each-key": "^2.0.0",
     "fullstore": "^3.0.0",
-    "madrun": "^9.0.0",
+    "madrun": "^9.0.6",
     "mapsome": "^1.0.0",
     "parent-dirs": "^2.0.0",
     "readjson": "^2.0.1",
