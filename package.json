@@ -79,7 +79,7 @@
     "nodemon": "^2.0.0",
     "npm-run-all": "^4.0.0",
     "putout": "^27.0.1",
-    "supertape": "^7.0.1"
+    "supertape": "^7.6.0"
   },
   "publishConfig": {
     "access": "public"
