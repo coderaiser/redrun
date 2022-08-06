@@ -1,3 +1,16 @@
+2022.08.06, v10.0.2
+
+feature:
+- (package) eslint-plugin-n v15.2.4
+- (package) coveralls v3.1.1
+- (package) madrun v9.0.6
+- (package) eslint-plugin-putout v16.0.1
+- (package) supertape v7.6.0
+- (package) yargs-parser v21.1.1
+- (package) putout v27.0.1
+- (package) eslint v8.21.0
+- (package) eslint-plugin-putout v15.1.1
+
 2022.04.06, v10.0.1
 
 fix:
