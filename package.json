@@ -73,7 +73,9 @@
   "devDependencies": {
     "eslint": "^8.21.0",
     "eslint-plugin-n": "^15.2.4",
-    "eslint-plugin-putout": "^16.0.1",
+    "coveralls": "^3.0.0",
+    "eslint": "^8.0.0",
+    "eslint-plugin-putout": "^16.2.1",
     "mock-require": "^3.0.3",
     "nodemon": "^2.0.0",
     "npm-run-all": "^4.0.0",
