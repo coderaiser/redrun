@@ -79,7 +79,7 @@
     "mock-require": "^3.0.3",
     "nodemon": "^2.0.0",
     "npm-run-all": "^4.0.0",
-    "putout": "^27.7.0",
+    "putout": "^29.0.2",
     "supertape": "^8.3.0"
   },
   "publishConfig": {
