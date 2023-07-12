@@ -1,3 +1,16 @@
+2023.07.12, v10.1.0
+
+feature:
+- b5859d4 package: nodemon v3.0.1
+- dfaabe3 package: putout v30.3.1
+- 2c3a6a7 package: c8 v8.0.0
+- 75e21ee package: eslint-plugin-n v16.0.1
+- c1fa1d9 package: eslint-plugin-putout v18.1.0
+- 622bec9 package: putout v29.0.2
+- 89098e5 package: supertape v8.3.0
+- c7e8655 package: eslint-plugin-putout v16.2.1
+- 4b5a544 package: putout v27.7.0
+
 2022.08.06, v10.0.2
 
 feature:
