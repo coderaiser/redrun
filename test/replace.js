@@ -62,4 +62,3 @@ test('replace: a few npm runs', async (t) => {
     t.equal(cmd, 'one && two', 'should cut npm run from all expressions');
     t.end();
 });
-

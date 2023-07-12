@@ -4,7 +4,6 @@
   "type": "commonjs",
   "description": "CLI tool to run multiple npm-scripts fast",
   "main": "lib/redrun.js",
-  "commitType": "colon",
   "scripts": {
     "lint": "madrun lint",
     "fix:lint": "madrun fix:lint",
@@ -73,7 +72,6 @@
     "yargs-parser": "^21.1.1"
   },
   "devDependencies": {
-    "coveralls": "^3.0.0",
     "eslint": "^8.0.0",
     "eslint-plugin-n": "^16.0.1",
     "eslint-plugin-putout": "^18.1.0",

@@ -80,4 +80,3 @@ test('get-body: args: parallel', (t) => {
     t.equal(body, 'jshint lib/*.js & jscs lib/*.js & eslint lib/*.js', 'should body be equal to script content + args');
     t.end();
 });
-

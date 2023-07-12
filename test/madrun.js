@@ -2,16 +2,14 @@
 
 const {test, stub} = require('supertape');
 const mockRequire = require('mock-require');
-const {
-    reRequire,
-    stopAll,
-} = mockRequire;
+const {reRequire, stopAll} = mockRequire;
 
 test('redrun: madrun', async (t) => {
-    const run = stub()
-        .returns('eslint lib');
+    const run = stub().returns('eslint lib');
     
-    mockRequire('madrun', {run});
+    mockRequire('madrun', {
+        run,
+    });
     
     const redrun = reRequire('..');
     
@@ -35,4 +33,3 @@ test('redrun: madrun.js', async (t) => {
     t.equal(result, 'bin/madrun.js lint');
     t.end();
 });
-

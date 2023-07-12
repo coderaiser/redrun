@@ -98,6 +98,7 @@ await redrun('one', {
     two: 'npm run three',
     three: `echo 'hello'`,
 });
+
 // returns
 `echo 'hello'`;
 
@@ -108,6 +109,7 @@ await redrun('one', {
     four: 'jshint lib',
     five: 'jscs test',
 });
+
 // returns
 `jshint lib && jscs test & echo 'hello'`;
 ```

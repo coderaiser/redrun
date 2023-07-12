@@ -7,35 +7,32 @@ jobs:
     runs-on: ubuntu-latest
     env:
       NAME: redrun
-
     strategy:
       matrix:
         node-version:
           - 16.x
           - 18.x
+          - 20.x
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
       - name: Install Redrun
         run: npm i redrun -g
-
       - name: Install
         run: npm i
-
       - name: Lint
         run: redrun fix:lint
       - name: Commit fixes
-        uses: EndBug/add-and-commit@v7
+        uses: EndBug/add-and-commit@v9
         with:
           message: 'chore: ${{ env.NAME }}): lint using actions ☘️'
-          
       - name: Coverage
         run: redrun coverage report
       - name: Coveralls
-        uses: coverallsapp/github-action@master
+        uses: coverallsapp/github-action@v2
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
       - name: typos-action

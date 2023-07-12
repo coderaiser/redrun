@@ -41,7 +41,12 @@ test('cli-parse: parallel', async (t) => {
 });
 
 test('cli-parse: parallel --quiet', async (t) => {
-    const result = await cliParse(['--parallel', 'one', 'two', '--quiet'], {
+    const result = await cliParse([
+        '--parallel',
+        'one',
+        'two',
+        '--quiet',
+    ], {
         one: 'ls',
         two: 'pwd',
     });
@@ -58,7 +63,12 @@ test('cli-parse: parallel --quiet', async (t) => {
 });
 
 test('cli-parse: parallel: before script', async (t) => {
-    const result = await cliParse(['main', '--parallel', 'one', 'two'], {
+    const result = await cliParse([
+        'main',
+        '--parallel',
+        'one',
+        'two',
+    ], {
         one: 'ls',
         two: 'pwd',
         main: 'echo hi',
@@ -76,7 +86,14 @@ test('cli-parse: parallel: before script', async (t) => {
 });
 
 test('cli-parse: series and parallel', async (t) => {
-    const result = await cliParse(['--s', 'one', 'two', '-p', 'three', 'four'], {
+    const result = await cliParse([
+        '--s',
+        'one',
+        'two',
+        '-p',
+        'three',
+        'four',
+    ], {
         one: 'ls',
         two: 'pwd',
         three: 'whoami',
@@ -167,7 +184,13 @@ test('cli-parse: --calm: linux', async (t) => {
 });
 
 test('cli-parse: scripts arguments: *', async (t) => {
-    const result = await cliParse(['o*', '--', '--parallel', 'three', 'four'], {
+    const result = await cliParse([
+        'o*',
+        '--',
+        '--parallel',
+        'three',
+        'four',
+    ], {
         'one:ls': 'ls',
         'one:ps': 'ps',
     });
@@ -202,7 +225,13 @@ test('cli-parse: scripts arguments: simple', async (t) => {
 });
 
 test('cli-parse: scripts arguments: parallel', async (t) => {
-    const result = await cliParse(['o*', '--', '--parallel', 'three', 'four'], {
+    const result = await cliParse([
+        'o*',
+        '--',
+        '--parallel',
+        'three',
+        'four',
+    ], {
         one: 'ls',
         on: 'who',
     });
@@ -361,4 +390,3 @@ test('cli-parse: args: no', async (t) => {
     t.equal(e.message, 'argv should be an array!', 'should throw when no args');
     t.end();
 });
-

@@ -3,12 +3,10 @@
 import path from 'path';
 import tryCatch from 'try-catch';
 import readjson from 'readjson';
-
 import squad from 'squad';
 import mapsome from 'mapsome';
 import storage from 'fullstore';
 import parentDirs from 'parent-dirs';
-
 import cliParse from '../lib/cli-parse.js';
 
 const cwd = process.cwd();
@@ -49,7 +47,12 @@ async function execute(cmd) {
     tryOrExit(() => {
         execSync(cmd, {
             env,
-            stdio: [0, 1, 2, 'pipe'],
+            stdio: [
+                0,
+                1,
+                2,
+                'pipe',
+            ],
             cwd: Directory(),
         });
     });
@@ -102,6 +105,7 @@ function traverseForInfo(cwd) {
 function notEntryError(path, error) {
     if (error && error.code !== 'ENOENT') {
         const {message} = error;
+        
         error.message = `${path}: ${message}`;
         
         return error;
@@ -116,4 +120,3 @@ function exitIfEntryError(data) {
         exitIfError(error);
     }
 }
-

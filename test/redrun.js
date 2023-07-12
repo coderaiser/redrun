@@ -339,4 +339,3 @@ test('args: no json', async (t) => {
     t.equal(e.message, 'json should be object!', 'should throw when no json');
     t.end();
 });
-

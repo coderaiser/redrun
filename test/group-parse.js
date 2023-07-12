@@ -40,4 +40,3 @@ test('group-parse: parallel: params', async (t) => {
     t.equal(result, 'ls --help & pwd --help & whoami --help', 'should build cmd line with params');
     t.end();
 });
-

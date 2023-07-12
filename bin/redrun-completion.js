@@ -10,4 +10,3 @@ const read = fs.createReadStream(filename);
 const write = process.stdout;
 
 read.pipe(write);
-
