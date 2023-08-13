@@ -27,12 +27,14 @@ jobs:
         run: redrun fix:lint
       - name: Commit fixes
         uses: EndBug/add-and-commit@v9
+        continue-on-error: true
         with:
-          message: 'chore: ${{ env.NAME }}): lint using actions ☘️'
+          message: "chore: ${{ env.NAME }}): lint using actions ☘️"
       - name: Coverage
         run: redrun coverage report
       - name: Coveralls
         uses: coverallsapp/github-action@v2
+        continue-on-error: true
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
       - name: typos-action
