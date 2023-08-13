@@ -30,6 +30,7 @@ else
 
 if (arg.name !== 'run') {
     console.log(arg.output);
+    process.exit(ErrorCode);
 } else {
     if (!arg.quiet)
         console.log(`> ${arg.cmd}`);
