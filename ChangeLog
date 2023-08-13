@@ -1,3 +1,10 @@
+2023.08.13, v10.2.0
+
+feature:
+- f7fca52 package: eslint-plugin-putout v19.0.4
+- 76072f4 package: putout v31.1.0
+- f8d95e3 redrun: exit with 1 when script not found
+
 2023.07.12, v10.1.0
 
 feature:
