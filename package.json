@@ -51,7 +51,7 @@
   "homepage": "https://github.com/coderaiser/redrun",
   "license": "MIT",
   "engines": {
-    "node": ">=16"
+    "node": ">=18"
   },
   "dependencies": {
     "c8": "^8.0.0",
