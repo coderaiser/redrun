@@ -6,7 +6,7 @@ import readjson from 'readjson';
 import squad from 'squad';
 import mapsome from 'mapsome';
 import storage from 'fullstore';
-import parentDirs from 'parent-dirs';
+import parentDirectories from 'parent-directories';
 import cliParse from '../lib/cli-parse.js';
 
 const cwd = process.cwd();
@@ -96,7 +96,7 @@ function getInfo(dir) {
 }
 
 function traverseForInfo(cwd) {
-    const result = mapsome(getInfo, parentDirs(cwd));
+    const result = mapsome(getInfo, parentDirectories(cwd));
     
     exitIfEntryError(result);
     
