@@ -1,3 +1,11 @@
+2024.02.01, v11.0.1
+
+feature:
+- 5a6bef8 redrun: supertape v10.0.0
+- 5fc0b7c redrun: madrun v10.0.1
+- ff23fa9 redrun: putout v35.0.3
+- 25d19df redrun: c8 v9.1.0
+
 2023.12.12, v11.0.0
 
 feature:
