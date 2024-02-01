@@ -2,6 +2,7 @@
 
 'use strict';
 
+const process = require('node:process');
 const fs = require('fs');
 const path = require('path');
 

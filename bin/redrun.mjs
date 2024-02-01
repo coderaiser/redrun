@@ -1,12 +1,13 @@
 #!/usr/bin/env node
 
-import path from 'path';
+import path from 'node:path';
 import tryCatch from 'try-catch';
 import readjson from 'readjson';
 import squad from 'squad';
 import mapsome from 'mapsome';
 import storage from 'fullstore';
 import parentDirectories from 'parent-directories';
+import process from 'node:process';
 import cliParse from '../lib/cli-parse.js';
 
 const cwd = process.cwd();
