@@ -48,14 +48,14 @@ You may also pipe the output of redrun-completion to a file such as `/usr/local/
 # How it works
 
 `package.json`:
+
 ```json
 {
-  "scripts":
-  {
-      "one": "npm run two",
-      "two": "npm run three",
-      "three": "echo 'hello'"
-  }
+    "scripts": {
+        "one": "npm run two",
+        "two": "npm run three",
+        "three": "echo 'hello'"
+    }
 }
 ```
 

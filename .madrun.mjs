@@ -1,7 +1,4 @@
-import {
-    run,
-    cutEnv,
-} from 'madrun';
+import {run, cutEnv} from 'madrun';
 
 const env = {
     SUPERTAPE_CHECK_ASSERTIONS_COUNT: 0,
