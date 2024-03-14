@@ -47,15 +47,19 @@ You may also pipe the output of redrun-completion to a file such as `/usr/local/
 
 # How it works
 
+`package.json`:
 ```json
 {
-    "one": "npm run two",
-    "two": "npm run three",
-    "three": "echo 'hello'"
+  "scripts":
+  {
+      "one": "npm run two",
+      "two": "npm run three",
+      "three": "echo 'hello'"
+  }
 }
 ```
 
-Usually this expressions would be executed one-by-one this way:
+Usually these expressions would be executed one after another:
 
 ```sh
 coderaiser@cloudcmd:~/redrun$ npm run one
@@ -74,11 +78,9 @@ coderaiser@cloudcmd:~/redrun$ npm run one
 hello
 ```
 
-Usually all this steps is slow, because every `npm run` it is a new process.
-We use `npm run` for comfort of build tools of yesterday (like `gulp` and `grunt`) but without their weaknesses
-(a lot dependencies and plugins management frustrations)
+All these `npm run` commands that are created are slow, because each time it creates a new process.
 
-What `redrun` does is expand all this commands into one (which is much faster):
+`redrun` makes it faster:
 
 ```
 coderaiser@cloudcmd:~/redrun$ redrun one
@@ -88,7 +90,7 @@ hello
 
 ## How to use?
 
-Redrun could be used via command line, scripts section of `package.json` or programmaticly.
+Redrun could be used via the command line, the scripts section of `package.json` or in a script:
 
 ```js
 import redrun from 'redrun';
@@ -195,7 +197,7 @@ user    0m8.198s
 sys     0m9.113s
 ```
 
-As you see `redrun` much faster and more laconic way of using `npm scripts` then regular solutions.
+As you can see `redrun` is much faster and more DRY way of using `npm scripts` than regular solutions.
 
 ## Related
 
