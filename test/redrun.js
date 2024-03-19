@@ -330,6 +330,21 @@ test('redrun: npm run -s', async (t) => {
     t.end();
 });
 
+test('redrun: npm run -s: couple', async (t) => {
+    const cmd = '_mocha  --reporter progress --timeout 4000 "tests/lib/**/*.js"';
+    const result = await redrun('test:*', {
+        'test:1': 'nyc npm run -s test_mocha',
+        'test:2': 'npm run -s lint',
+        'lint': 'putout .',
+        'test_mocha': cmd,
+    });
+    
+    const expected = `nyc ${cmd} && putout .`;
+    
+    t.equal(result, expected);
+    t.end();
+});
+
 test('args: no name', async (t) => {
     const [e] = await tryToCatch(redrun);
     
