@@ -1,8 +1,6 @@
-'use strict';
-
-const test = require('supertape');
-const tryToCatch = require('try-to-catch');
-const redrun = require('..');
+import test from 'supertape';
+import tryToCatch from 'try-to-catch';
+import redrun from '../lib/redrun.js';
 
 test('simplest parse', async (t) => {
     const cmd = 'echo "hello world"';

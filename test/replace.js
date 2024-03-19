@@ -1,7 +1,5 @@
-'use strict';
-
-const test = require('supertape');
-const replace = require('../lib/replace');
+import test from 'supertape';
+import replace from '../lib/replace.js';
 
 test('replace: one npm run ', async (t) => {
     const result = await replace('npm run one', (type, str) => {

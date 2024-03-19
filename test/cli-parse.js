@@ -1,10 +1,7 @@
-'use strict';
-
-const os = require('os');
-const test = require('supertape');
-const tryToCatch = require('try-to-catch');
-
-const cliParse = require('../lib/cli-parse');
+import os from 'node:os';
+import test from 'supertape';
+import tryToCatch from 'try-to-catch';
+import cliParse from '../lib/cli-parse.js';
 
 test('cli-parse: series', async (t) => {
     const result = await cliParse(['--series', 'one', 'two'], {

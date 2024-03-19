@@ -1,7 +1,5 @@
-'use strict';
-
-const test = require('supertape');
-const getBody = require('../lib/get-body');
+import test from 'supertape';
+import getBody from '../lib/get-body.js';
 
 test('get-body: should get script content', (t) => {
     const cmd = 'jshint lib/*.js';

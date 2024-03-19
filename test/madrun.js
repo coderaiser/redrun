@@ -1,31 +1,27 @@
-'use strict';
-
-const {test, stub} = require('supertape');
-const mockRequire = require('mock-require');
-const {reRequire, stopAll} = mockRequire;
+import {test, stub} from 'supertape';
+import redrun from '../lib/redrun.js';
 
 test('redrun: madrun', async (t) => {
     const run = stub().returns('eslint lib');
-    
-    mockRequire('madrun', {
+    const madrun = {
         run,
-    });
+    };
     
-    const redrun = reRequire('..');
+    const options = {};
     
-    await redrun('lint', {
+    const scripts = {
         lint: 'madrun lint',
-    });
+    };
     
-    stopAll();
+    await redrun('lint', options, scripts, {
+        madrun,
+    });
     
     t.calledWith(run, ['lint', ''], 'should call madrun');
     t.end();
 });
 
 test('redrun: madrun.js', async (t) => {
-    const redrun = reRequire('..');
-    
     const result = await redrun('lint', {
         lint: 'bin/madrun.js lint',
     });

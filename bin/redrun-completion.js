@@ -1,11 +1,12 @@
 #!/usr/bin/env node
 
-'use strict';
+import path, {dirname} from 'node:path';
+import {fileURLToPath} from 'node:url';
+import process from 'node:process';
+import fs from 'node:fs';
 
-const process = require('node:process');
-const fs = require('fs');
-const path = require('path');
-
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 const filename = path.join(__dirname, '..', 'shell/redrun-completion.sh');
 const read = fs.createReadStream(filename);
 const write = process.stdout;

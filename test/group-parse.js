@@ -1,7 +1,5 @@
-'use strict';
-
-const test = require('supertape');
-const groupParse = require('../lib/group-parse');
+import test from 'supertape';
+import groupParse from '../lib/group-parse.js';
 
 test('group-parse: serial', async (t) => {
     const result = await groupParse(['one', 'two', 'three'], {
