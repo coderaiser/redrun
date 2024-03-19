@@ -23,7 +23,7 @@
     "url": "git://github.com/coderaiser/redrun.git"
   },
   "bin": {
-    "redrun": "bin/redrun.mjs",
+    "redrun": "bin/redrun.js",
     "redrun-completion": "bin/redrun-completion.js"
   },
   "keywords": [
