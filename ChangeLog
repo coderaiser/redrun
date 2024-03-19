@@ -1,3 +1,10 @@
+2024.03.19, v11.0.2
+
+feature:
+- 34ab881 convert to ESM
+- b4ba7c2 redrun: add support of `npm run -s`
+- b1a6fca redrun: string-replace-async v3.0.2
+
 2024.02.01, v11.0.1
 
 feature:
