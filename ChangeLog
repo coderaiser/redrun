@@ -1,3 +1,8 @@
+2024.03.19, v11.0.3
+
+fix:
+- 69e90f3 redrun: c8: dependencies -> devDependencies
+
 2024.03.19, v11.0.2
 
 feature:
