@@ -1,3 +1,12 @@
+2025.01.09, v11.0.6
+
+feature:
+- 48d3de2 redrun: eslint-plugin-n v17.15.1
+- a7c373e redrun: eslint v9.17.0
+- 54326f9 redrun: c8 v10.1.3
+- 0f6af06 redrun: eslint-plugin-putout v23.4.0
+- 55ae750 redrun: putout v37.12.0
+
 2024.03.19, v11.0.5
 
 fix:
