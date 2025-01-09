@@ -1,13 +1,13 @@
 #!/usr/bin/env node
 
 import path from 'node:path';
+import process from 'node:process';
 import tryCatch from 'try-catch';
 import readjson from 'readjson';
 import squad from 'squad';
 import mapsome from 'mapsome';
 import storage from 'fullstore';
 import parentDirectories from 'parent-directories';
-import process from 'node:process';
 import cliParse from '../lib/cli-parse.js';
 
 const cwd = process.cwd();
@@ -43,7 +43,7 @@ if (arg.name !== 'run') {
 }
 
 async function execute(cmd) {
-    const {execSync} = await import('child_process');
+    const {execSync} = await import('node:child_process');
     const env = await getEnv();
     
     tryOrExit(() => {

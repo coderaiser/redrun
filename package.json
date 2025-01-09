@@ -20,7 +20,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/coderaiser/redrun.git"
+    "url": "git+https://github.com/coderaiser/redrun.git"
   },
   "bin": {
     "redrun": "bin/redrun.js",
