@@ -56,7 +56,7 @@
     "currify": "^4.0.0",
     "debug": "^4.0.1",
     "enquirer": "^2.3.6",
-    "envir": "^2.0.0",
+    "envir": "^3.0.1",
     "for-each-key": "^2.0.0",
     "fullstore": "^3.0.0",
     "madrun": "^10.0.1",
