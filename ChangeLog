@@ -1,3 +1,10 @@
+2025.02.12, v11.0.7
+
+feature:
+- b35e422 redrun: eslint-plugin-putout v24.0.3
+- cac2c43 redrun: putout v38.1.2
+- fa7291e redrun: envir v3.0.1
+
 2025.01.09, v11.0.6
 
 feature:
