@@ -1,3 +1,8 @@
+2025.02.18, v11.1.0
+
+feature:
+- 2add89f redrun: add ability to run scripts when node_modules installed upper in directory tree
+
 2025.02.12, v11.0.7
 
 feature:
