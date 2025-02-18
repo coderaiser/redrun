@@ -1,13 +1,16 @@
 #!/usr/bin/env node
 
+import {statSync} from 'node:fs';
 import path from 'node:path';
 import process from 'node:process';
+import {execSync} from 'node:child_process';
 import tryCatch from 'try-catch';
 import readjson from 'readjson';
 import squad from 'squad';
 import mapsome from 'mapsome';
 import storage from 'fullstore';
 import parentDirectories from 'parent-directories';
+import envir from 'envir';
 import cliParse from '../lib/cli-parse.js';
 
 const cwd = process.cwd();
@@ -15,8 +18,9 @@ const argv = process.argv.slice(2);
 const [first] = argv;
 
 const Directory = storage();
+const InfoDirectory = storage();
 const Info = storage();
-const pop = (a) => a[0];
+const pop = ([a]) => a;
 
 const tryOrExit = squad(exitIfError, pop, tryCatch);
 const exitIfNotEntry = squad(exitIfError, notEntryError);
@@ -24,10 +28,13 @@ const exitIfNotEntry = squad(exitIfError, notEntryError);
 let arg;
 let ErrorCode = 1;
 
-if (!first || /^(-v|--version|-h|--help)$/.test(first))
+if (!first || /^(-v|--version|-h|--help)$/.test(first)) {
     arg = await cliParse(argv, {});
-else
-    arg = await cliParse(argv, traverseForInfo(cwd).scripts || {});
+} else {
+    const info = traverseForInfo(cwd).scripts || {};
+    nodeModulesDir(cwd);
+    arg = await cliParse(argv, info);
+}
 
 if (arg.name !== 'run') {
     console.log(arg.output);
@@ -39,12 +46,11 @@ if (arg.name !== 'run') {
     if (arg.calm)
         ErrorCode = 0;
     
-    await execute(arg.cmd);
+    execute(arg.cmd);
 }
 
-async function execute(cmd) {
-    const {execSync} = await import('node:child_process');
-    const env = await getEnv();
+function execute(cmd) {
+    const env = getEnv();
     
     tryOrExit(() => {
         execSync(cmd, {
@@ -55,14 +61,12 @@ async function execute(cmd) {
                 2,
                 'pipe',
             ],
-            cwd: Directory(),
+            cwd: InfoDirectory(),
         });
     });
 }
 
-async function getEnv() {
-    const envir = (await import('envir')).default;
-    
+function getEnv() {
     const dir = Directory();
     const info = Info();
     
@@ -91,9 +95,21 @@ function getInfo(dir) {
     exitIfNotEntry(infoPath, error);
     
     Info(info);
-    Directory(dir);
+    InfoDirectory(dir);
     
     return info;
+}
+
+function nodeModulesDir(cwd) {
+    for (const dir of parentDirectories(cwd)) {
+        const nodeModulesPath = path.join(dir, 'node_modules');
+        const [error] = tryCatch(statSync, nodeModulesPath);
+        
+        if (!error) {
+            Directory(dir);
+            return;
+        }
+    }
 }
 
 function traverseForInfo(cwd) {
