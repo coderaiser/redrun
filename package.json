@@ -73,7 +73,7 @@
     "c8": "^10.1.3",
     "eslint": "^9.17.0",
     "eslint-plugin-n": "^17.15.1",
-    "eslint-plugin-putout": "^24.0.3",
+    "eslint-plugin-putout": "^26.0.2",
     "nodemon": "^3.0.1",
     "npm-run-all": "^4.0.0",
     "putout": "^39.0.2",
