@@ -1,3 +1,11 @@
+2025.03.22, v12.0.0
+
+feature:
+- 3e4b3e0 redrun: eslint-plugin-putout v26.0.2
+- 8f27dc9 redrun: putout v39.0.2
+- f936fd3 redrun: madrun v11.0.0
+- dcf4c45 redrun: drop support of node < 20
+
 2025.02.18, v11.1.0
 
 feature:
