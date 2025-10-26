@@ -1,3 +1,11 @@
+2025.10.26, v12.0.1
+
+feature:
+- 03ca9de redrun: yargs-parser v22.0.0
+- 4ca497a redrun: supertape v11.3.1
+- b6f18be redrun: putout v40.11.0
+- 72a98b5 redrun: eslint-plugin-putout v28.0.5
+
 2025.03.22, v12.0.0
 
 feature:
