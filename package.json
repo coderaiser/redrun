@@ -76,7 +76,7 @@
     "eslint-plugin-putout": "^29.0.2",
     "nodemon": "^3.0.1",
     "npm-run-all": "^4.0.0",
-    "putout": "^40.11.0",
+    "putout": "^41.0.2",
     "supertape": "^11.3.1"
   },
   "publishConfig": {
