@@ -65,7 +65,7 @@
     "readjson": "^2.0.1",
     "squad": "^3.0.0",
     "string-replace-async": "^3.0.2",
-    "try-catch": "^3.0.0",
+    "try-catch": "^4.0.6",
     "try-to-catch": "^3.0.0",
     "yargs-parser": "^22.0.0"
   },
