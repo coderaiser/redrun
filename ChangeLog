@@ -1,3 +1,13 @@
+2025.12.31, v13.0.0
+
+feature:
+- 7fae636 redrun: drop support of node < 22
+- 50880c4 redrun: try-to-catch v4.0.2
+- d3dd1eb redrun: try-catch v4.0.6
+- 2a0bb9e redrun: madrun v12.0.0
+- a430bbf redrun: putout v41.0.2
+- 59f20b4 redrun: eslint-plugin-putout v29.0.2
+
 2025.10.26, v12.0.1
 
 feature:
