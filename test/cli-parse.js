@@ -1,6 +1,6 @@
 import os from 'node:os';
 import test from 'supertape';
-import tryToCatch from 'try-to-catch';
+import {tryToCatch} from 'try-to-catch';
 import cliParse from '../lib/cli-parse.js';
 
 test('cli-parse: series', async (t) => {

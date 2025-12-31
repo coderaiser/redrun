@@ -1,5 +1,5 @@
 import test from 'supertape';
-import tryToCatch from 'try-to-catch';
+import {tryToCatch} from 'try-to-catch';
 import redrun from '../lib/redrun.js';
 
 test('simplest parse', async (t) => {

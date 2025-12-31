@@ -4,7 +4,7 @@ import {statSync} from 'node:fs';
 import path from 'node:path';
 import process from 'node:process';
 import {execSync} from 'node:child_process';
-import tryCatch from 'try-catch';
+import {tryCatch} from 'try-catch';
 import readjson from 'readjson';
 import squad from 'squad';
 import mapsome from 'mapsome';
