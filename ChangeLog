@@ -1,3 +1,10 @@
+2026.01.26, v13.0.1
+
+feature:
+- fa85074 redrun: eslint-plugin-putout v30.0.1
+- cffdff9 redrun: fullstore v4.0.0
+- 1eeb8c5 redrun: supertape v12.0.0
+
 2025.12.31, v13.0.0
 
 feature:
