@@ -32,7 +32,7 @@ jobs:
         uses: EndBug/add-and-commit@v9
         continue-on-error: true
         with:
-          message: "chore: ${{ env.NAME }}: lint using actions ☘️"
+          message: "chore: ${{ env.NAME }}: actions: lint ☘️"
       - name: Coverage
         run: redrun coverage report
       - name: Coveralls
