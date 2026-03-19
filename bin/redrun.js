@@ -8,7 +8,7 @@ import {tryCatch} from 'try-catch';
 import readjson from 'readjson';
 import squad from 'squad';
 import mapsome from 'mapsome';
-import storage from 'fullstore';
+import {fullstore} from 'fullstore';
 import parentDirectories from 'parent-directories';
 import envir from 'envir';
 import cliParse from '../lib/cli-parse.js';
@@ -17,9 +17,9 @@ const cwd = process.cwd();
 const argv = process.argv.slice(2);
 const [first] = argv;
 
-const Directory = storage();
-const InfoDirectory = storage();
-const Info = storage();
+const Directory = fullstore();
+const InfoDirectory = fullstore();
+const Info = fullstore();
 const pop = ([a]) => a;
 
 const tryOrExit = squad(exitIfError, pop, tryCatch);
