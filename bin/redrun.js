@@ -110,6 +110,7 @@ function nodeModulesDir(cwd) {
             return;
         }
     }
+    Directory(InfoDirectory());
 }
 
 function traverseForInfo(cwd) {
