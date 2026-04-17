@@ -1,7 +1,6 @@
 import {run, cutEnv} from 'madrun';
 
 const env = {
-    SUPERTAPE_CHECK_ASSERTIONS_COUNT: 0,
     SUPERTAPE_CHECK_SCOPES: 0,
 };
 

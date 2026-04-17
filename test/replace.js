@@ -9,7 +9,7 @@ test('replace: one npm run ', async (t) => {
     
     t.equal(result, 'one', 'should get script name');
     t.end();
-});
+}, {checkAssertionsCount: false});
 
 test('replace: npm tst', async (t) => {
     const result = await replace('npm tst', (type, str) => {
@@ -19,7 +19,7 @@ test('replace: npm tst', async (t) => {
     
     t.equal(result, 'test', 'should determine reserved: tst');
     t.end();
-});
+}, {checkAssertionsCount: false});
 
 test('replace: npm t', async (t) => {
     const result = await replace('npm t', (type, str) => {
@@ -29,7 +29,7 @@ test('replace: npm t', async (t) => {
     
     t.equal(result, 'test', 'should determine reserved: t');
     t.end();
-});
+}, {checkAssertionsCount: false});
 
 test('replace: npm version', async (t) => {
     const result = await replace('npm version', (type, str) => {
@@ -59,4 +59,4 @@ test('replace: a few npm runs', async (t) => {
     
     t.equal(cmd, 'one && two', 'should cut npm run from all expressions');
     t.end();
-});
+}, {checkAssertionsCount: false});
