@@ -137,7 +137,11 @@ test('cli-parse: parallel calm: windows', async (t) => {
     
     os.platform = () => 'win32';
     
-    const cmd = ['--parallel-calm', 'one', 'two'];
+    const cmd = [
+        '--parallel-calm',
+        'one',
+        'two',
+    ];
     const result = await cliParse(cmd, {
         one: 'ls',
         two: 'pwd',
