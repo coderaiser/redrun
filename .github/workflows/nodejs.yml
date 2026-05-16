@@ -12,7 +12,7 @@ jobs:
         node-version:
           - 22.x
           - 24.x
-          - 25.x
+          - 26.x
     steps:
       - uses: actions/checkout@v5
       - uses: oven-sh/setup-bun@v2
@@ -29,7 +29,7 @@ jobs:
       - name: Lint
         run: redrun fix:lint
       - name: Commit fixes
-        uses: EndBug/add-and-commit@v9
+        uses: EndBug/add-and-commit@v10
         continue-on-error: true
         with:
           message: "chore: ${{ env.NAME }}: actions: lint ☘️"

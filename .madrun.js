@@ -2,7 +2,7 @@ import {run, cutEnv} from 'madrun';
 
 const env = {
     SUPERTAPE_CHECK_SCOPES: 0,
-    SUPERC8_RESPONSIVE:1,
+    SUPERC8_RESPONSIVE: 1,
 };
 
 export default {
