@@ -2,6 +2,7 @@ import {run, cutEnv} from 'madrun';
 
 const env = {
     SUPERTAPE_CHECK_SCOPES: 0,
+    SUPERC8_RESPONSIVE:1,
 };
 
 export default {
@@ -16,7 +17,7 @@ export default {
     'watch:coverage:tape': () => run('watcher', 'nyc tape'),
     'watch:coverage': async () => [env, await cutEnv('watch:coverage:base')],
     'watcher': () => 'nodemon -w test -w lib --exec',
-    'coverage': async () => [env, `c8 ${await cutEnv('test')}`],
+    'coverage': async () => [env, `c8 -R ${await cutEnv('test')}`],
     'report': () => 'c8 report --reporter=lcov',
     'postpublish': () => 'npm i -g',
 };
